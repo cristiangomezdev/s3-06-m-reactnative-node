@@ -1,7 +1,7 @@
 import { types } from '../types/types';
 
 const initialState = {
-    user: JSON.parse(localStorage.getItem('userNoClassroom')) || "",
+    user: "",
 };
 console.log(initialState.student, "state reducer--->")
 
