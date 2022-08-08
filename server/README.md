@@ -14,6 +14,8 @@ Api E-commerce utiliza una serie de proyectos de código abierto para funcionar 
 - [Express] -
 - [Nodemailer] - envios de email
 - [JWT] - token de seguridad
+- [MongoDB] - Base de dato no relacional
+- [Mongoose] - [ORM de MongoDB](https://mongoosejs.com/docs/guide.html)
 
 ## _Installation_
 
