@@ -16,6 +16,7 @@ Api E-commerce utiliza una serie de proyectos de código abierto para funcionar 
 - [JWT] - token de seguridad
 - [MongoDB] - Base de dato no relacional
 - [Mongoose] - [ORM de MongoDB](https://mongoosejs.com/docs/guide.html)
+- [SwaggerUI] - Swagger
 
 ## _Installation_
 
@@ -36,6 +37,7 @@ URI_DB=Conexion con MongoAtlas
 JWT_SECRET=palabra secreta
 EMAIL=
 KEY_MAIL=contraseña de aplicacion del email
+SWAGGER_PORT= 'URL DEL SERVER LOCAL'
 
 ```
 
