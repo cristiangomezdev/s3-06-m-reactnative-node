@@ -26,7 +26,7 @@ class AuthController {
                 })
             }
             return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-                msg: error
+                msg: 'Something went wrong, the server was unable to complete your request'
             })
         }
         const data = {
@@ -53,7 +53,7 @@ class AuthController {
             user = await User.findOne({ email : email.trim(),})
         } catch (error) {
             return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-                msg: error
+                msg: 'Something went wrong, the server was unable to complete your request'
             })
         }
 
