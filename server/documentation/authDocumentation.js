@@ -86,21 +86,9 @@
  *        password:
  *          type: string
  *          description: user password
- *        age:
- *          type: Number
- *          description: user age
- *        dni:
- *          type: Number
- *          description: user dni
  *        phone:
  *          type: Number
  *          description: user phone
- *        address:
- *          type: string
- *          description: user address
- *        numberAddress:
- *          type: Number
- *          description: user number street
  *        avatar:
  *          type: string
  *          description: user avatar profile
@@ -116,11 +104,7 @@
  *        surname: Apellido
  *        email: example@email.com
  *        password: 123456Aa
- *        age: 35
- *        dni: 11222333
  *        phone: 9997665544
- *        address: calle
- *        numberAddress: 1566
  *        avatar: default.png
  *        admin: false
  *  responses:
