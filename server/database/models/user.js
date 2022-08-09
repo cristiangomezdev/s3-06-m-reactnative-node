@@ -19,19 +19,7 @@ const userSchema = new Schema({
         required : true,
         unique : true
     },
-    age : {
-        type : Number
-    },
-    dni : {
-        type : Number
-    },
     phone : {
-        type : Number
-    },
-    address : {
-        type : String
-    },
-    numberAddress : {
         type : Number
     },
     avatar : {
