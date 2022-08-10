@@ -7,22 +7,22 @@ export default function DevNavigator() {
     <View>
       <ScrollView horizontal style={styles.scrollView}>
         <View style={styles.contentContainer}>
-          <Link style={styles.link} to="/">
+          <Link style={styles.link} to="/" underlayColor="rgba(0,0,0,0)">
             <Text style={styles.redirectTo}>Volver al inicio</Text>
           </Link>
-          <Link style={styles.link} to="/ClaudiaPage">
+          <Link style={styles.link} to="/ClaudiaPage" underlayColor="rgba(0,0,0,0)">
             <Text style={styles.redirectTo}>Claudia Page</Text>
           </Link>
-          <Link style={styles.link} to="/CrisPage">
+          <Link style={styles.link} to="/CrisPage" underlayColor="rgba(0,0,0,0)">
             <Text style={styles.redirectTo}>Cris Page</Text>
           </Link>
-          <Link style={styles.link} to="/EzePage">
+          <Link style={styles.link} to="/EzePage" underlayColor="rgba(0,0,0,0)">
             <Text style={styles.redirectTo}>Eze Page</Text>
           </Link>
-          <Link style={styles.link} to="/OrianaPage">
+          <Link style={styles.link} to="/OrianaPage" underlayColor="rgba(0,0,0,0)">
             <Text style={styles.redirectTo}>Oriana Page</Text>
           </Link>
-          <Link style={styles.link} to="/RichardPage">
+          <Link style={styles.link} to="/RichardPage" underlayColor="rgba(0,0,0,0)">
             <Text style={styles.redirectTo}>Richard Page</Text>
           </Link>
         </View>

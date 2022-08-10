@@ -7,7 +7,7 @@ import backToIcon from "../assets/back-to-icon.png";
 const Search = () => {
   return (
     <View style={styles.container}>
-      <Link to="/">
+      <Link to="/" underlayColor="rgba(0,0,0,0)">
         <Image source={backToIcon} style={styles.image} />
       </Link>
       <Image source={searchIcon} style={styles.image} />

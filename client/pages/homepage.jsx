@@ -32,7 +32,7 @@ const Homepage = () => {
       <SimpleCard />
       <View>
         {cardData.map((i) => (
-          <Link to="/" key={i.id}>
+          <Link to="/" key={i.id} underlayColor="rgba(0,0,0,0)">
             <Card description={i.description} uri={i.uri} />
           </Link>
         ))}
