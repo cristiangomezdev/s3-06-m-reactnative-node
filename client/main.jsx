@@ -21,6 +21,7 @@ import OrianaPage from "./devpages/OrianaPage.jsx";
 import RichardPage from "./devpages/RichardPage.jsx";
 import DevNavigator from "./devpages/DevNavigator";
 import Profile, {} from './pages/Profile.jsx'
+import Nav from "./components/Nav";
 
 const ScreenHeight = Dimensions.get("window").height;
 export const Main = () => {
@@ -37,7 +38,7 @@ export const Main = () => {
             <Route path="/RichardPage" element={<RichardPage />} />
             <Route path="*" element={<Text>Ruta Global</Text>} />
           </Routes>
-      <DevNavigator />
+      <Nav />
     </View>
   );
 };
@@ -47,6 +48,7 @@ const styles = StyleSheet.create({
     paddingVertical: 25,
     height: ScreenHeight,
     flex: 1,
+    backgroundColor:'#f3f3f3'
   },
   secundaryContainer: {
     alignItems: "center",
