@@ -20,27 +20,24 @@ import EzePage from "./devpages/EzePage.jsx";
 import OrianaPage from "./devpages/OrianaPage.jsx";
 import RichardPage from "./devpages/RichardPage.jsx";
 import DevNavigator from "./devpages/DevNavigator";
+import Profile, {} from './pages/Profile.jsx'
 
 const ScreenHeight = Dimensions.get("window").height;
 export const Main = () => {
   return (
     <View style={styles.container}>
-      <ScrollView style={styles.scrollView}>
+      <Search />
         <StatusBar style="auto" />
-        <View style={styles.secundaryContainer}>
-          <Search />
           <Routes>
             <Route path="/" element={<Homepage />}></Route>
             <Route path="/ClaudiaPage" element={<ClaudiaPage />} />
             <Route path="/CrisPage" element={<CrisPage />} />
-            <Route path="/EzePage" element={<EzePage />} />
+            <Route path="/EzePage" element={<Profile />} />
             <Route path="/OrianaPage" element={<OrianaPage />} />
             <Route path="/RichardPage" element={<RichardPage />} />
             <Route path="*" element={<Text>Ruta Global</Text>} />
           </Routes>
-          <DevNavigator />
-        </View>
-      </ScrollView>
+      <DevNavigator />
     </View>
   );
 };
@@ -53,9 +50,6 @@ const styles = StyleSheet.create({
   },
   secundaryContainer: {
     alignItems: "center",
-  },
-  scrollView: {
-    width: "100%",
   },
   texto: {
     textAlign: "center",

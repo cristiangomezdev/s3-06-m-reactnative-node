@@ -4,8 +4,8 @@ import { Link } from "react-router-native";
 
 export default function DevNavigator() {
   return (
-    <View>
-      <ScrollView horizontal style={styles.scrollView}>
+    <View style={styles.footer}>
+      <ScrollView horizontal >
         <View style={styles.contentContainer}>
           <Link style={styles.link} to="/" underlayColor="rgba(0,0,0,0)">
             <Text style={styles.redirectTo}>Volver al inicio</Text>
@@ -40,8 +40,16 @@ const styles = StyleSheet.create({
     height: 100,
     alignItems: "center",
     paddingLeft: 20,
+    backgroundColor : 'black'
   },
-
+  footer: {
+    height: 80,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: '#8BC34A'
+  },
   redirectTo: {
     backgroundColor: "#C20FE1",
     padding: 10,
