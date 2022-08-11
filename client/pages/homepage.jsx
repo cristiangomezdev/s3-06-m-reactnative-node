@@ -1,10 +1,11 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import Card from "../components/Card.jsx";
 import SimpleCard from "../components/SimpleCard.jsx";
 import { Link } from "react-router-native";
 import { Dimensions } from "react-native";
 
 const ScreenWidth = Dimensions.get("window").width;
+const ScreenHeight = Dimensions.get("window").height;
 const Homepage = () => {
   const cardData = [
     {
@@ -30,16 +31,18 @@ const Homepage = () => {
   ];
 
   return (
-    <View style={styles.container}>
-      <SimpleCard />
-      <View>
-        {cardData.map((i) => (
-          <Link to="/" key={i.id} underlayColor="rgba(0,0,0,0)">
-            <Card description={i.description} uri={i.uri} />
-          </Link>
-        ))}
+    <ScrollView>
+      <View style={styles.container}>
+        <SimpleCard />
+        <View>
+          {cardData.map((i) => (
+            <Link to="/" key={i.id} underlayColor="rgba(0,0,0,0)">
+              <Card description={i.description} uri={i.uri} />
+            </Link>
+          ))}
+        </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -48,5 +51,9 @@ const styles = StyleSheet.create({
   container: {
     width: ScreenWidth,
     alignItems: "center",
+    justifyContent: "center",
+    //Este height se podría automatizar, referencias: ScreenHeight, Tamaño del Nav, y tamaño del search son sus parámetros.
+    height: ScreenHeight - 50 - 20,
+    paddingBottom: 50,
   },
 });
