@@ -43,6 +43,7 @@ export default function SecundaryRoutes() {
   const styles = StyleSheet.create({
     container: {
       paddingVertical: 25,
+      marginTop : StatusBar.currentHeight,
       height: ScreenHeight,
       flex: 1,
       backgroundColor:'#f3f3f3'

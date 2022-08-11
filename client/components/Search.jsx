@@ -6,7 +6,6 @@ import backToIcon from "../assets/back-to-icon.png";
 import { useState } from "react";
 
 const Search = () => {
-
   let navigate = useNavigate()
   const handleClick = (e)=>{
     e.preventDefault()
