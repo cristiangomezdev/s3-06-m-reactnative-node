@@ -22,6 +22,7 @@ import RichardPage from "./devpages/RichardPage.jsx";
 import DevNavigator from "./devpages/DevNavigator";
 import Profile, {} from './pages/Profile.jsx'
 import Nav from "./components/Nav";
+import Orders from "./pages/Orders";
 
 const ScreenHeight = Dimensions.get("window").height;
 export const Main = () => {
@@ -34,6 +35,7 @@ export const Main = () => {
             <Route path="/ClaudiaPage" element={<ClaudiaPage />} />
             <Route path="/CrisPage" element={<CrisPage />} />
             <Route path="/EzePage" element={<Profile />} />
+            <Route path="/EzePage/orders" element={<Orders />} />
             <Route path="/OrianaPage" element={<OrianaPage />} />
             <Route path="/RichardPage" element={<RichardPage />} />
             <Route path="*" element={<Text>Ruta Global</Text>} />

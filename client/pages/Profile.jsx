@@ -21,7 +21,7 @@ const Profile = () => {
         {
             text1 : 'My orders',
             text2 : 'Already have 12 orders',
-            path : '/',
+            path : '/EzePage/orders',
             ligth : false
         },
         {
