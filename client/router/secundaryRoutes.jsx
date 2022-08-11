@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import Homepage from "../pages/homepage";
 import Search from "../components/Search.jsx";
-import ClaudiaPage from "../devpages/ClaudiaPage.jsx";
+import ListProducts from "../pages/ListProducts";
 
 import OrianaPage from "../devpages/OrianaPage.jsx";
 import RichardPage from "../devpages/RichardPage.jsx";
@@ -30,7 +30,7 @@ export default function SecundaryRoutes() {
      
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
-        <Route path="/ClaudiaPage" element={<ClaudiaPage />} />
+        <Route path="/ClaudiaPage" element={<ListProducts />} />
         <Route path="/EzePage" element={<Profile />} />
         <Route path="/EzePage/orders" element={<Orders />} />
         <Route path="/OrianaPage" element={<OrianaPage />} />
