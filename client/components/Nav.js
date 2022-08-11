@@ -1,29 +1,32 @@
 import React from "react";
-import { Text, View, ScrollView, StyleSheet } from "react-native";
+import { Text, View, ScrollView, StyleSheet,Dimensions } from "react-native";
 import { Link } from "react-router-native";
+import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-export default function DevNavigator() {
+const { width } = Dimensions.get("window");
+const {height} = Dimensions.get("window");
+
+export default function Nav() {
+  let color = 'gray';
+  let size = 30;
   return (
-    <View>
+    <View style={styles.footer}>
       <ScrollView horizontal style={styles.scrollView}>
         <View style={styles.contentContainer}>
           <Link style={styles.link} to="/" underlayColor="rgba(0,0,0,0)">
-            <Text style={styles.redirectTo}>Volver al inicio</Text>
+          <Ionicons name={'home'} color={color} size={size}/>
           </Link>
           <Link style={styles.link} to="/ClaudiaPage" underlayColor="rgba(0,0,0,0)">
-            <Text style={styles.redirectTo}>Claudia Page</Text>
+          <Ionicons name={'cart'} color={color} size={size}/>
           </Link>
           <Link style={styles.link} to="/CrisPage" underlayColor="rgba(0,0,0,0)">
-            <Text style={styles.redirectTo}>Cris Page</Text>
+          <Ionicons name={'shopping'} color={color} size={size}/>
           </Link>
           <Link style={styles.link} to="/EzePage" underlayColor="rgba(0,0,0,0)">
-            <Text style={styles.redirectTo}>Eze Page</Text>
+          <Ionicons name={'heart'} color={color} size={size}/>
           </Link>
           <Link style={styles.link} to="/OrianaPage" underlayColor="rgba(0,0,0,0)">
-            <Text style={styles.redirectTo}>Oriana Page</Text>
-          </Link>
-          <Link style={styles.link} to="/RichardPage" underlayColor="rgba(0,0,0,0)">
-            <Text style={styles.redirectTo}>Richard Page</Text>
+          <Ionicons name={'account'} color={color} size={size}/>
           </Link>
         </View>
       </ScrollView>
@@ -33,13 +36,26 @@ export default function DevNavigator() {
 
 const styles = StyleSheet.create({
   link: {
-    marginEnd: 20,
+    flex:1,
+    alignItems: "center",
+  },
+  footer: {
+    height: 80,
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: '#f3f3f3'
   },
   contentContainer: {
     flexDirection: "row",
-    height: 100,
+    width:width,
+    height: 80,
+    justifyContent:'center',
     alignItems: "center",
-    paddingLeft: 20,
+    backgroundColor:'#fff',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
 
   redirectTo: {
