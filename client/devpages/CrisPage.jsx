@@ -10,6 +10,9 @@ import {
 import { ImageCarousel } from "../components/ImageCarousel";
 import { useFonts } from 'expo-font';
 import Loader from '../pages/Loader';
+import { StatusBar as barraDeEstado } from "react-native";
+
+
 
 const { width } = Dimensions.get("window");
 const ScreenHeight = Dimensions.get("window").height;
@@ -48,16 +51,16 @@ export default function CrisPage () {
           </Text>
         </View>
         <View style={styles.containerButton}>
-        <TouchableWithoutFeedback onPress={onPressHandler}>
-          <View style={styles.button}>
-            <Text
-              style={styles.buttonText}
-            >
-              Add to cart
-            </Text>
-          </View>
-        </TouchableWithoutFeedback>
-      </View>
+          <TouchableWithoutFeedback onPress={onPressHandler}>
+            <View style={styles.button}>
+              <Text
+                style={styles.buttonText}
+              >
+                Add to cart
+              </Text>
+            </View>
+          </TouchableWithoutFeedback>
+        </View>
       </View>
 
 
@@ -68,7 +71,8 @@ export default function CrisPage () {
 const styles = StyleSheet.create({
   scrollContainer:{
     height:ScreenHeight,
-    backgroundColor:'#000'
+    backgroundColor:'#000',
+    paddingVertical: barraDeEstado.currentHeight,
   }
   ,
   container: {
