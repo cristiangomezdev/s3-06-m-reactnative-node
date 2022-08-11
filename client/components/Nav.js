@@ -25,7 +25,7 @@ export default function Nav() {
           <Link style={styles.link} to="/EzePage" underlayColor="rgba(0,0,0,0)">
           <Ionicons name={'heart'} color={color} size={size}/>
           </Link>
-          <Link style={styles.link} to="/OrianaPage" underlayColor="rgba(0,0,0,0)">
+          <Link style={styles.link} to="/login" underlayColor="rgba(0,0,0,0)">
           <Ionicons name={'account'} color={color} size={size}/>
           </Link>
         </View>
