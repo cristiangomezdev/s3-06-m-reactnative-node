@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-native";
-import { StyleSheet, TouchableHighlight, TextInput, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, TouchableHighlight, TextInput, Text, View, ScrollView, StatusBar } from 'react-native';
 import { Dimensions } from 'react-native';
 
 const ScreenWidth = Dimensions.get("window").width;
@@ -10,15 +10,21 @@ export default function ForgotPassword() {
   
     return (
         <View style={styles.container}  >
+            <StatusBar 
+                animated={true}
+                backgroundColor="#61dafb"
+            />
             <ScrollView>
                 <View>
                     <Text style={styles.text} >Forgot Password</Text>
                     <TextInput placeholder='Email' require style={styles.input} />
                 </View>
                 <Text style={styles.text1}> Please, enter your email address. You will receive a link to create a new password by email  </Text>
-                <TouchableHighlight style={styles.boton}>
-                    <Text style={styles.botonText}>SEND</Text>
-                </TouchableHighlight>
+                <View style={styles.buttonContain} >
+                    <TouchableHighlight style={styles.boton}>
+                        <Text style={styles.botonText}>Send</Text>
+                    </TouchableHighlight>
+                </View>
                 <TouchableHighlight  onPress={()=> navigate(-1) } underlayColor="rgba(0,0,0,0)">
                     <Text style={styles.text2}>Go Back </Text>
                 </TouchableHighlight>
@@ -32,17 +38,20 @@ const styles = StyleSheet.create({
     container: {
         width: ScreenWidth,
     },
+    buttonContain : {
+        width : ScreenWidth,
+        flex : 1,
+        alignItems : 'center'
+    },
     boton: {
-        width: 480,
+        width: ScreenWidth - 50,
         height: 70,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#2196F3',
         borderRadius: 20,
-        marginLeft: 30,
-        marginRight: 30,
         color: 'white',
-        marginBottom: 50,
+        margin : 'auto'
     },
     botonText: {
         fontSize: 25,
