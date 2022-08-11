@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-native";
 import { StyleSheet, TextInput, Image, Text, View, ScrollView, TouchableHighlight } from 'react-native';
 import { Dimensions } from 'react-native';
 
 const ScreenWidth = Dimensions.get("window").width;
 
 export default function Signup() {
+  let navigate = useNavigate()
   return (
     <View style={styles.container}  >
       <ScrollView>
@@ -14,7 +16,9 @@ export default function Signup() {
           <TextInput placeholder='Email' style={styles.input} />
           <TextInput placeholder='Password' style={styles.input} />
         </View>
-        <Text style={styles.text1}> Already have an account?  <Image style={styles.arrow} source={require('../assets/Vector.png')} /> </Text>
+        <TouchableHighlight onPress={() => navigate('/login')} underlayColor="rgba(0,0,0,0)">
+          <Text style={styles.text1}>Already have account?  <Image style={styles.arrow} source={require('../assets/Vector.png')} /> </Text>
+        </TouchableHighlight>
         <TouchableHighlight style={styles.boton}>
           <Text style={styles.botonText}>SIGN UP</Text>
         </TouchableHighlight>
@@ -25,12 +29,12 @@ export default function Signup() {
         </View>
       </ScrollView>
     </View>
-
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 80,
     width: ScreenWidth,
   },
   boton: {
@@ -94,5 +98,5 @@ const styles = StyleSheet.create({
   arrow: {
     width: 40,
     height: 18,
-}
+  }
 });

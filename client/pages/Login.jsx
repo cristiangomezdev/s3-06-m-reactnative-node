@@ -1,10 +1,15 @@
 import React from "react";
-import { StyleSheet,  TextInput, Image, Text, View, TouchableHighlight, ScrollView } from 'react-native';
+import { useNavigate } from "react-router-native";
+import { StyleSheet, TextInput, Image, Text, View, TouchableHighlight, ScrollView } from 'react-native';
 import { Dimensions } from 'react-native';
 
 const ScreenWidth = Dimensions.get("window").width;
 
 export default function Login() {
+    let navigate = useNavigate()
+    const handleClick = () => {
+        navigate('/signup')
+    }
     return (
         <View style={styles.container}  >
             <ScrollView>
@@ -13,11 +18,16 @@ export default function Login() {
                     <TextInput placeholder='Email' required style={styles.input} />
                     <TextInput placeholder='Password' style={styles.input} />
                 </View>
-                <Text style={styles.text1}>Forgot your password?  <Image style={styles.arrow} source={require('../assets/Vector.png')} /> </Text>
+                <TouchableHighlight onPress={() => navigate('/forgotpassword')} underlayColor="rgba(0,0,0,0)">
+                    <Text style={styles.text1}>Forgot your password?  <Image style={styles.arrow} source={require('../assets/Vector.png')} /> </Text>
+                </TouchableHighlight>
                 <TouchableHighlight style={styles.boton}>
                     <Text style={styles.botonText}>LOGIN</Text>
                 </TouchableHighlight>
-                <Text style={styles.text2}>Or Sign up with social account </Text>
+
+                <TouchableHighlight onPress={handleClick} underlayColor="rgba(0,0,0,0)">
+                    <Text style={styles.text2}>Or Sign up with social account </Text>
+                </TouchableHighlight>
                 <View style={styles.image}>
                     <Image source={require('../assets/iconsgoogle.png')} />
                     <Image source={require('../assets/iconofacebook.png')} />
@@ -30,6 +40,7 @@ export default function Login() {
 
 const styles = StyleSheet.create({
     container: {
+        marginTop: 80,
         width: ScreenWidth,
     },
     boton: {

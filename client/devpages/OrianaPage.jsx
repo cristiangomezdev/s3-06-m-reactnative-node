@@ -1,11 +1,11 @@
 import React from "react";
 
-import Login from "../pages/Login";
-//import Login from '../pages/Login';
+import Signup from "../pages/Signup.jsx"
+
 
 export default function OrianaPage() {
   return (
-    <Login/>
+    <Signup/>
   );
 }
 
