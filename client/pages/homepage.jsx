@@ -1,8 +1,10 @@
-import { View, SafeAreaView, FlatList, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import Card from "../components/Card.jsx";
 import SimpleCard from "../components/SimpleCard.jsx";
 import { Link } from "react-router-native";
+import { Dimensions } from "react-native";
 
+const ScreenWidth = Dimensions.get("window").width;
 const Homepage = () => {
   const cardData = [
     {
@@ -28,7 +30,7 @@ const Homepage = () => {
   ];
 
   return (
-    <View>
+    <View style={styles.container}>
       <SimpleCard />
       <View>
         {cardData.map((i) => (
@@ -42,3 +44,9 @@ const Homepage = () => {
 };
 
 export default Homepage;
+const styles = StyleSheet.create({
+  container: {
+    width: ScreenWidth,
+    alignItems: "center",
+  },
+});
