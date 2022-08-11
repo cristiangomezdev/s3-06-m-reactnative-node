@@ -1,8 +1,8 @@
 import React from "react";
 import {Text, View} from 'react-native'
-import ListaProductos from "./ListaProductos";
+import ListaProductos from "../components/list_Perros/ListaProductos";
 
-const Main = () => {
+const ListProducts = () => {
     return (
         <View>
             <ListaProductos />
@@ -10,4 +10,4 @@ const Main = () => {
     )
 }
 
-export default Main
+export default ListProducts
