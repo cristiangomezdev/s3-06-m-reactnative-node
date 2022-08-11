@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-native";
-import { StyleSheet, TextInput, Image, Text, View, ScrollView, TouchableHighlight } from 'react-native';
+import { StyleSheet, TextInput, Image, Text, View, ScrollView, TouchableHighlight, StatusBar} from 'react-native';
 import { Dimensions } from 'react-native';
 
 const ScreenWidth = Dimensions.get("window").width;
@@ -8,8 +8,12 @@ const ScreenWidth = Dimensions.get("window").width;
 export default function Signup() {
   let navigate = useNavigate()
   return (
-    <View style={styles.container}  >
-      <ScrollView>
+    <View>
+      <StatusBar 
+        animated={true}
+        backgroundColor="#61dafb"
+      />
+      <ScrollView style={styles.container} >
         <View>
           <Text style={styles.text} >Sign up</Text>
           <TextInput placeholder='Name' require style={styles.input} />
@@ -19,9 +23,12 @@ export default function Signup() {
         <TouchableHighlight onPress={() => navigate('/login')} underlayColor="rgba(0,0,0,0)">
           <Text style={styles.text1}>Already have account?  <Image style={styles.arrow} source={require('../assets/Vector.png')} /> </Text>
         </TouchableHighlight>
-        <TouchableHighlight style={styles.boton}>
-          <Text style={styles.botonText}>SIGN UP</Text>
-        </TouchableHighlight>
+        <View style={styles.buttonContain}>
+          <TouchableHighlight style={styles.boton}>
+            <Text style={styles.botonText}>SIGN UP</Text>
+          </TouchableHighlight>
+
+        </View>
         <Text style={styles.text2}>Or sign up with social account </Text>
         <View style={styles.image}>
           <Image source={require('../assets/iconsgoogle.png')} />
@@ -34,19 +41,22 @@ export default function Signup() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 80,
+    paddingTop: 80,
     width: ScreenWidth,
   },
   boton: {
-    width: 480,
+    width: ScreenWidth - 40,
     height: 70,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#2196F3',
     borderRadius: 20,
-    marginLeft: 30,
-    marginRight: 30,
     color: 'white',
+  },
+  buttonContain : {
+    width : ScreenWidth,
+    flex : 1,
+    alignItems : 'center'
   },
   botonText: {
     fontSize: 25,

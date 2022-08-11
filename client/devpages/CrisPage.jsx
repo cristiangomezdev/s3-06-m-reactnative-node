@@ -51,16 +51,16 @@ export default function CrisPage () {
           </Text>
         </View>
         <View style={styles.containerButton}>
-        <TouchableWithoutFeedback onPress={onPressHandler}>
-          <View style={styles.button}>
-            <Text
-              style={styles.buttonText}
-            >
-              Add to cart
-            </Text>
-          </View>
-        </TouchableWithoutFeedback>
-      </View>
+          <TouchableWithoutFeedback onPress={onPressHandler}>
+            <View style={styles.button}>
+              <Text
+                style={styles.buttonText}
+              >
+                Add to cart
+              </Text>
+            </View>
+          </TouchableWithoutFeedback>
+        </View>
       </View>
 
 
