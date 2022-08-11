@@ -3,12 +3,6 @@ import { Route, Routes, Link } from "react-router-native";
 
 import { StatusBar } from "expo-status-bar";
 import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TextInput,
-  ScrollView,
   Dimensions,
 } from "react-native";
 
