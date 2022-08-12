@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: 'black',
-        fontWeight: '#400',
+        fontWeight: 'normal',
         fontSize: 80,
         fontFamily: 'poppins',
         marginBottom: 80,
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     },
     text1: {
         color: 'black',
-        fontWeight: '#400',
+        fontWeight: 'normal',
         fontSize: 22,
         fontFamily: 'taviraj',
         marginBottom: 40,
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     },
     text2: {
         color: 'black',
-        fontWeight: '#400',
+        fontWeight: 'normal',
         fontSize: 20,
         fontFamily: 'taviraj',
         marginBottom: 40,
