@@ -1,12 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-native";
+import { useFonts } from 'expo-font';
 import { StyleSheet, TextInput, Image, Text, View, ScrollView, TouchableHighlight, StatusBar} from 'react-native';
 import { Dimensions } from 'react-native';
+import Loader from './Loader';
 
 const ScreenWidth = Dimensions.get("window").width;
 
 export default function Signup() {
-  let navigate = useNavigate()
+  let navigate = useNavigate();
+  let [fontsLoaded] = useFonts({
+    'poppins': require('../assets/fonts/Poppins-Light.ttf'),
+    'poppins-regular': require('../assets/fonts/Poppins-Regular.ttf'),
+    'taviraj' : require('../assets/fonts/Taviraj-Light.ttf'),
+    'taviraj-m' : require('../assets/fonts/Taviraj-Medium.ttf'),
+  });
+  if (!fontsLoaded) {
+    return <Loader />;
+  }
   return (
     <View>
       <StatusBar 
@@ -27,7 +38,6 @@ export default function Signup() {
           <TouchableHighlight style={styles.boton}>
             <Text style={styles.botonText}>SIGN UP</Text>
           </TouchableHighlight>
-
         </View>
         <Text style={styles.text2}>Or sign up with social account </Text>
         <View style={styles.image}>
@@ -41,7 +51,7 @@ export default function Signup() {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 80,
+    paddingTop: 50,
     width: ScreenWidth,
   },
   boton: {

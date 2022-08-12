@@ -1,7 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-native";
+import { useFonts } from 'expo-font';
 import { StyleSheet, TextInput, Image, Text, View, TouchableHighlight, ScrollView, StatusBar } from 'react-native';
 import { Dimensions } from 'react-native';
+import Loader from './Loader';
 
 const ScreenWidth = Dimensions.get("window").width;
 
@@ -10,6 +12,15 @@ export default function Login() {
     const handleClick = () => {
         navigate('/signup')
     }
+    let [fontsLoaded] = useFonts({
+        'poppins': require('../assets/fonts/Poppins-Light.ttf'),
+        'poppins-regular': require('../assets/fonts/Poppins-Regular.ttf'),
+        'taviraj' : require('../assets/fonts/Taviraj-Light.ttf'),
+        'taviraj-m' : require('../assets/fonts/Taviraj-Medium.ttf'),
+      });
+      if (!fontsLoaded) {
+        return <Loader />;
+      }
     return (
         <View style={styles.container}  >
             <StatusBar 
@@ -30,7 +41,6 @@ export default function Login() {
                         <Text style={styles.botonText}>LOGIN</Text>
                     </TouchableHighlight>
                 </View>
-
                 <TouchableHighlight onPress={handleClick} underlayColor="rgba(0,0,0,0)">
                     <Text style={styles.text2}>Or Sign up with social account </Text>
                 </TouchableHighlight>
