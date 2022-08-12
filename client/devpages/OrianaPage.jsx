@@ -1,11 +1,12 @@
 import React from "react";
-
-import Signup from "../pages/Signup.jsx"
+import Success from "../pages/Success.jsx";
+import { StyleSheet, TouchableHighlight, Image, Text, View, ScrollView, StatusBar } from 'react-native';
 
 
 export default function OrianaPage() {
   return (
-    <Signup/>
+   
+    <Text> Hellos  </Text>
   );
 }
 

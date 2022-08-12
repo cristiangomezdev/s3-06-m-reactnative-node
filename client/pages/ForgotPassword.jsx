@@ -37,6 +37,10 @@ export default function ForgotPassword() {
 const styles = StyleSheet.create({
     container: {
         width: ScreenWidth,
+        paddingTop: 80,
+        marginRight:30, 
+        
+       
     },
     buttonContain : {
         width : ScreenWidth,
@@ -51,7 +55,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#2196F3',
         borderRadius: 20,
         color: 'white',
-        margin : 'auto'
+        margin : 'auto',
+        marginTop: 30,
     },
     botonText: {
         fontSize: 25,
@@ -61,7 +66,7 @@ const styles = StyleSheet.create({
         height: 74,
         backgroundColor: 'white',
         borderColor: 'grey',
-        marginBottom: 40,
+        marginBottom: 50,
         shadowColor: '#000',
         shadowOffset: { width: 1, height: 1 },
         shadowOpacity: 0.7,
@@ -73,7 +78,7 @@ const styles = StyleSheet.create({
     },
     text: {
         color: 'black',
-        fontWeight: '#400',
+        fontWeight: 'normal',
         fontSize: 70,
         fontFamily: 'poppins',
         marginBottom: 80,
@@ -81,18 +86,20 @@ const styles = StyleSheet.create({
       },
       text1: {
         color: 'black',
-        fontWeight: '#400',
+        fontWeight: 'normal',
         fontSize: 22,
         fontFamily: 'taviraj',
         marginBottom: 60,
         textAlign: "center",
+        marginRight:10,
       },
       text2: {
         color: 'black',
-        fontWeight: '#400',
+        fontWeight: 'normal',
         fontSize: 22,
         fontFamily: 'taviraj',
         marginBottom: 60,
         textAlign: "center",
+        marginTop: 30,
       },
 });
