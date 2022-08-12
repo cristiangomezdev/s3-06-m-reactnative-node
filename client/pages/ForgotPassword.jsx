@@ -1,12 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-native";
+import { useFonts } from 'expo-font';
 import { StyleSheet, TouchableHighlight, TextInput, Text, View, ScrollView, StatusBar } from 'react-native';
 import { Dimensions } from 'react-native';
+import Loader from './Loader';
 
 const ScreenWidth = Dimensions.get("window").width;
 
 export default function ForgotPassword() {
-    let navigate = useNavigate()
+    let navigate = useNavigate();
+    let [fontsLoaded] = useFonts({
+        'poppins': require('../assets/fonts/Poppins-Light.ttf'),
+        'poppins-regular': require('../assets/fonts/Poppins-Regular.ttf'),
+        'taviraj' : require('../assets/fonts/Taviraj-Light.ttf'),
+        'taviraj-m' : require('../assets/fonts/Taviraj-Medium.ttf'),
+      });
+      if (!fontsLoaded) {
+        return <Loader />;
+      }
   
     return (
         <View style={styles.container}  >
