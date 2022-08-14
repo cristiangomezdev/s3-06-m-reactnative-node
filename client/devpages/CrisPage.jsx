@@ -4,14 +4,16 @@ import {
   View,
   ScrollView,
   StyleSheet,
-  Dimensions,
-  TouchableWithoutFeedback,
+  Dimensions
 } from "react-native";
 import { ImageCarousel } from "../components/ImageCarousel";
 import { useFonts } from 'expo-font';
 import Loader from '../pages/Loader';
+import { StatusBar } from "expo-status-bar";
 import { StatusBar as barraDeEstado } from "react-native";
-
+import Button from "../components/Button";
+import Top from "../components/Top";
+import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 const { width } = Dimensions.get("window");
@@ -29,9 +31,13 @@ export default function CrisPage () {
     return <Loader />;
   }
   const onPressHandler = () => {};
-
+console.log(ScreenHeight);
   return (
+    <>
+        
+
     <ScrollView style={styles.scrollContainer}>
+    <Top />
       <ImageCarousel />
       <View style={styles.container}>
         <View style={styles.containerTitle}>
@@ -42,29 +48,26 @@ export default function CrisPage () {
         <View style={styles.containerSubtitle}>
           <Text style={styles.subprice}>Comida balanceada 8kg</Text>
         </View>
+
         <View style={styles.containerContent}>
           <Text style={styles.content}>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos
-            similique laudantium, officia officiis mollitia possimus? Corrupti
-            distinctio sed officia, rem maxime molestiae consequuntur quia,
-            dolorum nam laborum at animi facere!
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate culpa officia mollitia facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis quod, asperiores ipsa alias.
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate culpa officia mollitia facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis quod, asperiores ipsa alias.
           </Text>
         </View>
-        <View style={styles.containerButton}>
-          <TouchableWithoutFeedback onPress={onPressHandler}>
-            <View style={styles.button}>
-              <Text
-                style={styles.buttonText}
-              >
-                Add to cart
-              </Text>
-            </View>
-          </TouchableWithoutFeedback>
-        </View>
-      </View>
 
+        </View>
 
     </ScrollView>
+    <Ionicons style={{textAlign:'center',backgroundColor:'#f3f3f3'}} name={'arrow-down-circle'} color={'#56CBF9'} size={35}/>
+    {
+
+    }
+    
+    <View style={styles.buttonSticky}>
+    <Button />
+    </View>
+    </>
   );
 };
 
@@ -72,15 +75,12 @@ const styles = StyleSheet.create({
   scrollContainer:{
     height:ScreenHeight,
     backgroundColor:'#000',
-    paddingVertical: barraDeEstado.currentHeight,
   }
   ,
   container: {
     padding:20,
     backgroundColor:'#f3f3f3',
-    height:ScreenHeight - (ScreenHeight*0.5),
-    
-    
+    minHeight:(ScreenHeight / 2) - 70,  
   },
   containerTitle: {
     flex: 0,
@@ -97,12 +97,10 @@ const styles = StyleSheet.create({
     flex: 0,
     alignItems: "center",
   },
-  button: {
-    backgroundColor: "#56CBF9",
-    width: width - 40,
-    height: 50,
-    alignItems: "center",
-    borderRadius: 30,
+  buttonSticky:{
+    height:90,
+    justifyContent:'center',
+    backgroundColor:'red'
   },
   text: {
     color: "#FFFF",

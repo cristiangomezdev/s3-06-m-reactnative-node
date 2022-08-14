@@ -8,6 +8,7 @@ const {height} = Dimensions.get("window");
 
 export default function Nav() {
   let color = 'gray';
+  let color2 ='blue';
   let size = 30;
   return (
     <View style={styles.footer}>
@@ -17,10 +18,11 @@ export default function Nav() {
           <Ionicons name={'home'} color={color} size={size}/>
           </Link>
           <Link style={styles.link} to="/ClaudiaPage" underlayColor="rgba(0,0,0,0)">
-          <Ionicons name={'cart'} color={color} size={size}/>
+          <Ionicons name={'cart'} styles={({ isActive }) =>
+    isActive ? color : color2} color={color} size={size}/>
           </Link>
           <Link style={styles.link} to="/CrisPage" underlayColor="rgba(0,0,0,0)">
-          <Ionicons name={'shopping'} color={color} size={size}/>
+          <Ionicons name={'shopping'}  color={color} size={size}/>
           </Link>
           <Link style={styles.link} to="/EzePage" underlayColor="rgba(0,0,0,0)">
           <Ionicons name={'heart'} color={color} size={size}/>
