@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-native";
 import searchIcon from "../assets/search-icon.png";
 import backToIcon from "../assets/back-to-icon.png";
 import { useState } from "react";
+import { useFonts } from 'expo-font';
 
 const Top = () => {
   let navigate = useNavigate()
@@ -12,23 +13,25 @@ const Top = () => {
     navigate(-1)
 
   }
+  let [fontsLoaded] = useFonts({
+    'poppins': require('../assets/fonts/Poppins-Light.ttf'),
+    'poppins-regular': require('../assets/fonts/Poppins-Regular.ttf'),
+    'taviraj' : require('../assets/fonts/Taviraj-Light.ttf'),
+    'taviraj-m' : require('../assets/fonts/Taviraj-Medium.ttf'),
+  });
   return (
-    
-    
     <View style={styles.container}>
- 
     <Link style={styles.link} to="/" onPress={handleClick} underlayColor="rgba(0,0,0,0)">
     <Image source={backToIcon} style={styles.image} />
     </Link>
       <Text style={styles.title}>Comida</Text>
     </View>
-    
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop:28,
+    marginTop:52, //el margin este luego hay que eliminarlo
     backgroundColor: "red",
     flexDirection: "row",
   
@@ -44,7 +47,8 @@ const styles = StyleSheet.create({
     left:-50,
     width:"80%",
     textAlign:'center',
-    backgroundColor:'yellow'
+    backgroundColor:'yellow',
+    fontFamily:'taviraj'
   },
   image: {
     width: 24,

@@ -18,8 +18,7 @@ export default function Nav() {
           <Ionicons name={'home'} color={color} size={size}/>
           </Link>
           <Link style={styles.link} to="/ClaudiaPage" underlayColor="rgba(0,0,0,0)">
-          <Ionicons name={'cart'} styles={({ isActive }) =>
-    isActive ? color : color2} color={color} size={size}/>
+          <Ionicons name={'cart'} color={color} size={size}/>
           </Link>
           <Link style={styles.link} to="/CrisPage" underlayColor="rgba(0,0,0,0)">
           <Ionicons name={'shopping'}  color={color} size={size}/>
