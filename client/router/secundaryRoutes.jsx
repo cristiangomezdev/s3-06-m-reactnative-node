@@ -12,6 +12,7 @@ import {
 import Homepage from "../pages/homepage";
 import Search from "../components/Search.jsx";
 import ListProducts from "../pages/ListProducts";
+import ListBag from "../pages/ListBag";
 
 import OrianaPage from "../devpages/OrianaPage.jsx";
 import RichardPage from "../devpages/RichardPage.jsx";
