@@ -12,6 +12,7 @@ import {
 import Homepage from "../pages/homepage";
 import Search from "../components/Search.jsx";
 import ListProducts from "../pages/ListProducts";
+import ListBag from "../pages/ListBag";
 
 import OrianaPage from "../devpages/OrianaPage.jsx";
 import RichardPage from "../devpages/RichardPage.jsx";
@@ -29,7 +30,10 @@ export default function SecundaryRoutes() {
       <Search />
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
-        <Route path="/ClaudiaPage" element={<ListProducts />} />
+        <Route path="/ClaudiaPage" element={<ListBag />} />
+        {/* <Route path="/ClaudiaPage" element={<ListProducts />} />
+        <Route path="/ClaudiaPageMyBag" element={<ListBag />} /> */}
+
         <Route path="/EzePage" element={<Profile />} />
         <Route path="/EzePage/orders" element={<Orders />} />
         <Route path="/OrianaPage" element={<OrianaPage />} />

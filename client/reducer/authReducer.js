@@ -1,7 +1,11 @@
-import { types } from '../types/types';
+import { types } from '../types/types'
 
 const initialState = {
+    name: "",
+    admin:"",
+    token:"",
 };
+
 
 const AuthReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -17,6 +21,9 @@ const AuthReducer = (state = initialState, action) => {
         case types.authLogout:
             return {
                 user : null,
+                name : "",
+                admin:"",
+                token : "",
             }
         default:
             return state
