@@ -12,8 +12,9 @@ const AuthReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload
             }
-        case types. authRegister:
+        case types.authRegister:
             return{
+                ...state,
                 ...action.payload
             }     
         case types.authLogout:

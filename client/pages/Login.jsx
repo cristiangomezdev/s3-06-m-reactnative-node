@@ -27,13 +27,6 @@ export default function Login() {
 
         dispatch(login(user))
             .then((response) => {
-<<<<<<< HEAD
-                console.log(response.status)
-=======
-                console.log("el estado esaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:")
-                
-
->>>>>>> 9d8b5df1ac275f084dbcc7d00aab8a507d586edd
                 if (response.status == "success") {
                     navigate("/");
                 }
@@ -73,6 +66,7 @@ export default function Login() {
                         onChangeText={(text) => setPassword(text)}
                         secureTextEntry={true}
                         placeholder='Password'
+                        required
                         style={styles.input} />
                 </View>
                 <TouchableHighlight onPress={() => navigate('/forgotpassword')} underlayColor="rgba(0,0,0,0)">
