@@ -27,7 +27,7 @@ export default function Login() {
        
         dispatch(login(user))
             .then((response) => {
-                console.log(response.status)
+                console.log("el estado esaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:")
                 
 
                 if (response.status == "success") {
