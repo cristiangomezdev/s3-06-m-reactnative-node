@@ -4,11 +4,11 @@ import AuthService from "../helpers/authService";
 export const login = (user) => (dispatch) => {
   return AuthService.logIn(user).then(
     (response) => {
+
       if (response.status === "success") {
-        console.log(response.status)
         dispatch({
           type: types.authLogin,
-          payload: { user: response.user },
+          payload: response.user ,
         });
 Promise.resolve();
         return response;
@@ -25,8 +25,9 @@ Promise.reject();
 export const register = (user) => (dispatch) => {
   return AuthService.register(user).then(
     (response) => {
-      console.log('entrando' + response.status)
-      if (response.status === "success register") {
+      console.log(response)
+      if (response.status === "success") {
+        console.log('entra en success')
         dispatch({
           type: types.authRegister,
           payload: { user: response.user },

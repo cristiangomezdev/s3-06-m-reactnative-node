@@ -25,10 +25,9 @@ export default function Signup() {
     };
     dispatch(register(user))
       .then((response) => {
-        console.log('entro' + response.status)
-        if (response.status == "user successfully created") {
+        console.log("login" + response.status)
+        if (response.status == "success") {
           navigate("/login");
-          console.log('entro')
         }
       })
       .catch((error) => {
@@ -78,7 +77,7 @@ export default function Signup() {
             <Text style={styles.text1}>Already have account?  <Image style={styles.arrow} source={require('../assets/Vector.png')} /> </Text>
           </TouchableHighlight>
           <View style={styles.buttonContain}>
-            <TouchableHighlight onPress={() => onRegister('login')} style={styles.boton}>
+            <TouchableHighlight onPress={() => onRegister()} style={styles.boton}>
               <Text style={styles.botonText}>SIGN UP</Text>
             </TouchableHighlight>
           </View>
