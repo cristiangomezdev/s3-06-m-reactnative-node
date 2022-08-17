@@ -13,7 +13,7 @@ export default function Nav() {
     <View style={styles.footer}>
       <ScrollView horizontal style={styles.scrollView}>
         <View style={styles.contentContainer}>
-          <Link style={styles.link} to="/" underlayColor="rgba(0,0,0,0)">
+          <Link style={styles.link} to="/home" underlayColor="rgba(0,0,0,0)">
           <Ionicons name={'home'} color={color} size={size}/>
           </Link>
           <Link style={styles.link} to="/ClaudiaPage" underlayColor="rgba(0,0,0,0)">
@@ -25,7 +25,7 @@ export default function Nav() {
           <Link style={styles.link} to="/EzePage" underlayColor="rgba(0,0,0,0)">
           <Ionicons name={'heart'} color={color} size={size}/>
           </Link>
-          <Link style={styles.link} to="/login" underlayColor="rgba(0,0,0,0)">
+          <Link style={styles.link} to="/profile" underlayColor="rgba(0,0,0,0)">
           <Ionicons name={'account'} color={color} size={size}/>
           </Link>
         </View>

@@ -1,6 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import {api} from './api';
-
+import { api } from "./api";
 
 const logIn = async (user) => {
   console.log("user info", user);
@@ -10,38 +9,40 @@ const logIn = async (user) => {
 
   console.log(datajson);
 
-  if (datajson.msg === 'successful login' && datajson.token) {
-       AsyncStorage.setItem("user", JSON.stringify(user));
-       console.log(datajson)
-       return {
-         status: "success",
-         message: "You are redirecting to home page",
-         user: {
-          token:datajson.token,
-          user:datajson.user
-         }
-      };
-    }
+  if (datajson.msg === "successful login" && datajson.token) {
+    AsyncStorage.setItem("token", JSON.stringify({ token: datajson.token }));
+    AsyncStorage.setItem("user", JSON.stringify({ user: datajson.user }));
+    // console.log(datajson);
+    return {
+      status: "success",
+      message: "You are redirecting to home page",
+      user: {
+        token: datajson.token,
+        user: datajson.user,
+      },
+    };
+  }
 };
 
+//corregir AsyncStorage.setItem("user", JSON.stringify(user)); por datos de DataJson
 const register = async (user) => {
   console.log("user info", user);
   const { email, password, name } = user;
-  
+
   const datajson = await api.authRegister(email, password, name);
 
   console.log(datajson);
 
-  if (datajson.msg === 'user succesfelly created' && datajson.token) { // backend mal response message
+  if (datajson.msg === "user succesfelly created" && datajson.token) {
+    // backend mal response message
     console.log("entranding");
-       AsyncStorage.setItem("user", JSON.stringify(user));
-       return {
-         status: "success",
-         message: "You are redirecting to home page",
-         user: name,
-      };
-    }
-
+    AsyncStorage.setItem("user", JSON.stringify(user));
+    return {
+      status: "success",
+      message: "You are redirecting to home page",
+      user: name,
+    };
+  }
 };
 
 const logOut = async () => {

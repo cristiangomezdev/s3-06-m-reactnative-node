@@ -28,11 +28,11 @@ export default function Login() {
         dispatch(login(user))
             .then((response) => {
                 if (response.status == "success") {
-                    navigate("/");
+                    navigate("/home");
                 }
             })
             .catch((error) => {
-               navigate("/login");
+               navigate("/");
             });
     };
 

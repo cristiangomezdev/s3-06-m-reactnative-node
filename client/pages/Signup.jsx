@@ -27,7 +27,7 @@ export default function Signup() {
       .then((response) => {
         console.log("login" + response.status)
         if (response.status == "success") {
-          navigate("/login");
+          navigate("/");
         }
       })
       .catch((error) => {
@@ -73,7 +73,7 @@ export default function Signup() {
             style={styles.input} 
             required />
           </View>
-          <TouchableHighlight onPress={() => navigate('/login')} underlayColor="rgba(0,0,0,0)">
+          <TouchableHighlight onPress={() => navigate('/')} underlayColor="rgba(0,0,0,0)">
             <Text style={styles.text1}>Already have account?  <Image style={styles.arrow} source={require('../assets/Vector.png')} /> </Text>
           </TouchableHighlight>
           <View style={styles.buttonContain}>

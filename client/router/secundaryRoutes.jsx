@@ -20,17 +20,20 @@ import Profile from "../pages/Profile.jsx";
 import Orders from "../pages/Orders";
 
 import { StatusBar as barraDeEstado } from "react-native";
+import { useSelector } from "react-redux";
 
 const ScreenHeight = Dimensions.get("window").height;
 
 export default function SecundaryRoutes() {
+  const state = useSelector((state) => state);
+  console.log(state);
   return (
     <View style={styles.container}>
       <Search />
       <Routes>
-        <Route path="/" element={<Homepage />}></Route>
+        <Route path="/home" element={<Homepage />}></Route>
         <Route path="/ClaudiaPage" element={<ListProducts />} />
-        <Route path="/EzePage" element={<Profile />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/EzePage/orders" element={<Orders />} />
         <Route path="/OrianaPage" element={<OrianaPage />} />
         <Route path="/RichardPage" element={<RichardPage />} />

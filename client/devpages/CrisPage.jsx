@@ -11,6 +11,7 @@ import { ImageCarousel } from "../components/ImageCarousel";
 import { useFonts } from 'expo-font';
 import Loader from '../pages/Loader';
 import { StatusBar as barraDeEstado } from "react-native";
+import Search from "../components/Search";
 
 
 
@@ -32,6 +33,7 @@ export default function CrisPage () {
 
   return (
     <ScrollView style={styles.scrollContainer}>
+      <Search />
       <ImageCarousel />
       <View style={styles.container}>
         <View style={styles.containerTitle}>
