@@ -5,66 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36f7e1bd-1d32-442f-9ee5-78b8cad8ea56" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/Vector.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/back-to-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Poppins-Black.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Poppins-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Poppins-ExtraBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Poppins-ExtraLight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Poppins-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Poppins-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Poppins-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Taviraj-Black.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Taviraj-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Taviraj-ExtraBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Taviraj-ExtraLight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Taviraj-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Taviraj-Medium.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Taviraj-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Taviraj-SemiBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/fonts/Taviraj-Thin.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/iconofacebook.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/iconsflecha.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/iconsgoogle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/iconspet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/search-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Card.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ImageCarousel.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Nav.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/Search.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/SimpleCard.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/orders/TypeOrder.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/orders/card.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/profile/Option.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/devpages/ClaudiaPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/devpages/CrisPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/devpages/EzePage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/devpages/OrianaPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/devpages/RichardPage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/ForgotPassword.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/Loader.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/Login.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/Orders.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/Profile.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/Signup.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/homepage.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/router/AppRoutes.jsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/router/secundaryRoutes.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ListaProductos.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProductoItem.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/productos.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/Alimento1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/Alimento2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/Alimento3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/Alimento4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/Alimento5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/imgs/Alimento6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/list_Perros/ProductoItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/list_Perros/ProductoItem.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/productos.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/productos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/secundaryRoutes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/router/secundaryRoutes.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
