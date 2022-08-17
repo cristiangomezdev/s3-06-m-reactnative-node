@@ -1,4 +1,4 @@
-import React , { useState }  from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-native";
 import { useFonts } from 'expo-font';
 import { StyleSheet, TextInput, Image, Text, View, TouchableHighlight, ScrollView, StatusBar } from 'react-native';
@@ -10,11 +10,11 @@ import Loader from './Loader';
 const ScreenWidth = Dimensions.get("window").width;
 
 export default function Login() {
-    let navigate = useNavigate(); 
+    let navigate = useNavigate();
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
     const dispatch = useDispatch();
-    
+
     const handleClick = () => {
         navigate('/signup')
     }
@@ -24,23 +24,21 @@ export default function Login() {
             username: username,
             password: password,
         };
-       
+
         dispatch(login(user))
             .then((response) => {
                 console.log(response.status)
-                
-
                 if (response.status == "success") {
-                    navigate("/CrisPage", { replace: true });
+                    navigate("/");
                 }
             })
             .catch((error) => {
-                navigate("/login", { replace: true });
-               
+               navigate("/login");
+
             });
     };
 
-    
+
     let [fontsLoaded] = useFonts({
         'poppins': require('../assets/fonts/Poppins-Light.ttf'),
         'poppins-regular': require('../assets/fonts/Poppins-Regular.ttf'),

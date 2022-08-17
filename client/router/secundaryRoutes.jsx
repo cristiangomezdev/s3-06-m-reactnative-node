@@ -27,7 +27,6 @@ export default function SecundaryRoutes() {
   return (
     <View style={styles.container}>
       <Search />
-     
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/ClaudiaPage" element={<ListProducts />} />
