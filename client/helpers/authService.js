@@ -12,10 +12,14 @@ const logIn = async (user) => {
 
   if (datajson.msg === 'successful login' && datajson.token) {
        AsyncStorage.setItem("user", JSON.stringify(user));
+       console.log(datajson)
        return {
          status: "success",
          message: "You are redirecting to home page",
-         user: username,
+         user: {
+          token:datajson.token,
+          user:datajson.user
+         }
       };
     }
 };
@@ -28,7 +32,8 @@ const register = async (user) => {
 
   console.log(datajson);
 
-  if (datajson.msg === 'user successfully created' && datajson.token) {
+  if (datajson.msg === 'user succesfelly created' && datajson.token) { // backend mal response message
+    console.log("entranding");
        AsyncStorage.setItem("user", JSON.stringify(user));
        return {
          status: "success",

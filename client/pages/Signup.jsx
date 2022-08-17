@@ -25,10 +25,9 @@ export default function Signup() {
     };
     dispatch(register(user))
       .then((response) => {
-        console.log('entro' + response.status)
-        if (response.status == "user successfully created") {
+        console.log("login" + response.status)
+        if (response.status == "success") {
           navigate("/login");
-          console.log('entro')
         }
       })
       .catch((error) => {
