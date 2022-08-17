@@ -26,8 +26,10 @@ app.use(cors())
 
 //Routes
 let authRouter = require('./routes/auth')
+let categorieRouter = require('./routes/categorie')
 
 app.use('/auth', authRouter)
+app.use('/categories', categorieRouter);
 app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 
