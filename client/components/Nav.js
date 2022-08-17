@@ -16,7 +16,7 @@ export default function Nav() {
       return 'blue'
     } else { return 'gray'} */
 
-   return pathname === route ? 'blue' : 'gray'
+   return pathname === route ? '#56CBF9' : 'gray'
 
   } 
   
