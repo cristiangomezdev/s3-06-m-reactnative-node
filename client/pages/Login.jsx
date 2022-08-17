@@ -151,6 +151,7 @@ const styles = StyleSheet.create({
         elevation: 3,
         marginRight: 10,
         marginLeft: 10,
+        paddingLeft: 20,
     },
     image: {
         flexDirection: 'row',

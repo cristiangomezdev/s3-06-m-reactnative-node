@@ -78,7 +78,7 @@ export default function Signup() {
             <Text style={styles.text1}>Already have account?  <Image style={styles.arrow} source={require('../assets/Vector.png')} /> </Text>
           </TouchableHighlight>
           <View style={styles.buttonContain}>
-            <TouchableHighlight onPress={() => onRegister('login')} style={styles.boton}>
+            <TouchableHighlight onPress={() => onRegister()} style={styles.boton}>
               <Text style={styles.botonText}>SIGN UP</Text>
             </TouchableHighlight>
           </View>
@@ -153,6 +153,7 @@ const styles = StyleSheet.create({
     elevation: 3,
     marginRight: 10,
     marginLeft: 10,
+    paddingLeft: 20,
   },
   image: {
     flexDirection: 'row',
