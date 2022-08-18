@@ -1,5 +1,5 @@
-const API_BASE_URL = "http://10.0.2.2:3030";
-// const API_BASE_URL = "https://api-s306.herokuapp.com";
+// const API_BASE_URL = "http://10.0.2.2:3030";
+const API_BASE_URL = "https://api-s306.herokuapp.com";
 
 export const api = {
   async authRegister(email, password, name) {

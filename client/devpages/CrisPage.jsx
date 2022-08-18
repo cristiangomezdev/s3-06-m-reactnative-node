@@ -1,10 +1,12 @@
 import React from "react";
 import { Text, View, ScrollView, StyleSheet, Dimensions } from "react-native";
 import { ImageCarousel } from "../components/ImageCarousel";
-import { useFonts } from "expo-font";
-import Loader from "../pages/Loader";
-import Button from "../components/Button";
+import { useFonts } from 'expo-font';
+import Loader from '../pages/Loader';
+import { StatusBar as barraDeEstado } from "react-native";
+import Search from "../components/Search";
 import Top from "../components/Top";
+import Button from "../components/Button";
 
 const { width } = Dimensions.get("window");
 const ScreenHeight = Dimensions.get("window").height;
