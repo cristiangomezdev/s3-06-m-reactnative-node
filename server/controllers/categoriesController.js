@@ -13,7 +13,7 @@ class categoriesController{
             })
         } catch (error) {
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-                error
+                msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
     }
@@ -26,24 +26,25 @@ class categoriesController{
             })
         } catch (error) {
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-                error
+                msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
     }
     static async addCategorie (req, res){
         let {name} = req.body
-        let cate = new Categorie({
+        let categorie = new Categorie({
             name
         })
 
         try {
             await cate.save()
             res.status(httpStatus.OK).json({
-                cate
+                msg : 'successful category creation',
+                categorie
             })
         } catch (error) {
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-                msg : error
+                msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
     }
@@ -51,14 +52,15 @@ class categoriesController{
     static async editCategorie (req, res){
         let idParams = req.params.id
         let { name } = req.body
+        console.log(name)
         try {
             let categorie = await Categorie.updateOne({_id : idParams}, {name})
             res.status(httpStatus.OK).json({
-                categorie
+                msg : 'successful edition'
             })
         } catch (error) {
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-                error
+                msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
 
@@ -70,11 +72,11 @@ class categoriesController{
         try {
             let categorie = await Categorie.deleteOne({ _id : id})
             res.status(httpStatus.OK).json({
-                categorie
+                msg : 'successful delete'
             })
         } catch (error) {
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-                error
+                msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
     }
