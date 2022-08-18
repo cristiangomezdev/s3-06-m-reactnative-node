@@ -19,26 +19,27 @@ import RichardPage from "../devpages/RichardPage.jsx";
 import Nav from "../components/Nav";
 import Profile from "../pages/Profile.jsx";
 import Orders from "../pages/Orders";
-
 import { StatusBar} from "react-native";
 import SubNavHome from "../components/subNavforPage/subNavHome";
+import { useSelector } from "react-redux";
+
 
 const ScreenHeight = Dimensions.get("window").height;
 
 export default function SecundaryRoutes() {
   let location = useLocation()
+
+  const state = useSelector((state) => state);
+  console.log(state);
+
   return (
     <View style={styles.container}>
-
       <Search />
-      {location.pathname === '/' && <SubNavHome />}
+      {location.pathname === '/home' && <SubNavHome />}
       <Routes>
-        <Route path="/" element={<Homepage />}></Route>
-        <Route path="/ClaudiaPage" element={<ListBag />} />
-        {/* <Route path="/ClaudiaPage" element={<ListProducts />} />
-        <Route path="/ClaudiaPageMyBag" element={<ListBag />} /> */}
-
-        <Route path="/EzePage" element={<Profile />} />
+        <Route path="/home" element={<Homepage />}></Route>
+        <Route path="/ClaudiaPage" element={<ListProducts />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/EzePage/orders" element={<Orders />} />
         <Route path="/OrianaPage" element={<OrianaPage />} />
         <Route path="/RichardPage" element={<RichardPage />} />
@@ -50,7 +51,7 @@ export default function SecundaryRoutes() {
 }
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: StatusBar.currentHeight,
+    paddingTop: StatusBar.currentHeight,
     height: ScreenHeight,
     flex: 1,
     backgroundColor: "#f3f3f3",

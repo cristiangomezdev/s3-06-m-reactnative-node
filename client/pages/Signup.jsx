@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-native";
+import { useDispatch } from "react-redux";
+import { register } from "./../actions/auth";
 import { useFonts } from 'expo-font';
 import { StyleSheet, TextInput, Image, Text, View, ScrollView, TouchableHighlight, StatusBar } from 'react-native';
 import { Dimensions } from 'react-native';
@@ -9,6 +11,30 @@ const ScreenWidth = Dimensions.get("window").width;
 
 export default function Signup() {
   let navigate = useNavigate();
+  const [name, setName] = useState();
+  const [password, setPassword] = useState();
+  const [email, setEmail] = useState();
+
+  const dispatch = useDispatch();
+
+  const onRegister = () => {
+    let user = {
+      name: name,
+      password: password,
+      email: email,
+    };
+    dispatch(register(user))
+      .then((response) => {
+        console.log("login" + response.status)
+        if (response.status == "success") {
+          navigate("/");
+        }
+      })
+      .catch((error) => {
+        navigate("/signup");
+      });
+  };
+
   let [fontsLoaded] = useFonts({
     'poppins': require('../assets/fonts/Poppins-Light.ttf'),
     'poppins-regular': require('../assets/fonts/Poppins-Regular.ttf'),
@@ -28,15 +54,30 @@ export default function Signup() {
         <View style={styles.container}>
           <View>
             <Text style={styles.text} >Sign up</Text>
-            <TextInput placeholder='Name' require style={styles.input} />
-            <TextInput placeholder='Email' style={styles.input} />
-            <TextInput placeholder='Password' style={styles.input} />
+            <TextInput value={name}
+              onChangeText={(text) => setName(text)}
+              placeholder='Name and Lastname'
+              required
+              style={styles.input} />
+            <TextInput
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+              placeholder='Email'
+              required
+              style={styles.input} />
+            <TextInput 
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            secureTextEntry={true}
+            placeholder='Password' 
+            style={styles.input} 
+            required />
           </View>
-          <TouchableHighlight onPress={() => navigate('/login')} underlayColor="rgba(0,0,0,0)">
+          <TouchableHighlight onPress={() => navigate('/')} underlayColor="rgba(0,0,0,0)">
             <Text style={styles.text1}>Already have account?  <Image style={styles.arrow} source={require('../assets/Vector.png')} /> </Text>
           </TouchableHighlight>
           <View style={styles.buttonContain}>
-            <TouchableHighlight style={styles.boton}>
+            <TouchableHighlight onPress={() => onRegister()} style={styles.boton}>
               <Text style={styles.botonText}>SIGN UP</Text>
             </TouchableHighlight>
           </View>

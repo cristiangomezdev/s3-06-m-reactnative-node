@@ -22,9 +22,9 @@ const SubNavHome = () => {
     }
     return (
         <View style={styles.container}>
-            <Link to='/?cate=dog' style={isActive('?cate=dog')} underlayColor="rgba(0,0,0,0)" ><Text style={isActiveText('?cate=dog')}>Perros</Text></Link>
-            <Link to='/?cate=cat' style={isActive('?cate=cat')} underlayColor="rgba(0,0,0,0)" ><Text style={isActiveText('?cate=cat')}>Gatos</Text></Link>
-            <Link to='/?cate=otros' style={isActive('?cate=otros')} underlayColor="rgba(0,0,0,0)"><Text style={isActiveText('?cate=otros')}>Otros</Text></Link>
+            <Link to='/home?cate=dog' style={isActive('?cate=dog')} underlayColor="rgba(0,0,0,0)" ><Text style={isActiveText('?cate=dog')}>Perros</Text></Link>
+            <Link to='/home?cate=cat' style={isActive('?cate=cat')} underlayColor="rgba(0,0,0,0)" ><Text style={isActiveText('?cate=cat')}>Gatos</Text></Link>
+            <Link to='/home?cate=otros' style={isActive('?cate=otros')} underlayColor="rgba(0,0,0,0)"><Text style={isActiveText('?cate=otros')}>Otros</Text></Link>
         </View>
     );
 }

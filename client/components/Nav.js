@@ -44,20 +44,22 @@ export default function Nav() {
     <View style={styles.footer}>
       <ScrollView horizontal style={styles.scrollView}>
         <View style={styles.contentContainer}>
-          <Link style={styles.link} to="/" underlayColor="rgba(0,0,0,0)">
-          <Ionicons name={'home'} color={isActive(location.pathname,'/')} size={size}/>
+
+          <Link style={styles.link} to="/home" underlayColor="rgba(0,0,0,0)">
+            <Ionicons name={'home'} color={color} size={size}/>
           </Link>
           <Link style={styles.link} to="/ClaudiaPage" underlayColor="rgba(0,0,0,0)">
-          <Ionicons name={'cart'} color={isActive(location.pathname,'/ClaudiaPage')} size={size}/>
+            <Ionicons name={'cart'} color={isActive(location.pathname,'/ClaudiaPage')} size={size}/>
           </Link>
           <Link style={styles.link} to="/CrisPage" underlayColor="rgba(0,0,0,0)">
-          <Ionicons name={'shopping'}  color={isActive(location.pathname,'/CrisPage')} size={size}/>
+            <Ionicons name={'shopping'}  color={isActive(location.pathname,'/CrisPage')} size={size}/>
           </Link>
           <Link style={styles.link} to="/EzePage" underlayColor="rgba(0,0,0,0)">
-          <Ionicons name={'heart'} color={isActive(location.pathname,'/EzePage')} size={size}/>
+            <Ionicons name={'heart'} color={isActive(location.pathname,'/EzePage')} size={size}/>
           </Link>
-          <Link style={styles.link} to="/login" underlayColor="rgba(0,0,0,0)">
-          <Ionicons name={'account'} color={isActive(location.pathname,'/login')} size={size}/>
+
+          <Link style={styles.link} to="/profile" underlayColor="rgba(0,0,0,0)">
+            <Ionicons name={'account'} color={color} size={size}/>
           </Link>
         </View>
       </ScrollView>
