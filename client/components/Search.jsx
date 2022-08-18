@@ -24,7 +24,7 @@ const Search = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ff0000",
+    backgroundColor: "#F9F9F9",
     flexDirection: "row",
     justifyContent: "space-between",
     paddingVertical: 10,

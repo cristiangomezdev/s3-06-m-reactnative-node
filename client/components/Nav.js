@@ -1,5 +1,5 @@
-import React from "react";
-import { Text, View, ScrollView, StyleSheet,Dimensions } from "react-native";
+import React, { useEffect} from "react";
+import { Text, View, ScrollView, StyleSheet,Dimensions, BackHandler, Alert } from "react-native";
 import { Link,useLocation } from "react-router-native";
 import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -19,6 +19,26 @@ export default function Nav() {
    return pathname === route ? '#56CBF9' : 'gray'
 
   } 
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert("Espera! ","¿Estás seguro de que quieres salir?", [
+        {
+          text: "Cancel",
+          onPress: () => null,
+          style: "cancel"
+        },
+        { text: "SALIR", onPress: () => BackHandler.exitApp() }
+      ]);
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, []);
   
   return (
     <View style={styles.footer}>

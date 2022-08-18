@@ -13,7 +13,7 @@ import CrisPage from "../devpages/CrisPage.jsx";
 export default function AppRoutes() {
   return (
     <>
-      <StatusBar style="light" />
+      <StatusBar style="black" backgroundColor="#F9F9F9" />
       <Routes>
        <Route path="/CrisPage" element={<CrisPage />} />
         <Route path="/sisisi" element={<RichardPage />} />

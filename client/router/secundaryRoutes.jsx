@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-native";
+import { Route, Routes, useLocation} from "react-router-native";
 import {
   StyleSheet,
   Text,
@@ -20,15 +20,18 @@ import Nav from "../components/Nav";
 import Profile from "../pages/Profile.jsx";
 import Orders from "../pages/Orders";
 
-import { StatusBar as barraDeEstado } from "react-native";
+import { StatusBar} from "react-native";
+import SubNavHome from "../components/subNavforPage/subNavHome";
 
 const ScreenHeight = Dimensions.get("window").height;
 
 export default function SecundaryRoutes() {
+  let location = useLocation()
   return (
     <View style={styles.container}>
+
       <Search />
-     
+      {location.pathname === '/' && <SubNavHome />}
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/ClaudiaPage" element={<ListBag />} />
@@ -47,7 +50,7 @@ export default function SecundaryRoutes() {
 }
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: barraDeEstado.currentHeight,
+    paddingVertical: StatusBar.currentHeight,
     height: ScreenHeight,
     flex: 1,
     backgroundColor: "#f3f3f3",
