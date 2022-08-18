@@ -17,7 +17,7 @@ export default function AppRoutes() {
       <StatusBar style="light" />
       <Routes>
         <Route path="/" element={<Login />} /> 
-        <Route path="/" element={<CrisPage />} />
+        <Route path="/crispage" element={<CrisPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/*" element={<SecundaryRoutes />} />
