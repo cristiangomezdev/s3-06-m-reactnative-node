@@ -53,3 +53,4 @@ const styles = StyleSheet.create({
     },
     loadingtext:{fontFamily:'poppins-regular',top:-50,fontSize:30}
 });
+
