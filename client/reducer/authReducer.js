@@ -1,9 +1,9 @@
 import { types } from '../types/types';
 
 const initialState = {
+    token: "",
     user: "",
 };
-console.log(initialState.student, "state reducer--->")
 
 const AuthReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -12,12 +12,14 @@ const AuthReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload
             }
+        case types.authRegister:
+            return{
+                ...action.payload
+            }     
         case types.authLogout:
             return {
                 user : "",
-                student : "",
-                subjects : "",
-                teachers : ""
+                token: "",
             }
         default:
             return state
@@ -25,5 +27,4 @@ const AuthReducer = (state = initialState, action) => {
 }
 
 export default AuthReducer;
-
 
