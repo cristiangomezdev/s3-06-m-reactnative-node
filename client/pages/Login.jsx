@@ -87,6 +87,24 @@ export default function Login() {
                 <TouchableHighlight onPress={() => onLogin()} style={styles.boton}>
                     <Text style={styles.botonText}>LOGIN</Text>
                 </TouchableHighlight>
+<<<<<<< HEAD
+                <View style={styles.buttonContain} >
+                    <TouchableHighlight onPress={() => onLogin()} style={styles.boton}>
+                        <Text style={styles.botonText}>LOGIN</Text>
+                    </TouchableHighlight>
+                </View>
+                <TouchableHighlight onPress={handleClick} underlayColor="rgba(0,0,0,0)">
+                    <Text style={styles.text2}>Or Sign up </Text>
+                </TouchableHighlight>
+                {/* <View style={styles.image}>
+                    <Image source={require('../assets/iconsgoogle.png')} />
+                    <Image source={require('../assets/iconofacebook.png')} />
+                </View> */}
+            </ScrollView>
+        </View>
+
+    );
+=======
             </View>
             <TouchableHighlight onPress={handleClick} underlayColor="rgba(0,0,0,0)">
                 <Text style={styles.text2}>Or Sign up with social account </Text>
@@ -97,6 +115,7 @@ export default function Login() {
             </View>
         </ScrollView>
         </View>)}</>)
+>>>>>>> 7e5466f955d79fa93c9c0df675f5cfdd8660d1d5
 }
 
 const styles = StyleSheet.create({
@@ -160,6 +179,7 @@ const styles = StyleSheet.create({
         elevation: 3,
         marginRight: 10,
         marginLeft: 10,
+        paddingLeft: 20,
     },
     image: {
         flexDirection: 'row',

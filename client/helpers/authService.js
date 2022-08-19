@@ -19,7 +19,6 @@ const logIn = async (user) => {
   }
 };
 
-
 const register = async (user) => {
   const { email, password, name } = user;
   const datajson = await api.authRegister(email, password, name);
