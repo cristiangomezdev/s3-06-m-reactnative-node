@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-native";
 import { useFonts } from 'expo-font';
 import { StyleSheet, TextInput, Image, Text, View, TouchableHighlight, ScrollView, StatusBar } from 'react-native';
 import { Dimensions } from 'react-native';
 import { login } from "./../actions/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import Loader from './Loader';
 
 const ScreenWidth = Dimensions.get("window").width;
 
 export default function Login() {
-    let navigate = useNavigate();
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
+
+    let navigate =useNavigate();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const dispatch = useDispatch();
+    const state = useSelector((state) => state.AuthReducer.token); 
+
 
     const handleClick = () => {
         navigate('/signup')
@@ -25,7 +28,7 @@ export default function Login() {
             password: password,
         };
 
-        dispatch(login(user))
+         dispatch(login(user))
             .then((response) => {
                 if (response.status == "success") {
                     navigate("/home");
@@ -33,9 +36,8 @@ export default function Login() {
             })
             .catch((error) => {
                navigate("/");
-            });
+            }); 
     };
-
 
     let [fontsLoaded] = useFonts({
         'poppins': require('../assets/fonts/Poppins-Light.ttf'),
@@ -43,10 +45,13 @@ export default function Login() {
         'taviraj': require('../assets/fonts/Taviraj-Light.ttf'),
         'taviraj-m': require('../assets/fonts/Taviraj-Medium.ttf'),
     });
+
     if (!fontsLoaded) {
         return <Loader />;
     }
-
+   
+    
+    
     return (
         <View style={styles.container}  >
             <StatusBar
@@ -57,12 +62,12 @@ export default function Login() {
                 <View>
                     <Text style={styles.text} >Login</Text>
                     <TextInput value={username}
-                        onChangeText={(text) => setUsername(text)}
+                        onChangeText={setUsername}  
                         placeholder='Email'
                         required
                         style={styles.input} />
                     <TextInput value={password}
-                        onChangeText={(text) => setPassword(text)}
+                        onChangeText={setPassword} 
                         secureTextEntry={true}
                         placeholder='Password'
                         required

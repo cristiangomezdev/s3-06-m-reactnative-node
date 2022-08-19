@@ -5,7 +5,7 @@ const initialState = {
     user:  "",
 };
 
-const AuthReducer = ( state = initialState, action) => {
+const CartReducer = ( state = initialState, action) => {
     switch (action.type) {
         case types.authLogin:
             return {
@@ -26,5 +26,4 @@ const AuthReducer = ( state = initialState, action) => {
     }
 }
 
-export default AuthReducer;
-
+export default CartReducer;
