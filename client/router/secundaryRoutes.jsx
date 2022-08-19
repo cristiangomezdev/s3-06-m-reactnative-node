@@ -21,13 +21,10 @@ import Profile from "../pages/Profile.jsx";
 import Orders from "../pages/Orders";
 
 import { StatusBar as barraDeEstado } from "react-native";
-import { useSelector } from "react-redux";
 
 const ScreenHeight = Dimensions.get("window").height;
 
 export default function SecundaryRoutes() {
-  const state = useSelector((state) => state);
-  console.log(state);
   return (
     <View style={styles.container}>
       <Search />
