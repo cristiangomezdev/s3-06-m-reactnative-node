@@ -10,6 +10,7 @@ import Signup from "../pages/Signup.jsx";
 import ForgotPassword from "../pages/ForgotPassword.jsx";
 import CrisPage from "../devpages/CrisPage.jsx";
 import { useSelector } from "react-redux";
+import WelcomeScreen from "../pages/WelcomeScreen.jsx";
 
 export default function AppRoutes() {
 
