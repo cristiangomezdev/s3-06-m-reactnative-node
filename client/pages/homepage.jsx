@@ -9,7 +9,7 @@ const ScreenHeight = Dimensions.get("window").height;
 const Homepage = () => {
 
   const state = useSelector((state) => state.AuthReducer.token);
-  console.log(state)
+
   const cardData = [
     {
       description: "Comida",

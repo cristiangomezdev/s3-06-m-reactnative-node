@@ -1,5 +1,5 @@
-import React, { useState} from "react";
-import { useNavigate } from "react-router-native";
+import React, { useState,useEffect} from "react";
+import { useNavigate,Navigate } from "react-router-native";
 import { useFonts } from 'expo-font';
 import { StyleSheet, TextInput, Image, Text, View, TouchableHighlight, ScrollView, StatusBar } from 'react-native';
 import { Dimensions } from 'react-native';
@@ -14,6 +14,7 @@ export default function Login() {
     let navigate =useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [isLogged, setIsLogged] = useState('');
     const dispatch = useDispatch();
     const state = useSelector((state) => state.AuthReducer.token); 
 
@@ -21,6 +22,12 @@ export default function Login() {
     const handleClick = () => {
         navigate('/signup')
     }
+
+    useEffect(() => {
+        if(state !== null){
+            setIsLogged(true)
+        }
+    }, []);
 
     const onLogin = () => {
         let user = {
@@ -49,49 +56,47 @@ export default function Login() {
     if (!fontsLoaded) {
         return <Loader />;
     }
-   
-    
-    
-    return (
+ 
+    return (<>{isLogged ? <Navigate to="/home"/> : (
         <View style={styles.container}  >
-            <StatusBar
-                animated={true}
-                backgroundColor="#61dafb"
-            />
-            <ScrollView>
-                <View>
-                    <Text style={styles.text} >Login</Text>
-                    <TextInput value={username}
-                        onChangeText={setUsername}  
-                        placeholder='Email'
-                        required
-                        style={styles.input} />
-                    <TextInput value={password}
-                        onChangeText={setPassword} 
-                        secureTextEntry={true}
-                        placeholder='Password'
-                        required
-                        style={styles.input} />
-                </View>
-                <TouchableHighlight onPress={() => navigate('/forgotpassword')} underlayColor="rgba(0,0,0,0)">
-                    <Text style={styles.text1}>Forgot your password?  <Image style={styles.arrow} source={require('../assets/Vector.png')} /> </Text>
+        <StatusBar
+            animated={true}
+            backgroundColor="#61dafb"
+        />
+        <ScrollView>
+            <View>
+                <Text style={styles.text} >Login</Text>
+                <TextInput 
+                    value={username}
+                    onChangeText={setUsername}  
+                    placeholder='Email'
+                    required
+                    style={styles.input} />
+                <TextInput 
+                    value={password}
+                    onChangeText={setPassword} 
+                    secureTextEntry={true}
+                    placeholder='Password'
+                    required
+                    style={styles.input} />
+            </View>
+            <TouchableHighlight onPress={() => navigate('/forgotpassword')} underlayColor="rgba(0,0,0,0)">
+                <Text style={styles.text1}>Forgot your password?  <Image style={styles.arrow} source={require('../assets/Vector.png')} /> </Text>
+            </TouchableHighlight>
+            <View style={styles.buttonContain} >
+                <TouchableHighlight onPress={() => onLogin()} style={styles.boton}>
+                    <Text style={styles.botonText}>LOGIN</Text>
                 </TouchableHighlight>
-                <View style={styles.buttonContain} >
-                    <TouchableHighlight onPress={() => onLogin()} style={styles.boton}>
-                        <Text style={styles.botonText}>LOGIN</Text>
-                    </TouchableHighlight>
-                </View>
-                <TouchableHighlight onPress={handleClick} underlayColor="rgba(0,0,0,0)">
-                    <Text style={styles.text2}>Or Sign up with social account </Text>
-                </TouchableHighlight>
-                <View style={styles.image}>
-                    <Image source={require('../assets/iconsgoogle.png')} />
-                    <Image source={require('../assets/iconofacebook.png')} />
-                </View>
-            </ScrollView>
-        </View>
-
-    );
+            </View>
+            <TouchableHighlight onPress={handleClick} underlayColor="rgba(0,0,0,0)">
+                <Text style={styles.text2}>Or Sign up with social account </Text>
+            </TouchableHighlight>
+            <View style={styles.image}>
+                <Image source={require('../assets/iconsgoogle.png')} />
+                <Image source={require('../assets/iconofacebook.png')} />
+            </View>
+        </ScrollView>
+        </View>)}</>)
 }
 
 const styles = StyleSheet.create({
