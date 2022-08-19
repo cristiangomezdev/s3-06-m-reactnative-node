@@ -1,18 +1,26 @@
 import React from "react";
-import { View, StyleSheet, TouchableHighlight, Text } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
+import { Link, useLocation } from "react-router-native";
 
 const TypeOrder = () => {
+  let location = useLocation()
+  let isActive = (pathname,route, type) =>{
+    if (type) {
+      return pathname.includes( route) ? styles.button : styles.null
+    }
+    return pathname.includes( route) ? styles.textButton : styles.null
+  } 
   return (
     <View style={styles.containButton}>
-      <TouchableHighlight style={styles.button}>
-        <Text style={styles.textButton}>Delivered</Text>
-      </TouchableHighlight>
-      <TouchableHighlight>
-        <Text>Processing</Text>
-      </TouchableHighlight>
-      <TouchableHighlight>
-        <Text>Cancelled</Text>
-      </TouchableHighlight>
+      <Link to='/profile/orders?type=delivered' style={isActive(location.search, 'delivered', true)} underlayColor='rbga(0,0,0,0)'>
+        <Text style={isActive(location.search, 'delivered', false)} underlayColor='rbga(0,0,0,0)' >Delivered</Text>
+      </Link>
+      <Link to='/profile/orders?type=processing' style={isActive(location.search, 'processing', true)} underlayColor='rbga(0,0,0,0)' >
+        <Text style={isActive(location.search, 'processing', false)} >Processing</Text>
+      </Link>
+      <Link to='/profile/orders?type=cancelled' style={isActive(location.search, 'cancelled', true)} underlayColor='rbga(0,0,0,0)' >
+        <Text style={isActive(location.search, 'cancelled', false)}>Cancelled</Text>
+      </Link>
     </View>
   );
 };
@@ -32,6 +40,9 @@ const styles = StyleSheet.create({
     },
     textButton:{
         color : 'white',
+    },
+    null :{
+
     }
     
 });

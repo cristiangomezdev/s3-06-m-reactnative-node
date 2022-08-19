@@ -22,4 +22,4 @@ export const LogoutButton = () => {
   );
 };
 
-const styles = StyleSheet.create({ container: { backgroundColor: "red" } });
+const styles = StyleSheet.create({ container: { backgroundColor: "red", marginBottom : 40 } });

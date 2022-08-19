@@ -1,5 +1,5 @@
-import React from "react";
-import { Text, View, ScrollView, StyleSheet,Dimensions } from "react-native";
+import React, { useEffect} from "react";
+import { Text, View, ScrollView, StyleSheet,Dimensions, BackHandler, Alert } from "react-native";
 import { Link,useLocation } from "react-router-native";
 import Ionicons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -16,17 +16,41 @@ export default function Nav() {
       return 'blue'
     } else { return 'gray'} */
 
+    if (pathname === '/profile/orders') {
+      return pathname.includes(route) ? '#56CBF9' : 'gray'
+    }
+    
    return pathname === route ? '#56CBF9' : 'gray'
 
   } 
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert("Espera! ","¿Estás seguro de que quieres salir?", [
+        {
+          text: "Cancel",
+          onPress: () => null,
+          style: "cancel"
+        },
+        { text: "SALIR", onPress: () => BackHandler.exitApp() }
+      ]);
+      return true;
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove();
+  }, []);
   
   return (
     <View style={styles.footer}>
       <ScrollView horizontal style={styles.scrollView}>
         <View style={styles.contentContainer}>
 
-          <Link style={styles.link} to="/home" underlayColor="rgba(0,0,0,0)">
-            <Ionicons name={'home'} color={color} size={size}/>
+          <Link style={styles.link} to="/home?cate=dog" underlayColor="rgba(0,0,0,0)">
+            <Ionicons name={'home'} color={isActive(location.pathname,'/home')} size={size}/>
           </Link>
           <Link style={styles.link} to="/ClaudiaPage" underlayColor="rgba(0,0,0,0)">
             <Ionicons name={'cart'} color={isActive(location.pathname,'/ClaudiaPage')} size={size}/>
@@ -38,8 +62,8 @@ export default function Nav() {
             <Ionicons name={'heart'} color={isActive(location.pathname,'/EzePage')} size={size}/>
           </Link>
 
-          <Link style={styles.link} to="/profile" underlayColor="rgba(0,0,0,0)">
-            <Ionicons name={'account'} color={color} size={size}/>
+          <Link style={styles.link} to="/profile?type=delivered" underlayColor="rgba(0,0,0,0)">
+            <Ionicons name={'account'} color={isActive(location.pathname,'/profile')} size={size}/>
           </Link>
         </View>
       </ScrollView>

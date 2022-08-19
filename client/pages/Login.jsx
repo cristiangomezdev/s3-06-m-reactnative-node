@@ -1,5 +1,5 @@
-import React, { useState,useEffect} from "react";
-import { useNavigate,Navigate } from "react-router-native";
+import React, { useState} from "react";
+import { useNavigate } from "react-router-native";
 import { useFonts } from 'expo-font';
 import { StyleSheet, TextInput, Image, Text, View, TouchableHighlight, ScrollView, StatusBar } from 'react-native';
 import { Dimensions } from 'react-native';
@@ -22,12 +22,6 @@ export default function Login() {
     const handleClick = () => {
         navigate('/signup')
     }
-
-    useEffect(() => {
-        if(state !== null){
-            setIsLogged(true)
-        }
-    }, []);
 
     const onLogin = () => {
         let user = {
@@ -56,8 +50,8 @@ export default function Login() {
     if (!fontsLoaded) {
         return <Loader />;
     }
- 
-    return (<>{isLogged ? <Navigate to="/home"/> : (
+ /*  */
+    return (<>
         <View style={styles.container}  >
         <StatusBar
             animated={true}
@@ -87,24 +81,6 @@ export default function Login() {
                 <TouchableHighlight onPress={() => onLogin()} style={styles.boton}>
                     <Text style={styles.botonText}>LOGIN</Text>
                 </TouchableHighlight>
-<<<<<<< HEAD
-                <View style={styles.buttonContain} >
-                    <TouchableHighlight onPress={() => onLogin()} style={styles.boton}>
-                        <Text style={styles.botonText}>LOGIN</Text>
-                    </TouchableHighlight>
-                </View>
-                <TouchableHighlight onPress={handleClick} underlayColor="rgba(0,0,0,0)">
-                    <Text style={styles.text2}>Or Sign up </Text>
-                </TouchableHighlight>
-                {/* <View style={styles.image}>
-                    <Image source={require('../assets/iconsgoogle.png')} />
-                    <Image source={require('../assets/iconofacebook.png')} />
-                </View> */}
-            </ScrollView>
-        </View>
-
-    );
-=======
             </View>
             <TouchableHighlight onPress={handleClick} underlayColor="rgba(0,0,0,0)">
                 <Text style={styles.text2}>Or Sign up with social account </Text>
@@ -114,8 +90,7 @@ export default function Login() {
                 <Image source={require('../assets/iconofacebook.png')} />
             </View>
         </ScrollView>
-        </View>)}</>)
->>>>>>> 7e5466f955d79fa93c9c0df675f5cfdd8660d1d5
+        </View></>)
 }
 
 const styles = StyleSheet.create({
