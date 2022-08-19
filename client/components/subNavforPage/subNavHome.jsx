@@ -21,7 +21,7 @@ const SubNavHome = () => {
         return [styleSelected]
     }
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, styles.shadowProp]}>
             <Link to='/home?cate=dog' style={isActive('?cate=dog')} underlayColor="rgba(0,0,0,0)" ><Text style={isActiveText('?cate=dog')}>Perros</Text></Link>
             <Link to='/home?cate=cat' style={isActive('?cate=cat')} underlayColor="rgba(0,0,0,0)" ><Text style={isActiveText('?cate=cat')}>Gatos</Text></Link>
             <Link to='/home?cate=otros' style={isActive('?cate=otros')} underlayColor="rgba(0,0,0,0)"><Text style={isActiveText('?cate=otros')}>Otros</Text></Link>
@@ -51,6 +51,16 @@ const styles = StyleSheet.create({
     selectedText :{
         fontSize : 16,
         fontWeight : 'bold'
+    },
+    shadowProp: {
+        shadowColor: "#000",
+        shadowOffset: {
+          width: 0,
+          height: 0,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 0,
     }
 })
 

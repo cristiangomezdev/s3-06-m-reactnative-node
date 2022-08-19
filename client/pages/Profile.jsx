@@ -5,7 +5,6 @@ import {
   Text,
   Image,
   ScrollView,
-  TouchableHighlight,
   Dimensions,
 } from "react-native";
 import { useFonts } from "expo-font";
@@ -14,6 +13,7 @@ import Option from "../components/profile/Option";
 import { LogoutButton } from "../components/LogoutButton";
 
 const ScreenWidth = Dimensions.get("window").width;
+const ScreenHeight = Dimensions.get("window").height;
 
 const Profile = () => {
   let [fontsLoaded] = useFonts({
@@ -31,7 +31,7 @@ const Profile = () => {
     {
       text1: "My orders",
       text2: "Already have 12 orders",
-      path: "/EzePage/orders",
+      path: "/profile/orders?type=delivered",
       ligth: false,
     },
     {
@@ -67,43 +67,50 @@ const Profile = () => {
   ];
 
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.containAvatar}>
-        <Text style={styles.titlePage}>My Profile</Text>
-        <View style={{ flexDirection: "row" }}>
-          <Image
-            source={{
-              uri: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
-            }}
-            style={styles.image}
-          />
-          <View style={styles.containText}>
-            <Text style={styles.userName}>Nombre de Usuario</Text>
-            <Text style={styles.userEmail}>example@email.com</Text>
+    <View style={styles.containView}>
+      <ScrollView style={styles.container}>
+        <View style={styles.containAvatar}>
+          <Text style={styles.titlePage}>My Profile</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              source={{
+                uri: "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+              }}
+              style={styles.image}
+            />
+            <View style={styles.containText}>
+              <Text style={styles.userName}>Nombre de Usuario</Text>
+              <Text style={styles.userEmail}>example@email.com</Text>
+            </View>
           </View>
         </View>
-      </View>
-      {options.map((item, i) => (
-        <Option
-          key={i}
-          text1={item.text1}
-          text2={item.text2}
-          ligth={item.ligth}
-          path={item.path}
-        />
-      ))}
-      <LogoutButton />
-    </ScrollView>
+        {options.map((item, i) => (
+          <Option
+            key={i}
+            text1={item.text1}
+            text2={item.text2}
+            ligth={item.ligth}
+            path={item.path}
+          />
+        ))}
+        <LogoutButton />
+      </ScrollView>
+
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  containView : {
+    paddingBottom : 100,
+    height : ScreenHeight,
+  },
   container: {
     width: "100%",
     backgroundColor: "#F9F9F9",
-    paddingBottom: 30,
+    paddingBottom: 0,
     paddingTop: 5,
-    marginBottom: 55,
+    marginBottom: 30,
   },
   containAvatar: {
     width: "100%",

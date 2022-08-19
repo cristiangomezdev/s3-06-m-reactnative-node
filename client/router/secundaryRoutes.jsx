@@ -22,6 +22,7 @@ import Orders from "../pages/Orders";
 import { StatusBar} from "react-native";
 import SubNavHome from "../components/subNavforPage/subNavHome";
 import { useSelector } from "react-redux";
+import SubNavProducts from "../components/subNavforPage/subNavProducts";
 
 
 const ScreenHeight = Dimensions.get("window").height;
@@ -30,17 +31,16 @@ export default function SecundaryRoutes() {
   let location = useLocation()
 
   const state = useSelector((state) => state);
-  console.log(state);
-
   return (
     <View style={styles.container}>
       <Search />
       {location.pathname === '/home' && <SubNavHome />}
+      {location.pathname === '/ClaudiaPage' && <SubNavProducts />}
       <Routes>
         <Route path="/home" element={<Homepage />}></Route>
         <Route path="/ClaudiaPage" element={<ListProducts />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/EzePage/orders" element={<Orders />} />
+        <Route path="/profile/orders" element={<Orders />} />
         <Route path="/OrianaPage" element={<OrianaPage />} />
         <Route path="/RichardPage" element={<RichardPage />} />
         <Route path="*" element={<Text>Ruta Global</Text>} />

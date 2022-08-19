@@ -16,6 +16,10 @@ export default function Nav() {
       return 'blue'
     } else { return 'gray'} */
 
+    if (pathname === '/profile/orders') {
+      return pathname.includes(route) ? '#56CBF9' : 'gray'
+    }
+    
    return pathname === route ? '#56CBF9' : 'gray'
 
   } 
@@ -45,8 +49,8 @@ export default function Nav() {
       <ScrollView horizontal style={styles.scrollView}>
         <View style={styles.contentContainer}>
 
-          <Link style={styles.link} to="/home" underlayColor="rgba(0,0,0,0)">
-            <Ionicons name={'home'} color={color} size={size}/>
+          <Link style={styles.link} to="/home?cate=dog" underlayColor="rgba(0,0,0,0)">
+            <Ionicons name={'home'} color={isActive(location.pathname,'/home')} size={size}/>
           </Link>
           <Link style={styles.link} to="/ClaudiaPage" underlayColor="rgba(0,0,0,0)">
             <Ionicons name={'cart'} color={isActive(location.pathname,'/ClaudiaPage')} size={size}/>
@@ -58,8 +62,8 @@ export default function Nav() {
             <Ionicons name={'heart'} color={isActive(location.pathname,'/EzePage')} size={size}/>
           </Link>
 
-          <Link style={styles.link} to="/profile" underlayColor="rgba(0,0,0,0)">
-            <Ionicons name={'account'} color={color} size={size}/>
+          <Link style={styles.link} to="/profile?type=delivered" underlayColor="rgba(0,0,0,0)">
+            <Ionicons name={'account'} color={isActive(location.pathname,'/profile')} size={size}/>
           </Link>
         </View>
       </ScrollView>
