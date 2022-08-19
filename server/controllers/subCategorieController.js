@@ -5,24 +5,22 @@ const httpStatus = require('../helpers/httpStatus')
 class subCategorieController {
     static async addSubcategorie (req, res){
         let {name, image, categorieId} = req.body
-        let subCat = new SubCategorie({
+        let subCategorie = new SubCategorie({
             name,
             image : image || "default-image.png"
         })
-
         try {
-            await subCat.save()
+            await subCategorie.save()
             let cate = await Categorie.findOne({_id : categorieId})
-            
-            cate.subCategories.push(subCat._id)
+            cate.subCategories.push(subCategorie._id)
             await cate.save()
-
             res.status(httpStatus.OK).json({
-                subCat
+                msg: 'successful sub category update',
+                subCategorie
             })
         } catch (error) {
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-                msg : error
+                msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
     }
@@ -60,11 +58,11 @@ class subCategorieController {
         try {
             let subCategorie = await SubCategorie.findByIdAndUpdate(id, { name, image})
             res.status(httpStatus.OK).json({
-                subCategorie
+                msg : 'successful edition'
             })
         } catch (error) {
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-                error
+                msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
     }
@@ -79,7 +77,7 @@ class subCategorieController {
             })
         } catch (error) {
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-                error
+                msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
     }
