@@ -81,11 +81,11 @@ export default function Signup() {
               <Text style={styles.botonText}>SIGN UP</Text>
             </TouchableHighlight>
           </View>
-          <Text style={styles.text2}>Or sign up with social account </Text>
-          <View style={styles.image}>
+         {/* <Text style={styles.text2}>Or sign up with social account </Text>
+           <View style={styles.image}>
             <Image source={require('../assets/iconsgoogle.png')} />
             <Image source={require('../assets/iconofacebook.png')} />
-          </View>
+          </View> */}
         </View>
       </ScrollView>
     </View>
@@ -152,6 +152,7 @@ const styles = StyleSheet.create({
     elevation: 3,
     marginRight: 10,
     marginLeft: 10,
+    paddingLeft: 20,
   },
   image: {
     flexDirection: 'row',
