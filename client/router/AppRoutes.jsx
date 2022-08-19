@@ -9,14 +9,15 @@ import Login from "../pages/Login.jsx";
 import Signup from "../pages/Signup.jsx";
 import ForgotPassword from "../pages/ForgotPassword.jsx";
 import CrisPage from "../devpages/CrisPage.jsx";
+import WelcomeScreen from "../pages/WelcomeScreen.jsx";
 
 export default function AppRoutes() {
   return (
     <>
       <StatusBar style="light" />
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/CrisPage" element={<CrisPage />} />
+        <Route path="/" element={<Login />} /> 
+        <Route path="/crispage" element={<CrisPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/*" element={<SecundaryRoutes />} />
