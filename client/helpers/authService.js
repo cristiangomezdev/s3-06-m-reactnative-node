@@ -24,7 +24,7 @@ const logIn = async (user) => {
   }
 };
 
-//corregir AsyncStorage.setItem("user", JSON.stringify(user)); por datos de DataJson
+//corregir AsyncStorage.setItem("user", JSON.stringify(user)); por datos de DataJson, guardar en el front end
 const register = async (user) => {
   console.log("user info", user);
   const { email, password, name } = user;

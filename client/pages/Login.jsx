@@ -77,12 +77,12 @@ export default function Login() {
                     </TouchableHighlight>
                 </View>
                 <TouchableHighlight onPress={handleClick} underlayColor="rgba(0,0,0,0)">
-                    <Text style={styles.text2}>Or Sign up with social account </Text>
+                    <Text style={styles.text2}>Or Sign up </Text>
                 </TouchableHighlight>
-                <View style={styles.image}>
+                {/* <View style={styles.image}>
                     <Image source={require('../assets/iconsgoogle.png')} />
                     <Image source={require('../assets/iconofacebook.png')} />
-                </View>
+                </View> */}
             </ScrollView>
         </View>
 

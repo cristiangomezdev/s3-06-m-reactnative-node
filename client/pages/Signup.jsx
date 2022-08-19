@@ -81,11 +81,11 @@ export default function Signup() {
               <Text style={styles.botonText}>SIGN UP</Text>
             </TouchableHighlight>
           </View>
-          <Text style={styles.text2}>Or sign up with social account </Text>
-          <View style={styles.image}>
+         {/* <Text style={styles.text2}>Or sign up with social account </Text>
+           <View style={styles.image}>
             <Image source={require('../assets/iconsgoogle.png')} />
             <Image source={require('../assets/iconofacebook.png')} />
-          </View>
+          </View> */}
         </View>
       </ScrollView>
     </View>
