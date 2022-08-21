@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   content: {
     fontFamily: "taviraj-m",
-    fontSize: 12
+    fontSize: 14
   },
   containerButton: {
     alignItems: "center",
@@ -103,8 +103,15 @@ const styles = StyleSheet.create({
   buttonSticky: {
     height: 80,
     justifyContent: "center",
-    borderTopWidth:0,
     backgroundColor: "#FFFFFF",
+    shadowColor: "#000",
+    shadowOffset:{
+    width: 0,
+    height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+    elevation: 7,
   },
   text: {
     color: "#FFFF",

@@ -14,7 +14,6 @@ export default function Login() {
     let navigate =useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [isLogged, setIsLogged] = useState('');
     const dispatch = useDispatch();
     const state = useSelector((state) => state.AuthReducer.token); 
 

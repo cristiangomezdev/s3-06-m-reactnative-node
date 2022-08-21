@@ -26,11 +26,13 @@ const images = [
     id: 4,
   },
 ];
-
+let amount = width/images.length;
+console.log(amount)
 export const ImageCarousel = () => {
   const [state, setFirst] = useState({
     active:0
   })
+
 const change = ({nativeEvent}) =>{
   const slide = Math.ceil(nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width);
   if(slide !== state.active){
@@ -39,7 +41,6 @@ const change = ({nativeEvent}) =>{
 }
   return (
     <View style={style.container}>
-    
       <ScrollView 
       pagingEnabled 
       horizontal
@@ -59,7 +60,12 @@ const change = ({nativeEvent}) =>{
       <View style={style.pagination}>
         {
           images.map((i,index)=>(
-            <Text key={i.id} style={ index==state.active ? style.pagingActiveText : style.pagingText }>⬤</Text>
+            <View 
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
+            key={i.id} 
+            style={index==state.active ? style.paginglineActive : style.pagingline }
+            />
           ))
         }
       </View>
@@ -68,10 +74,10 @@ const change = ({nativeEvent}) =>{
 }
 
 const style = StyleSheet.create({
-  container:{width,height},
+  container:{width,height:height/2,backgroundColor: "#f3f3f3",},
   scroll:{width,height},
-  image:{width,height,resizeMode:'cover'},
-  pagination:{flexDirection:'row',position:'absolute',bottom:0,alignSelf:'center'},
-  pagingText:{fontSize:(width/30),color:'#888',margin:3},
-  pagingActiveText:{fontSize:(width/30),color:'#fff',margin:3}
+  image:{width,height:height/2,resizeMode:'contain'},
+  pagination:{flexDirection:'row',position:'absolute',bottom:0,width:'100%'},
+  pagingline:{height:3,width:amount},
+  paginglineActive:{height:3,backgroundColor:'#56CBF9',width:amount},
 })
