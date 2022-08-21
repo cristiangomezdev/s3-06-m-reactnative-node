@@ -11,7 +11,7 @@ import Button from "../components/Button";
 const { width } = Dimensions.get("window");
 const ScreenHeight = Dimensions.get("window").height;
 
-export default function CrisPage() {
+export default function ProductDetail() {
   let [fontsLoaded] = useFonts({
     poppins: require("../assets/fonts/Poppins-Light.ttf"),
     "poppins-regular": require("../assets/fonts/Poppins-Regular.ttf"),
@@ -123,5 +123,3 @@ const styles = StyleSheet.create({
       fontSize: 14,
        top: -8 }
 });
-/*No borre este archivo porque necesito que Cris me lo confirme,
- en cambio este archivo esta deprecado. Actualmente requiero que desarrollen esta page en pages/ProductDetail.jsx */

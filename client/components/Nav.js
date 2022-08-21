@@ -52,13 +52,15 @@ export default function Nav() {
           <Link style={styles.link} to="/home?cate=dog" underlayColor="rgba(0,0,0,0)">
             <Ionicons name={'home'} color={isActive(location.pathname,'/home')} size={size}/>
           </Link>
-          <Link style={styles.link} to="/ClaudiaPage" underlayColor="rgba(0,0,0,0)">
+          <Link style={styles.link} to="/products" underlayColor="rgba(0,0,0,0)">
             <Ionicons name={'cart'} color={isActive(location.pathname,'/ClaudiaPage')} size={size}/>
           </Link>
-          <Link style={styles.link} to="/CrisPage" underlayColor="rgba(0,0,0,0)">
+          <Link style={styles.link} to="/bag" underlayColor="rgba(0,0,0,0)">
             <Ionicons name={'shopping'}  color={isActive(location.pathname,'/CrisPage')} size={size}/>
           </Link>
-          <Link style={styles.link} to="/EzePage" underlayColor="rgba(0,0,0,0)">
+          {/* tienen que hacer ese idInventado como id dinámico este corazon por el momento
+          se va a utilizar para que cris desarrolle, a futuro o se borra o se le da una función específica. Informa: Richard */}
+          <Link style={styles.link} to="/products/idInventado" underlayColor="rgba(0,0,0,0)">
             <Ionicons name={'heart'} color={isActive(location.pathname,'/EzePage')} size={size}/>
           </Link>
 
