@@ -37,7 +37,7 @@ class categoriesController{
         })
 
         try {
-            await cate.save()
+            await categorie.save()
             res.status(httpStatus.OK).json({
                 msg : 'successful category creation',
                 categorie
