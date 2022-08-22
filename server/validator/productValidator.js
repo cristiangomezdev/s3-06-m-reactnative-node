@@ -8,6 +8,7 @@ module.exports = [
     .withMessage('Wrong name, string only').bail(),
 
     check('descritpion')
+    .isEmpty().bail()
     .isString()
     .withMessage('Wrong description, string only').bail()
     .isLength({min : 0,max : 500})
@@ -20,6 +21,7 @@ module.exports = [
     .withMessage('Wrong price, number only').bail(),
 
     check('discount')
+    .isEmpty().bail()
     .isNumeric()
     .withMessage('Wrong discount, number only').bail(),
 
@@ -36,6 +38,7 @@ module.exports = [
     .withMessage('Wrong subCategoriesId, string only').bail(),
 
     check('weigth')
+    .isEmpty().bail()
     .isNumeric()
     .withMessage('Wrong weigth, number only').bail(),
 ]
