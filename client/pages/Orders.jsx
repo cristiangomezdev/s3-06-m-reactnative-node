@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     container : {
         padding : 10,
         backgroundColor : '#f3f3f3',
-        paddingBottom : 50
+        paddingBottom : 80
     },
     titlePage :{
         fontSize : 28,

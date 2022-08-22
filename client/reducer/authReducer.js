@@ -1,11 +1,11 @@
 import { types } from '../types/types';
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const initialState = {
-    token: "",
-    user: "",
+    token:  "",
+    user:  "",
 };
 
-const AuthReducer = (state = initialState, action) => {
+const AuthReducer = ( state = initialState, action) => {
     switch (action.type) {
         case types.authLogin:
             return {
@@ -18,8 +18,8 @@ const AuthReducer = (state = initialState, action) => {
             }     
         case types.authLogout:
             return {
-                user : "",
-                token: "",
+                user : null,
+                token: null,
             }
         default:
             return state

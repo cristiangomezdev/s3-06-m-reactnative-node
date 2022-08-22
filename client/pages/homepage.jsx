@@ -3,10 +3,13 @@ import Card from "../components/Card.jsx";
 import SimpleCard from "../components/SimpleCard.jsx";
 import { Link } from "react-router-native";
 import { Dimensions } from "react-native";
-
+import {useSelector} from 'react-redux';
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
 const Homepage = () => {
+
+  const state = useSelector((state) => state.AuthReducer.token);
+
   const cardData = [
     {
       description: "Comida",
