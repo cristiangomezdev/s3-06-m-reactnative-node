@@ -3,17 +3,25 @@ let httpStatus = require('../helpers/httpStatus')
 
 class ProductController{
     static async getProducts(req, res){
+        let products
         try {
-            let products = await Product.find({})
-            res.status(httpStatus.OK).json({
-                products
-            })
+            products = await Product.find({})
+            
         } catch (error) {
             console.error(error)
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
+
+        if (!products) {
+            return res.status(httpStatus.NOT_FOUND).json({
+                msg : 'products not found'
+            })
+        }
+        res.status(httpStatus.OK).json({
+            products
+        })
     }
 
     static async getOneProducts(req, res){
@@ -68,7 +76,7 @@ class ProductController{
     static async editProduct(req, res){
         let idParams = req.params.id
         let { name, images, description, price, discount, categoriesId, subCategoriesId, weigth  } = req.body
-        let product ;
+        let product;
         try {
             product = await Product.findById(idParams)
             if (product) {

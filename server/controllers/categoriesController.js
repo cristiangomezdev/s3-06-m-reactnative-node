@@ -6,29 +6,44 @@ require('dotenv').config()
 
 class categoriesController{
     static async getCategories (req, res){
+        let categorie
         try {
-            let categorie = await Categorie.find({}).populate('subCategories')
-            res.status(httpStatus.OK).json({
-                categorie
-            })
+            categorie = await Categorie.find({}).populate('subCategories')
         } catch (error) {
+            console.log(error)
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
+        if (!categorie) {
+            return res.status(httpStatus.NOT_FOUND).json({
+                msg : 'categories not found'
+            })
+        }
+
+        res.status(httpStatus.OK).json({
+            categorie
+        })
     }
     static async getOneCategories (req, res){
         let idParams = req.params.id
+        let categorie
         try {
-            let categorie = await Categorie.findOne({_id : idParams}).populate('subCategories')
-            res.status(httpStatus.OK).json({
-                categorie
-            })
+            categorie = await Categorie.findOne({_id : idParams}).populate('subCategories')
         } catch (error) {
+            console.log(error)
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
+        if (!categorie) {
+            return res.status(httpStatus.NOT_FOUND).json({
+                msg : 'categorie not found'
+            })
+        }
+        res.status(httpStatus.OK).json({
+            categorie
+        })
     }
     static async addCategorie (req, res){
         let {name} = req.body
@@ -38,11 +53,12 @@ class categoriesController{
 
         try {
             await categorie.save()
-            res.status(httpStatus.OK).json({
-                msg : 'successful category creation',
+            res.status(httpStatus.CREATED).json({
+                msg : 'successful creation',
                 categorie
             })
         } catch (error) {
+            console.log(error)
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             })
@@ -52,13 +68,13 @@ class categoriesController{
     static async editCategorie (req, res){
         let idParams = req.params.id
         let { name } = req.body
-        console.log(name)
         try {
             let categorie = await Categorie.updateOne({_id : idParams}, {name})
             res.status(httpStatus.OK).json({
                 msg : 'successful edition'
             })
         } catch (error) {
+            console.log(error)
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             })
@@ -68,17 +84,23 @@ class categoriesController{
 
     static async deleteCategorie (req, res){
         let {id} = req.params
-
+        let categorie 
         try {
-            let categorie = await Categorie.deleteOne({ _id : id})
-            res.status(httpStatus.OK).json({
-                msg : 'successful delete'
-            })
+            categorie = await Categorie.deleteOne({ _id : id})
         } catch (error) {
+            console.log(error)
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
+        if(categorie.deletedCount === 0){
+            return res.status(httpStatus.BAD_REQUEST).json({
+                msg : 'Error deleting, record not found'
+            })
+        }
+        res.status(httpStatus.OK).json({
+            msg : 'successful delete'
+        })
     }
 
     

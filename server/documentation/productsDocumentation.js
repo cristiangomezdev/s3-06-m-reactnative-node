@@ -35,6 +35,8 @@
  *    responses:
  *      200:
  *        $ref: '#/components/responses/OKCREATEP'
+ *      400:
+ *        $ref: '#/components/responses/BadRequestPCreated'
  *      500:
  *        $ref: '#/components/responses/InternalServerError'
  * 
@@ -251,6 +253,42 @@
  *              msg: string
  *          example:
  *            msg: Error deleting, record not found
+ *    BadRequestPCreated:
+ *      description: Bad Request
+ *      content:
+ *        application/json:
+ *          schema:
+ *            type: object
+ *            content:
+ *              msg: string
+ *          example:
+ *            errors: [
+ *              {
+ *                msg : "Wrong description, string only",
+ *                param : desciption,
+ *                location : body,
+ *              },
+ *              {
+ *                msg : price is required,
+ *                param : price,
+ *                location : body,
+ *              },
+ *              {
+ *                msg : "Wrong discount, number only",
+ *                param : discount,
+ *                location : body,
+ *              },
+ *              {
+ *                msg : categoriesId is required,
+ *                param : categoriesId,
+ *                location : body,
+ *              },
+ *              {
+ *                msg : subCategoriesId is required,
+ *                param : subCategoriesId,
+ *                location : body,
+ *              }
+ *            ]
  *    NotFoundP:
  *      description: Not Found
  *      content:
