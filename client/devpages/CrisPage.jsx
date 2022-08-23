@@ -60,6 +60,48 @@ export default function CrisPage() {
               consectetur adipisicing elit. Cupiditate culpa officia mollitia
               facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
               quisquam odit aut officiis quod, asperiores ipsa alias.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Cupiditate culpa officia mollitia facere illum reiciendis error
+              explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis
+              quod, asperiores ipsa alias. Lorem ipsum dolor sit, amet
+              consectetur adipisicing elit. Cupiditate culpa officia mollitia
+              facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
+              quisquam odit aut officiis quod, asperiores ipsa alias.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Cupiditate culpa officia mollitia facere illum reiciendis error
+              explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis
+              quod, asperiores ipsa alias. Lorem ipsum dolor sit, amet
+              consectetur adipisicing elit. Cupiditate culpa officia mollitia
+              facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
+              quisquam odit aut officiis quod, asperiores ipsa alias.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Cupiditate culpa officia mollitia facere illum reiciendis error
+              explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis
+              quod, asperiores ipsa alias. Lorem ipsum dolor sit, amet
+              consectetur adipisicing elit. Cupiditate culpa officia mollitia
+              facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
+              quisquam odit aut officiis quod, asperiores ipsa alias.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Cupiditate culpa officia mollitia facere illum reiciendis error
+              explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis
+              quod, asperiores ipsa alias. Lorem ipsum dolor sit, amet
+              consectetur adipisicing elit. Cupiditate culpa officia mollitia
+              facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
+              quisquam odit aut officiis quod, asperiores ipsa alias.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Cupiditate culpa officia mollitia facere illum reiciendis error
+              explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis
+              quod, asperiores ipsa alias. Lorem ipsum dolor sit, amet
+              consectetur adipisicing elit. Cupiditate culpa officia mollitia
+              facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
+              quisquam odit aut officiis quod, asperiores ipsa alias.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Cupiditate culpa officia mollitia facere illum reiciendis error
+              explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis
+              quod, asperiores ipsa alias. Lorem ipsum dolor sit, amet
+              consectetur adipisicing elit. Cupiditate culpa officia mollitia
+              facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
+              quisquam odit aut officiis quod, asperiores ipsa alias.
             </Text>
           </View>
         </View>
@@ -79,7 +121,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
     backgroundColor: "#f3f3f3",
-    minHeight: ScreenHeight / 2.4 - 70,
+    /* minHeight: ScreenHeight / 2.4 - 70, */
   },
   containerTitle: {
     height: 40,

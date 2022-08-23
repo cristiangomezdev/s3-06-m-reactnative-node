@@ -11,6 +11,29 @@ import Button from "../components/Button";
 const { width } = Dimensions.get("window");
 const ScreenHeight = Dimensions.get("window").height;
 
+const images = [
+  {
+    description: "Comida",
+    uri: "https://4.imimg.com/data4/WX/DX/MY-2463817/dog-food-500x500.jpg",
+    id: 1,
+  },
+  {
+    description: "Accesorios",
+    uri: "https://4.imimg.com/data4/WX/DX/MY-2463817/dog-food-500x500.jpg",
+    id: 2,
+  },
+  {
+    description: "Juguetes",
+    uri: "https://4.imimg.com/data4/WX/DX/MY-2463817/dog-food-500x500.jpg",
+    id: 3,
+  },
+  {
+    description: "Alimentos",
+    uri: "https://4.imimg.com/data4/WX/DX/MY-2463817/dog-food-500x500.jpg",
+    id: 4,
+  },
+];
+
 export default function ProductDetail() {
   let [fontsLoaded] = useFonts({
     poppins: require("../assets/fonts/Poppins-Light.ttf"),
@@ -26,9 +49,8 @@ export default function ProductDetail() {
 
   return (
     <>
-      <Top />
       <ScrollView style={styles.scrollContainer}>
-        <ImageCarousel />
+         <ImageCarousel images={images}/> 
         <View style={styles.container}>
           <View style={styles.containerTitle}>
             <Text style={styles.price}>Pedrige</Text>
@@ -47,12 +69,6 @@ export default function ProductDetail() {
               facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
               quisquam odit aut officiis quod, asperiores ipsa alias.
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Cupiditate culpa officia mollitia facere illum reiciendis error
-              explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis
-              quod, asperiores ipsa alias. Lorem ipsum dolor sit, amet
-              consectetur adipisicing elit. Cupiditate culpa officia mollitia
-              facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
-              quisquam odit aut officiis quod, asperiores ipsa alias.
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Cupiditate culpa officia mollitia facere illum reiciendis error
               explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis
@@ -60,12 +76,21 @@ export default function ProductDetail() {
               consectetur adipisicing elit. Cupiditate culpa officia mollitia
               facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
               quisquam odit aut officiis quod, asperiores ipsa alias.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Cupiditate culpa officia mollitia facere illum reiciendis error
+              explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis
+              quod, asperiores ipsa alias. Lorem ipsum dolor sit, amet
+              consectetur adipisicing elit. Cupiditate culpa officia mollitia
+              facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
+              quisquam odit aut officiis quod, asperiores ipsa alias.
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             </Text>
           </View>
         </View>
       </ScrollView>
       <View style={styles.buttonSticky}>
-        <Button />
+         <Button /> 
       </View>
     </>
   );
@@ -74,7 +99,7 @@ export default function ProductDetail() {
 const styles = StyleSheet.create({
   scrollContainer: {
     height: ScreenHeight,
-    backgroundColor: "#000",
+    backgroundColor: "#f3f3f3",
   },
   container: {
     padding: 20,
@@ -103,10 +128,15 @@ const styles = StyleSheet.create({
   buttonSticky: {
     height: 80,
     justifyContent: "center",
-    borderTopWidth:0,
-    // estas 2 props siguientes las coloco: Richard. El dev a cargo puede modificarlas a antojo
-    paddingVertical: 10,
-    paddingBottom: 140,
+    backgroundColor: "#FFFFFF",
+    shadowColor: "#000",
+    shadowOffset:{
+    width: 0,
+    height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+    elevation: 7,
   },
   text: {
     color: "#FFFF",

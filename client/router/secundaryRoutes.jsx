@@ -47,7 +47,8 @@ export default function SecundaryRoutes() {
 
         <Route path="*" element={<Text>Ruta Global</Text>} />
       </Routes>
-      <Nav />
+      
+      { !location.pathname.includes('/products/') ? <Nav /> : null}
     </View>
   );
 }
