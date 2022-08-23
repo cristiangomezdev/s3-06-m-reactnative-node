@@ -9,7 +9,7 @@ module.exports = [
     
     check('categorieId')
     .isEmpty()
-    .isString()
+    .isAlphanumeric()
     .withMessage('Wrong categorieId, string only').bail(),
 
 ]

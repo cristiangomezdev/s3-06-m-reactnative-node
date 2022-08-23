@@ -4,9 +4,24 @@ let httpStatus = require('../helpers/httpStatus')
 class ProductController{
     static async getProducts(req, res){
         let products
+        let {categoriesId , subCategoriesId} = req.query
         try {
-            products = await Product.find({})
-            
+            switch (true) {
+                case categoriesId !== undefined && subCategoriesId !== undefined:
+                    products = await Product.find({categoriesId, subCategoriesId})
+                    break;
+                case categoriesId !== undefined:
+                    products = await Product.find({categoriesId})
+                    break;
+                case subCategoriesId !== undefined:
+                    console.log('paso')
+                    products = await Product.find({subCategoriesId})
+                    break;
+
+                default:
+                    products = await Product.find({})
+                    break;
+            }
         } catch (error) {
             console.error(error)
             res.status(httpStatus.INTERNAL_SERVER_ERROR).json({

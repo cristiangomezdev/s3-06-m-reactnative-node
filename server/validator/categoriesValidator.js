@@ -8,7 +8,7 @@ module.exports = [
     .withMessage('Wrong name, string only').bail(),
     
     check('subCategoriesId')
-    .isString()
+    .isAlphanumeric()
     .withMessage('Wrong subCategoriesId, string only').bail(),
 
 ]

@@ -12,6 +12,17 @@
  *  get:
  *    summary: List all products
  *    tags: [Products]
+ *    parameters:
+ *     - in: query
+ *       name: categoriesId
+ *       schema:
+ *         type: string
+ *       description: filter for category
+ *     - in: query
+ *       name: subCategoriesId
+ *       schema:
+ *         type: string
+ *       description: filter for subcategory
  *    responses:
  *      200:
  *        $ref: '#/components/responses/OKGETP'
