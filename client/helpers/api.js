@@ -1,6 +1,9 @@
 // const API_BASE_URL = "http://10.0.2.2:3030";
 const API_BASE_URL = "https://api-s306.herokuapp.com";
 
+//Anteriormente retornaba un objeto == {info respuesta de la api }
+//Ahora los métodos retornan el objeto { status, resjson: { info respuesta de la api } }
+
 export const api = {
   async authRegister(email, password, name) {
     let raw = JSON.stringify({ email, password, name });
@@ -10,10 +13,11 @@ export const api = {
       body: raw,
       headers: { "content-type": "application/json" },
     });
+    const status = res.status;
 
     let resjson = await res.json();
 
-    return resjson;
+    return { resjson, status };
   },
 
   async authLogin(email, password) {
@@ -24,9 +28,12 @@ export const api = {
       body: raw,
       headers: { "content-type": "application/json" },
     });
+
+    const status = res.status;
+
     let resjson = await res.json();
 
-    return resjson;
+    return { resjson, status };
   },
 };
 
