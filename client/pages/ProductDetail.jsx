@@ -11,7 +11,7 @@ import Button from "../components/Button";
 const { width } = Dimensions.get("window");
 const ScreenHeight = Dimensions.get("window").height;
 
-export default function CrisPage() {
+export default function ProductDetail() {
   let [fontsLoaded] = useFonts({
     poppins: require("../assets/fonts/Poppins-Light.ttf"),
     "poppins-regular": require("../assets/fonts/Poppins-Regular.ttf"),
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   content: {
     fontFamily: "taviraj-m",
-    fontSize: 14
+    fontSize: 12
   },
   containerButton: {
     alignItems: "center",
@@ -103,15 +103,10 @@ const styles = StyleSheet.create({
   buttonSticky: {
     height: 80,
     justifyContent: "center",
-    backgroundColor: "#FFFFFF",
-    shadowColor: "#000",
-    shadowOffset:{
-    width: 0,
-    height: 3,
-    },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
-    elevation: 7,
+    borderTopWidth:0,
+    // estas 2 props siguientes las coloco: Richard. El dev a cargo puede modificarlas a antojo
+    paddingVertical: 10,
+    paddingBottom: 140,
   },
   text: {
     color: "#FFFF",
@@ -128,5 +123,3 @@ const styles = StyleSheet.create({
       fontSize: 14,
        top: -8 }
 });
-/*No borre este archivo porque necesito que Cris me lo confirme,
- en cambio este archivo esta deprecado. Actualmente requiero que desarrollen esta page en pages/ProductDetail.jsx */
