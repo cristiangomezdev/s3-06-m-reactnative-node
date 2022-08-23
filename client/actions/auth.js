@@ -4,7 +4,7 @@ import AuthService from "../helpers/authService";
 export const login = (user) => (dispatch) => {
   return AuthService.logIn(user).then(
     (response) => {
-
+      console.log(response)
       if (response.status === "success") {
         dispatch({
           type: types.authLogin,
