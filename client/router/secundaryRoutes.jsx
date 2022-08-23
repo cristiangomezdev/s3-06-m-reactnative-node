@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes, useLocation} from "react-router-native";
+import { Route, Routes, useLocation } from "react-router-native";
 import {
   StyleSheet,
   Text,
@@ -13,39 +13,39 @@ import Homepage from "../pages/homepage";
 import Search from "../components/Search.jsx";
 import ListProducts from "../pages/ListProducts";
 import ListBag from "../pages/ListBag";
-import OrianaPage from "../devpages/OrianaPage.jsx";
-import RichardPage from "../devpages/RichardPage.jsx";
+
 import Nav from "../components/Nav";
 import Profile from "../pages/Profile.jsx";
 import Orders from "../pages/Orders";
-import { StatusBar} from "react-native";
+import { StatusBar } from "react-native";
 import SubNavHome from "../components/subNavforPage/subNavHome";
 import { useSelector } from "react-redux";
 import SubNavProducts from "../components/subNavforPage/subNavProducts";
 import CrisPage from "../devpages/CrisPage";
-
+import ClaudiaPageMyBag from "../devpages/ClaudiaPageMyBag";
+import ProductDetail from "../pages/ProductDetail";
+import ClientBag from "../pages/ClientBag";
 
 const ScreenHeight = Dimensions.get("window").height;
 
 export default function SecundaryRoutes() {
-  let location = useLocation()
+  let location = useLocation();
 
   const state = useSelector((state) => state);
   return (
     <View style={styles.container}>
       <Search />
-      {location.pathname === '/home' && <SubNavHome />}
-      {location.pathname === '/ClaudiaPage' && <SubNavProducts />}
-      {location.pathname === '/ClaudiaPageMyBag' && <SubNavProducts />}
+      {location.pathname === "/home" && <SubNavHome />}
+      {location.pathname === "/products" && <SubNavProducts />}
+      {location.pathname === "/bag"  && <SubNavProducts />}
       <Routes>
         <Route path="/home" element={<Homepage />}></Route>
-        <Route path="/ClaudiaPage" element={<ListProducts />} />
-        <Route path="/CrisPage" element={<CrisPage />} />
-        <Route path="/ClaudiaPageMyBag" element={<ListBag />} />
+        <Route path="/bag" element={<ClientBag />} />
+        <Route path="/products" element={<ListProducts />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/orders" element={<Orders />} />
-        <Route path="/OrianaPage" element={<OrianaPage />} />
-        <Route path="/RichardPage" element={<RichardPage />} />
+
         <Route path="*" element={<Text>Ruta Global</Text>} />
       </Routes>
       <Nav />

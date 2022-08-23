@@ -3,7 +3,6 @@ import { Route, Routes, Link, Navigate } from "react-router-native";
 
 import { StatusBar } from "expo-status-bar";
 
-import RichardPage from "../devpages/RichardPage.jsx";
 import SecundaryRoutes from "./secundaryRoutes";
 import Login from "../pages/Login.jsx";
 import Signup from "../pages/Signup.jsx";
@@ -26,7 +25,7 @@ export default function AppRoutes() {
         <Route path="/CrisPage" element={<CrisPage />} />
         <Route path="/ListBag" element={<ListBag />} />
         <Route path="/signup" element={ !state.token ? <Signup /> : <Navigate to='/home' /> } />
-        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        {/* <Route path="/forgotpassword" element={<ForgotPassword />} /> */}
         <Route path="/*" element={<SecundaryRoutes />} />
       </Routes>
     </>

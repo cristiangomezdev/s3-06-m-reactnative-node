@@ -31,10 +31,8 @@ const Top = () => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop:52, //el margin este luego hay que eliminarlo
     backgroundColor: "red",
     flexDirection: "row",
-  
     paddingVertical: 10,
     width: "100%",
   },
