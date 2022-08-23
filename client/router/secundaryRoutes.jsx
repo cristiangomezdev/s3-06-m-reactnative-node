@@ -13,7 +13,6 @@ import Homepage from "../pages/homepage";
 import Search from "../components/Search.jsx";
 import ListProducts from "../pages/ListProducts";
 import ListBag from "../pages/ListBag";
-
 import OrianaPage from "../devpages/OrianaPage.jsx";
 import RichardPage from "../devpages/RichardPage.jsx";
 import Nav from "../components/Nav";
@@ -23,6 +22,7 @@ import { StatusBar} from "react-native";
 import SubNavHome from "../components/subNavforPage/subNavHome";
 import { useSelector } from "react-redux";
 import SubNavProducts from "../components/subNavforPage/subNavProducts";
+import CrisPage from "../devpages/CrisPage";
 
 
 const ScreenHeight = Dimensions.get("window").height;
@@ -36,9 +36,12 @@ export default function SecundaryRoutes() {
       <Search />
       {location.pathname === '/home' && <SubNavHome />}
       {location.pathname === '/ClaudiaPage' && <SubNavProducts />}
+      {location.pathname === '/ClaudiaPageMyBag' && <SubNavProducts />}
       <Routes>
         <Route path="/home" element={<Homepage />}></Route>
         <Route path="/ClaudiaPage" element={<ListProducts />} />
+        <Route path="/CrisPage" element={<CrisPage />} />
+        <Route path="/ClaudiaPageMyBag" element={<ListBag />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/orders" element={<Orders />} />
         <Route path="/OrianaPage" element={<OrianaPage />} />
