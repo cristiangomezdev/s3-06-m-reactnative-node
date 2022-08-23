@@ -2,7 +2,7 @@ import React, { useState} from "react";
 import { useNavigate } from "react-router-native";
 import { useFonts } from 'expo-font';
 import { StyleSheet, TextInput, Image, Text, View, TouchableHighlight, ScrollView, StatusBar } from 'react-native';
-import { Dimensions } from 'react-native';
+import { Dimensions,Alert } from 'react-native';
 import { login } from "./../actions/auth";
 import { useDispatch,useSelector } from "react-redux";
 import Loader from './Loader';
@@ -31,8 +31,12 @@ export default function Login() {
 
          dispatch(login(user))
             .then((response) => {
+
                 if (response.status == "success") {
                     navigate("/home");
+                }
+                if (response.status == "error") {
+                    Alert.alert("Error",response.message);
                 }
             })
             .catch((error) => {

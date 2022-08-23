@@ -6,7 +6,7 @@ const logIn = async (user) => {
   const { username, password } = user;
   const email = username;
   const datajson = await api.authLogin(email, password);
-
+  console.log(datajson)
   if (datajson.msg === "successful login" && datajson.token) {
     return {
       status: "success",
@@ -15,6 +15,20 @@ const logIn = async (user) => {
         token: datajson.token,
         user: datajson.user,
       },
+    };
+  }
+
+  if (datajson.status === 400) {
+     if(datajson.resjson.msg === "credentials incorrect"){
+      return {
+        status: "error",
+        message: datajson.resjson.msg
+      };
+    } 
+
+    return {
+      status: "error",
+      message: message.resjson.errors[0].msg
     };
   }
 };
