@@ -10,10 +10,11 @@ export const api = {
       body: raw,
       headers: { "content-type": "application/json" },
     });
+    const status = res.status;
 
     let resjson = await res.json();
 
-    return resjson;
+    return { resjson, status };
   },
 
   async authLogin(email, password) {
@@ -24,9 +25,12 @@ export const api = {
       body: raw,
       headers: { "content-type": "application/json" },
     });
+
+    const status = res.status;
+
     let resjson = await res.json();
 
-    return resjson;
+    return { resjson, status };
   },
 };
 
