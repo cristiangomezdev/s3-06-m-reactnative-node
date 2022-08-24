@@ -19,6 +19,20 @@ const logIn = async (user) => {
   }else{
 
   }
+
+  if (datajson.status === 400) {
+     if(datajson.resjson.msg === "credentials incorrect"){
+      return {
+        status: "error",
+        message: datajson.resjson.msg
+      };
+    } 
+
+    return {
+      status: "error",
+      message: message.resjson.errors[0].msg
+    };
+  }
 };
 
 const register = async (user) => {

@@ -4,7 +4,10 @@ import AuthService from "../helpers/authService";
 export const login = (user) => (dispatch) => {
   return AuthService.logIn(user).then(
     (response) => {
+<<<<<<< HEAD
       console.log(response)
+=======
+>>>>>>> ad8cee1a7133dabe4265fafde4f8f3dd12649d0a
       if (response.status === "success") {
         dispatch({
           type: types.authLogin,
@@ -13,8 +16,10 @@ export const login = (user) => (dispatch) => {
 Promise.resolve();
         return response;
       }
+      return response;
     },
     (error) => {
+      console.log(error)
       const message = error.toString();
 Promise.reject();
       return message;
