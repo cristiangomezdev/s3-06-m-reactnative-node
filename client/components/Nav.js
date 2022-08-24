@@ -60,9 +60,9 @@ export default function Nav() {
           </Link>
           {/* tienen que hacer ese idInventado como id dinámico este corazon por el momento
           se va a utilizar para que cris desarrolle, a futuro o se borra o se le da una función específica. Informa: Richard */}
-          <Link style={styles.link} to="/products/2323" underlayColor="rgba(0,0,0,0)">
+{/*           <Link style={styles.link} to="/products/2323" underlayColor="rgba(0,0,0,0)">
             <Ionicons name={'heart'} color={isActive(location.pathname,'/EzePage')} size={size}/>
-          </Link>
+          </Link> */}
 
           <Link style={styles.link} to="/profile?type=delivered" underlayColor="rgba(0,0,0,0)">
             <Ionicons name={'account'} color={isActive(location.pathname,'/profile')} size={size}/>

@@ -1,8 +1,7 @@
 import { types } from '../types/types';
 
 const initialState = { 
-    cart: [],
-
+    cart: []
 };
 
 const cartReducer = (state = initialState, action) => {

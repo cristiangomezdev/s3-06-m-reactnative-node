@@ -6,10 +6,10 @@ import {
     Dimensions
   } from "react-native";
   const { width } = Dimensions.get("window");
-export default function Button({text}){
+export default function Button({text,onPressHandler}){
     return(
       <View style={styles.containerButton}>
-        <TouchableWithoutFeedback onPress={()=>console.log('boton')}>
+        <TouchableWithoutFeedback onPress={onPressHandler}>
             <View style={styles.button}>
             <Text style={styles.buttonText}>
                 {text}

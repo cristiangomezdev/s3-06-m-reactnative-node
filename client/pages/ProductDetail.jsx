@@ -4,7 +4,9 @@ import { ImageCarousel } from "../components/ImageCarousel";
 import { useFonts } from 'expo-font';
 import Loader from '../pages/Loader';
 import Button from "../components/Button";
-
+import { useSelector,useDispatch } from "react-redux";
+import { types } from "../types/types";
+import { add } from "../actions/cart";
 const { width } = Dimensions.get("window");
 const ScreenHeight = Dimensions.get("window").height;
 
@@ -32,6 +34,7 @@ const images = [
 ];
 
 export default function ProductDetail() {
+  let dispatch = useDispatch();
   let [fontsLoaded] = useFonts({
     poppins: require("../assets/fonts/Poppins-Light.ttf"),
     "poppins-regular": require("../assets/fonts/Poppins-Regular.ttf"),
@@ -42,7 +45,9 @@ export default function ProductDetail() {
   if (!fontsLoaded) {
     return <Loader />;
   }
-  const onPressHandler = () => {};
+  const onPressHandler = () => {
+    dispatch(add);
+  };
 
   return (
     <>
@@ -87,7 +92,7 @@ export default function ProductDetail() {
         </View>
       </ScrollView>
       <View style={styles.buttonSticky}>
-         <Button text={'Add to bag'} /> 
+         <Button text={'Add to bag'} onPressHandler={onPressHandler} /> 
       </View>
     </>
   );

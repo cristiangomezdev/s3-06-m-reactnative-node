@@ -2,7 +2,7 @@ import { types } from '../types/types';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const initialState = {
     token:  "",
-    user:  "",
+    user:  ""
 };
 
 const AuthReducer = ( state = initialState, action) => {
