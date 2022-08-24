@@ -32,23 +32,17 @@ export default function Login() {
 
         dispatch(login(user))
             .then((response) => {
-<<<<<<< HEAD
-                
-=======
 
->>>>>>> ad8cee1a7133dabe4265fafde4f8f3dd12649d0a
                 if (response.status == "success") {
                     
                     navigate("/home");
                     
                 }
-<<<<<<< HEAD
 
-=======
                 if (response.status == "error") {
                     Alert.alert("Error",response.message);
                 }
->>>>>>> ad8cee1a7133dabe4265fafde4f8f3dd12649d0a
+
             })
             .catch((error) => {
                
