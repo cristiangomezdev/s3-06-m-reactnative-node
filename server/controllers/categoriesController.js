@@ -11,7 +11,7 @@ class categoriesController{
             categorie = await Categorie.find({}).populate('subCategories')
         } catch (error) {
             console.log(error)
-            res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+            return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
@@ -32,7 +32,7 @@ class categoriesController{
             categorie = await Categorie.findOne({_id : idParams}).populate('subCategories')
         } catch (error) {
             console.log(error)
-            res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+            return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
@@ -59,7 +59,7 @@ class categoriesController{
             })
         } catch (error) {
             console.log(error)
-            res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+            return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             })
         }

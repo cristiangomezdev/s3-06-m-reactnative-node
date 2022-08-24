@@ -21,18 +21,14 @@ const productSchema = new Schema({
     discount : {
         type : Number
     },
-    categoriesId : [
-        {
-            type : Schema.Types.ObjectId,
-            ref : 'Categorie'
-        }
-    ],
-    subCategoriesId : [
-        {
-            type : Schema.Types.ObjectId,
-            ref : "SubCategorie"
-        }
-    ],
+    categoriesId : {
+        type : Schema.Types.ObjectId,
+        ref : 'Categorie'
+    },
+    subCategoriesId :{
+        type : Schema.Types.ObjectId,
+        ref : "SubCategorie"
+    },
     weigth : {
         type : Number
     }

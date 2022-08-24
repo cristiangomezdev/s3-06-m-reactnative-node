@@ -3,20 +3,19 @@ let Categorie = require('../database/models/categorie')
 
 module.exports = [
     check('name')
-    .notEmpty()
-    .withMessage('name is required').bail()
+    .optional({checkFalsy : true})
     .isString()
     .withMessage('Wrong name, string only').bail(),
 
     check('description')
+    .optional({checkFalsy : true})
     .isString()
     .withMessage('Wrong description, string only').bail()
     .isLength({min : 0,max : 500})
     .withMessage('max 500 characters').bail(),
 
     check('price')
-    .notEmpty()
-    .withMessage('price is required').bail()
+    .optional({checkFalsy : true})
     .isNumeric()
     .withMessage('Wrong price, number only').bail(),
 
@@ -26,14 +25,12 @@ module.exports = [
     .withMessage('Wrong discount, number only').bail(),
 
     check('categoriesId')
-    .notEmpty()
-    .withMessage('categoriesId is required').bail()
+    .optional({checkFalsy : true})
     .isAlphanumeric()
     .withMessage('Wrong categoriesId, string only').bail(),
     
     check('subCategoriesId')
-    .notEmpty()
-    .withMessage('subCategoriesId is required').bail()
+    .optional({checkFalsy : true})
     .isAlphanumeric()
     .withMessage('Wrong subCategoriesId, string only').bail(),
 
@@ -44,6 +41,9 @@ module.exports = [
 
     body('categoriesId')
     .custom(async (value)=>{
+        if (value === undefined || value === "" ) {
+            return Promise.resolve()
+        }
         let categorie = await Categorie.findById(value)
         if (categorie) {
             return Promise.resolve()
@@ -55,6 +55,9 @@ module.exports = [
 
     body('subCategoriesId')
     .custom(async (value, {req})=>{
+        if (value === undefined || value === "" || req.body.categoriesId === undefined ) {
+            return Promise.resolve()
+        }
         let categorie = await Categorie.findById(req.body.categoriesId)
         if (categorie.subCategories.includes(value)) {
             return Promise.resolve()

@@ -24,7 +24,7 @@ class ProductController{
             }
         } catch (error) {
             console.error(error)
-            res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+            return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
@@ -46,7 +46,7 @@ class ProductController{
             product = await Product.findById(idParams)
         } catch (error) {
             console.error(error)
-            res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+            return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
@@ -82,7 +82,7 @@ class ProductController{
             })
         } catch (error) {
             console.error(error)
-            res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+            return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
@@ -91,6 +91,8 @@ class ProductController{
     static async editProduct(req, res){
         let idParams = req.params.id
         let { name, images, description, price, discount, categoriesId, subCategoriesId, weigth  } = req.body
+        categoriesId ? "" : subCategoriesId = ""
+
         let product;
         try {
             product = await Product.findById(idParams)
@@ -100,14 +102,14 @@ class ProductController{
                 product.description = description || product.description
                 product.price = price || product.price
                 product.discount = discount || product.discount
-                product.categoriesId = categoriesId || product.categoriesId
-                product.subCategoriesId = subCategoriesId || product.subCategoriesId
+                product.categoriesId = categoriesId || product.categoriesId 
+                product.subCategoriesId = subCategoriesId || product.subCategoriesId 
                 product.weigth = weigth || product.weigth
                 await product.save()
             }
         } catch (error) {
             console.error(error)
-            res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+            return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
@@ -131,7 +133,7 @@ class ProductController{
             product = await Product.deleteOne({_id : idParams})
         } catch (error) {
             console.log(error)
-            res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+            return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             })
         }
