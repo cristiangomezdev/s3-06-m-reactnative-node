@@ -31,7 +31,6 @@ export default function Login() {
 
          dispatch(login(user))
             .then((response) => {
-
                 if (response.status == "success") {
                     navigate("/home");
                 }
