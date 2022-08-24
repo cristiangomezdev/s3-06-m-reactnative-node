@@ -1,11 +1,11 @@
 import React from "react";
 import { Text, View } from "react-native";
-import listaBag from '../components/myBag/ListaBag'
+import ListBag from '../components/myBag/ListaBag'
 
 export default function ClaudiaPageMyBag() {
   return (
     <View>
-        {/* <listaBag /> */}
+        <ListBag />
     </View>
   );
 }
