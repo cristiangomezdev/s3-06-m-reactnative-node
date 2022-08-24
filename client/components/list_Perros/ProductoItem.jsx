@@ -9,7 +9,7 @@ const ScreenWidth = Dimensions.get("window").width;
 const ImageWidth = Math.floor(ScreenWidth * 0.3)
 const ContenedorHeight = Math.floor(ScreenWidth * 0.5)
 
-const PathDetail = '/CrisPage'
+const PathDetail = '/products/2323'
 
 const ProductoItem = (props) => {
     const navigate = useNavigate()
