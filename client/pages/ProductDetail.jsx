@@ -87,7 +87,7 @@ export default function ProductDetail() {
         </View>
       </ScrollView>
       <View style={styles.buttonSticky}>
-         <Button /> 
+         <Button text={'Add to bag'} /> 
       </View>
     </>
   );
