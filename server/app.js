@@ -28,10 +28,12 @@ app.use(cors())
 let authRouter = require('./routes/auth')
 let categorieRouter = require('./routes/categorie')
 let productRouter = require('./routes/products')
+let ordersRouter = require('./routes/orders')
 
 app.use('/auth', authRouter)
 app.use('/categories', categorieRouter);
 app.use('/products', productRouter);
+app.use('/orders', ordersRouter);
 app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 

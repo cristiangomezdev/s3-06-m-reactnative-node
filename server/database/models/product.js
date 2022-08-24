@@ -31,6 +31,10 @@ const productSchema = new Schema({
     },
     weigth : {
         type : Number
+    },
+    amount : {
+        type : Number,
+        required: true
     }
   });
   
