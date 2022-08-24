@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-native";
 import { useFonts } from 'expo-font';
 import { StyleSheet, TextInput, Image, Text, View, TouchableHighlight, ScrollView, StatusBar } from 'react-native';
-import { Dimensions,Alert } from 'react-native';
+import { Dimensions, Alert } from 'react-native';
 import { login } from "./../actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from './Loader';
-import { Alert } from "react-native";
+
 
 const ScreenWidth = Dimensions.get("window").width;
 
@@ -17,6 +17,8 @@ export default function Login() {
     const [password, setPassword] = useState('');
     const [isLogged, setIsLogged] = useState('');
     const dispatch = useDispatch();
+
+
     const state = useSelector((state) => state.AuthReducer.token);
 
 
@@ -34,22 +36,42 @@ export default function Login() {
             .then((response) => {
 
                 if (response.status == "success") {
-                    
                     navigate("/home");
-                    
                 }
 
                 if (response.status == "error") {
-                    Alert.alert("Error",response.message);
+                    Alert.alert("Error", response.message);
                 }
 
             })
             .catch((error) => {
-               
                 navigate("/");
             });
 
-        
+
+        if (username === user.username) {
+            Alert.alert('¡Email wrong!');
+            return
+        }
+        if (password === user.password) {
+            Alert.alert('¡Password wrong!');
+            return
+        }
+
+        if (!username.trim()) {
+            Alert.alert('Email is required');
+            return
+        }
+        if (!password.trim()) {
+            Alert.alert(' Password is required!');
+            return
+        }
+        if (password.length < 8) {
+            Alert.alert('Password min 8 o max 12 characters!');
+            return
+        }
+
+
     };
 
     let [fontsLoaded] = useFonts({
@@ -76,14 +98,12 @@ export default function Login() {
                         value={username}
                         onChangeText={setUsername}
                         placeholder='Email'
-                        required
                         style={styles.input} />
                     <TextInput
                         value={password}
                         onChangeText={setPassword}
                         secureTextEntry={true}
                         placeholder='Password'
-                        required= 'este campo es obligatorio'
                         style={styles.input} />
                 </View>
                 <TouchableHighlight onPress={() => navigate('/forgotpassword')} underlayColor="rgba(0,0,0,0)">
