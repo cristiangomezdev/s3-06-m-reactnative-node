@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36f7e1bd-1d32-442f-9ee5-78b8cad8ea56" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/pages/ClientBag.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/ProductDetail.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/list_Perros/ProductoItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/list_Perros/ProductoItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/productos.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/productos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Top.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Top.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/devpages/ClaudiaPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/devpages/ClaudiaPageMyBag.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/devpages/ClaudiaPageMyBag.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/devpages/CrisPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/devpages/CrisPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/devpages/EzePage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/devpages/OrianaPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/devpages/RichardPage.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/router/AppRoutes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/router/AppRoutes.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/router/secundaryRoutes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/router/secundaryRoutes.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

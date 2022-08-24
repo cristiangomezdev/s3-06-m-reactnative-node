@@ -4,7 +4,6 @@ import AuthService from "../helpers/authService";
 export const login = (user) => (dispatch) => {
   return AuthService.logIn(user).then(
     (response) => {
-
       if (response.status === "success") {
         dispatch({
           type: types.authLogin,
@@ -13,6 +12,7 @@ export const login = (user) => (dispatch) => {
 Promise.resolve();
         return response;
       }
+      return response;
     },
     (error) => {
       const message = error.toString();
@@ -25,9 +25,7 @@ Promise.reject();
 export const register = (user) => (dispatch) => {
   return AuthService.register(user).then(
     (response) => {
-      console.log(response)
       if (response.status === "success") {
-        console.log('entra en success')
         dispatch({
           type: types.authRegister,
           payload: { user: response.user },
