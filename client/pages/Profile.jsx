@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -8,14 +8,24 @@ import {
   Dimensions,
 } from "react-native";
 import { useFonts } from "expo-font";
+import { useSelector } from "react-redux";
 import Loader from "./Loader";
 import Option from "../components/profile/Option";
 import { LogoutButton } from "../components/LogoutButton";
+
+
 
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
 
 const Profile = () => {
+  const userData = useSelector((state) => state.AuthReducer.user);
+  const {name,email} = userData; 
+
+  useEffect( ()=> {
+
+  },[])
+
   let [fontsLoaded] = useFonts({
     poppins: require("../assets/fonts/Poppins-Light.ttf"),
     "poppins-regular": require("../assets/fonts/Poppins-Regular.ttf"),
@@ -79,8 +89,8 @@ const Profile = () => {
               style={styles.image}
             />
             <View style={styles.containText}>
-              <Text style={styles.userName}>Nombre de Usuario</Text>
-              <Text style={styles.userEmail}>example@email.com</Text>
+              <Text style={styles.userName}> { name } </Text>
+              <Text style={styles.userEmail}> { email } </Text>
             </View>
           </View>
         </View>
