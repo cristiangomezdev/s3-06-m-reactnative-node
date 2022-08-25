@@ -28,7 +28,7 @@ const userSchema = new Schema({
     admin : {
         type : Boolean
     }
-  });
+  },{ timestamps: true });
   
   const userModel = mongoose.model("User", userSchema);
   

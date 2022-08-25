@@ -31,8 +31,12 @@ const productSchema = new Schema({
     },
     weigth : {
         type : Number
+    },
+    amount : {
+        type : Number,
+        required: true
     }
-  });
+  },{ timestamps: true });
   
   const productModel = mongoose.model("Product", productSchema);
   
