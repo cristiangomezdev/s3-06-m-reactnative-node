@@ -38,5 +38,5 @@ app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 
 app.listen(PORT, ()=>{
-    console.log(`Server only in port: ${PORT}`)
+    console.log(`Server only in port: ${PORT} \nhttp://localhost:${PORT}`)
 })

@@ -102,7 +102,7 @@ class ordersController {
                     restAmountProducts(p._id, p.amount)
                 });
                 await order.save()
-                return res.status(httpStatus.OK).json({
+                return res.status(httpStatus.CREATED).json({
                     order
                 })
             }
