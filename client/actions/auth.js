@@ -26,7 +26,7 @@ Promise.reject();
 export const register = (user) => (dispatch) => {
   return AuthService.register(user).then(
     (response) => {
-      if (response.status === "success") {
+      if (response.status === "success register") {
         dispatch({
           type: types.authRegister,
           payload: { user: response.user },

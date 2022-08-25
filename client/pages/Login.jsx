@@ -13,7 +13,7 @@ const ScreenWidth = Dimensions.get("window").width;
 export default function Login() {
 
     let navigate = useNavigate();
-    const [username, setUsername] = useState('');
+    const [userEmail, setUserEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isLogged, setIsLogged] = useState('');
     const dispatch = useDispatch();
@@ -26,11 +26,40 @@ export default function Login() {
         navigate('/signup')
     }
 
+    function isValidEmail(email) {
+        return /\S+@\S+.\S+/.test(email);
+    }
+
+    const validacion = () => {
+        if (!isValidEmail(userEmail)) {
+            Alert.alert('Email wrong');
+            return false
+
+        }
+        if (userEmail.trim()) {
+            Alert.alert('Email is required');
+            return false
+        }
+        if (password.trim()) {
+            Alert.alert(' Password is required!');
+            return false
+        }
+        if (password.length < 8) {
+            Alert.alert('Password min 8 o max 12 characters!');
+            return false
+        }
+        return true;
+    }
+
     const onLogin = () => {
         let user = {
-            username,
+            userEmail,
             password,
         };
+        if (!validacion()) {
+            return
+        }
+
 
         dispatch(login(user))
             .then((response) => {
@@ -48,28 +77,6 @@ export default function Login() {
                 navigate("/");
             });
 
-
-        if (username === user.username) {
-            Alert.alert('¡Email wrong!');
-            return
-        }
-        if (password === user.password) {
-            Alert.alert('¡Password wrong!');
-            return
-        }
-
-        if (!username.trim()) {
-            Alert.alert('Email is required');
-            return
-        }
-        if (!password.trim()) {
-            Alert.alert(' Password is required!');
-            return
-        }
-        if (password.length < 8) {
-            Alert.alert('Password min 8 o max 12 characters!');
-            return
-        }
 
 
     };
@@ -95,11 +102,13 @@ export default function Login() {
                 <View>
                     <Text style={styles.text} >Login</Text>
                     <TextInput
-                        value={username}
-                        onChangeText={setUsername}
+                        type='email'
+                        value={userEmail}
+                        onChangeText={setUserEmail}
                         placeholder='Email'
                         style={styles.input} />
                     <TextInput
+                        type='password'
                         value={password}
                         onChangeText={setPassword}
                         secureTextEntry={true}
@@ -115,12 +124,12 @@ export default function Login() {
                     </TouchableHighlight>
                 </View>
                 <TouchableHighlight onPress={handleClick} underlayColor="rgba(0,0,0,0)">
-                    <Text style={styles.text2}>Or Sign up with social account </Text>
+                    <Text style={styles.text2}>Or Sign up </Text>
                 </TouchableHighlight>
-                <View style={styles.image}>
+                {/*   <View style={styles.image}>
                     <Image source={require('../assets/iconsgoogle.png')} />
                     <Image source={require('../assets/iconofacebook.png')} />
-                </View>
+                </View> */}
             </ScrollView>
         </View></>)
 }
