@@ -13,9 +13,8 @@ const ScreenWidth = Dimensions.get("window").width;
 export default function Login() {
 
     let navigate = useNavigate();
-    const [userEmail, setUserEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [isLogged, setIsLogged] = useState('');
     const dispatch = useDispatch();
 
 
@@ -31,21 +30,20 @@ export default function Login() {
     }
 
     const validacion = () => {
-        if (!isValidEmail(userEmail)) {
-            Alert.alert('Email wrong');
-            return false
-
-        }
-        if (userEmail.trim()) {
-            Alert.alert('Email is required');
+        if (!isValidEmail(username)) {
+            Alert.alert('Email wrong - front validation');
             return false
         }
-        if (password.trim()) {
-            Alert.alert(' Password is required!');
+        if (!username.trim()) {
+            Alert.alert('Email is required - front validation');
+            return false
+        }
+        if (!password.trim()) {
+            Alert.alert(' Password is required! - front validation');
             return false
         }
         if (password.length < 8) {
-            Alert.alert('Password min 8 o max 12 characters!');
+            Alert.alert('Password min 8 o max 12 characters! - front validation');
             return false
         }
         return true;
@@ -53,7 +51,7 @@ export default function Login() {
 
     const onLogin = () => {
         let user = {
-            userEmail,
+            username,
             password,
         };
         if (!validacion()) {
@@ -103,8 +101,8 @@ export default function Login() {
                     <Text style={styles.text} >Login</Text>
                     <TextInput
                         type='email'
-                        value={userEmail}
-                        onChangeText={setUserEmail}
+                        value={username}
+                        onChangeText={setUsername}
                         placeholder='Email'
                         style={styles.input} />
                     <TextInput

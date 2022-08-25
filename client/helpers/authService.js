@@ -11,8 +11,8 @@ const logIn = async (user) => {
       status: "success",
       message: "You are redirecting to home page",
       user: {
-        token: datajson.token,
-        user: datajson.user,
+        token: datajson.resjson.token,
+        user: datajson.resjson.user,
       },
     };
   }else{
@@ -36,14 +36,29 @@ const logIn = async (user) => {
 const register = async (user) => {
   const { email, password, name } = user;
   const datajson = await api.authRegister(email, password, name);
-  if (datajson.msg === "user succesfelly created" && datajson.token) {
+  if (datajson.resjson.msg === "user succesfelly created" && datajson.resjson.token) {
     // backend mal response message
     return {
       status: "success",
       message: "You are redirecting to home page",
-      user: name,
+      user: {
+        token: datajson.resjson.token,
+        user: datajson.resjson.user,
+      },
     };
   }
+  if (datajson.status === 400) {
+    if(datajson.resjson.msg){
+      return {
+        status: "error",
+        message: datajson.resjson.msg
+      };
+    }
+   return {
+     status: "error",
+     message: datajson.resjson.errors[0].msg || datajson.resjson.msg
+   };
+ }
 };
 
 const logOut = async () => {

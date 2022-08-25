@@ -26,16 +26,22 @@ Promise.reject();
 export const register = (user) => (dispatch) => {
   return AuthService.register(user).then(
     (response) => {
+
       if (response.status === "success register") {
+
         dispatch({
           type: types.authRegister,
           payload: { user: response.user },
         });
 Promise.resolve();
         return response;
+      } 
+      if (response.status === "error") {
+        return response;
       }
     },
     (error) => {
+      console.log(error)
       const message = error.toString();
 Promise.reject();
       return message;
