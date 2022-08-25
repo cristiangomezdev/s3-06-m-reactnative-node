@@ -24,17 +24,17 @@ const Homepage = () => {
     },
     {
       description: "Estas redirigiendo a /home en vez de a /home?cate=dog",
-      uri: "https://res.cloudinary.com/richardiral/image/upload/v1658156550/cld-sample-5.jpg",
+      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTszOWXq3WKsNSrRqbstYIRS1cMCAVCEBBSuQ&usqp=CAU",
       id: 2,
     },
     {
       description: "Estas redirigiendo a /home en vez de a /home?cate='dog'",
-      uri: "https://res.cloudinary.com/richardiral/image/upload/v1658156548/cld-sample.jpg",
+      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRtiVh84JNf7hIgkROHcyl7VLS0lsyebJSDA&usqp=CAU",
       id: 3,
     },
     {
       description: "Estas redirigiendo a /home en vez de a /home?cate='dog'",
-      uri: "https://res.cloudinary.com/richardiral/image/upload/v1658156550/cld-sample-5.jpg",
+      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnfpOEK4I3ilAXi3xNdHdu3n5Izp_mmUJpyA&usqp=CAU",
       id: 4,
     },
   ];
