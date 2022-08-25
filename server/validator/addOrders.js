@@ -1,6 +1,6 @@
 let { check, body } = require('express-validator')
 let Product = require('../database/models/product')
-let User = require('../database/models/user')
+
 
 module.exports = [
     check('shippingAddress')
