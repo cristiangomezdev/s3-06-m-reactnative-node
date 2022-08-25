@@ -1,8 +1,8 @@
 import React from "react";
 import { Text, View, ScrollView, StyleSheet, Dimensions } from "react-native";
 import { ImageCarousel } from "../components/ImageCarousel";
-import { useFonts } from 'expo-font';
-import Loader from '../pages/Loader';
+import { useFonts } from "expo-font";
+import Loader from "../pages/Loader";
 import { StatusBar as barraDeEstado } from "react-native";
 import Search from "../components/Search";
 import Top from "../components/Top";
@@ -45,21 +45,21 @@ export default function CrisPage() {
               quod, asperiores ipsa alias. Lorem ipsum dolor sit, amet
               consectetur adipisicing elit. Cupiditate culpa officia mollitia
               facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
-              quisquam odit aut officiis quod, asperiores ipsa alias.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              quisquam odit aut officiis quod, asperiores ipsa alias. Lorem
+              ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate
+              culpa officia mollitia facere illum reiciendis error explicabo,
+              rem, eos ut ipsam eveniet quisquam odit aut officiis quod,
+              asperiores ipsa alias. Lorem ipsum dolor sit, amet consectetur
+              adipisicing elit. Cupiditate culpa officia mollitia facere illum
+              reiciendis error explicabo, rem, eos ut ipsam eveniet quisquam
+              odit aut officiis quod, asperiores ipsa alias. Lorem ipsum dolor
+              sit, amet consectetur adipisicing elit. Cupiditate culpa officia
+              mollitia facere illum reiciendis error explicabo, rem, eos ut
+              ipsam eveniet quisquam odit aut officiis quod, asperiores ipsa
+              alias. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
               Cupiditate culpa officia mollitia facere illum reiciendis error
               explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis
-              quod, asperiores ipsa alias. Lorem ipsum dolor sit, amet
-              consectetur adipisicing elit. Cupiditate culpa officia mollitia
-              facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
-              quisquam odit aut officiis quod, asperiores ipsa alias.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Cupiditate culpa officia mollitia facere illum reiciendis error
-              explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis
-              quod, asperiores ipsa alias. Lorem ipsum dolor sit, amet
-              consectetur adipisicing elit. Cupiditate culpa officia mollitia
-              facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
-              quisquam odit aut officiis quod, asperiores ipsa alias.
+              quod, asperiores ipsa alias.
             </Text>
           </View>
         </View>
@@ -88,14 +88,14 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   containerSubtitle: {
-    fontWeight:'1000'
+    fontWeight: "1000",
   },
   containerContent: {
     justifyContent: "center",
   },
   content: {
     fontFamily: "taviraj-m",
-    fontSize: 12
+    fontSize: 12,
   },
   containerButton: {
     alignItems: "center",
@@ -103,7 +103,8 @@ const styles = StyleSheet.create({
   buttonSticky: {
     height: 80,
     justifyContent: "center",
-    borderTopWidth:0,
+    borderTopWidth: 0,
+    backgroundColor: "#FFFFFF",
     // estas 2 props siguientes las coloco: Richard. El dev a cargo puede modificarlas a antojo
     paddingVertical: 10,
     paddingBottom: 140,
@@ -117,11 +118,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 0,
   },
-  subprice: { 
+  subprice: {
     fontFamily: "taviraj-m",
-     color: "#aaa",
-      fontSize: 14,
-       top: -8 }
+    color: "#aaa",
+    fontSize: 14,
+    top: -8,
+  },
 });
 /*No borre este archivo porque necesito que Cris me lo confirme,
  en cambio este archivo esta deprecado. Actualmente requiero que desarrollen esta page en pages/ProductDetail.jsx */
