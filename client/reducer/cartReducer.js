@@ -8,18 +8,50 @@ const cartReducer = (state = initialState, action) => {
     let newCart= null;
     switch (action.type) {
         case types.cartAdd:
-            let itemCart = {...action.payload,quantity:1};
-            newCart = [...state.cart,itemCart];
+            const { id } = action.payload;
+            const find = state.cart.find((item) => item.id === id);
+            if(find){
+                
+                    let itemCart = state.cart.map((item) =>
+                    item.id === id
+                    ? {
+                        ...item,
+                        quantity: item.quantity + 1,
+                      }
+                    : item
+                    )
 
+                /* let itemCart = {...action.payload,quantity:2}; */
+                newCart = itemCart;
+                console.log(state)
             return {
                 ...state,
-                cart: newCart,
-            };
+                cart: newCart}
+            }
+            let itemCart = {...action.payload,quantity:1};
+            newCart = [...state.cart,itemCart];
+            console.log(state)
+        return {
+            ...state,
+            cart: newCart}
+
         case types.cartIncrease:{
-            const {idItem,number} = action.payload;
+            const {id} = action.payload;
             newCart = state.cart.map(item => {
-                if(idItem === item._id)
-                    return {...item,quantity: item.quantity+number};
+                if(id === item.id)
+                    return {...item,quantity: item.quantity+1};
+                return item;
+            })
+            return {
+                ...state,
+                cart:newCart
+            }
+        }  
+        case types.cartDecrease:{
+            const {id,number} = action.payload;
+            newCart = state.cart.map(item => {
+                if(id === item.id)
+                    return {...item,quantity: item.quantity-number};
                 return item;
             })
             return {
@@ -43,7 +75,6 @@ const cartReducer = (state = initialState, action) => {
             }
         case types.cartClear:
             return {
-                ...state,
                 cart : []
             }
         default:

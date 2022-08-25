@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, ScrollView, StyleSheet, Dimensions } from "react-native";
+import { Text, View, ScrollView, StyleSheet, Dimensions, Alert } from "react-native";
 import { ImageCarousel } from "../components/ImageCarousel";
 import { useFonts } from 'expo-font';
 import Loader from '../pages/Loader';
@@ -7,9 +7,10 @@ import Button from "../components/Button";
 import { useSelector,useDispatch } from "react-redux";
 import { types } from "../types/types";
 import { add } from "../actions/cart";
+import { useNavigate } from "react-router-native";
 const { width } = Dimensions.get("window");
 const ScreenHeight = Dimensions.get("window").height;
-
+useNavigate
 const images = [
   {
     description: "Comida",
@@ -34,6 +35,7 @@ const images = [
 ];
 
 export default function ProductDetail() {
+  let navigate = useNavigate();
   let dispatch = useDispatch();
   let [fontsLoaded] = useFonts({
     poppins: require("../assets/fonts/Poppins-Light.ttf"),
@@ -45,8 +47,19 @@ export default function ProductDetail() {
   if (!fontsLoaded) {
     return <Loader />;
   }
+  let prod = {
+    id: 2,
+    name : 'Alimento seco para perros, carne de res y arroz integral, bolsa de 5 libras',
+    price : 6.99,
+    size: '2.3 kg',
+    brand: 'Wag',
+    image : require('../assets/imgs/Alimento1.jpg'),
+    cantidad: 1
+    }
   const onPressHandler = () => {
-    dispatch(add);
+    dispatch(add(prod));
+    Alert.alert('Added','your product is now in your bag')
+    navigate('/bag')
   };
 
   return (
