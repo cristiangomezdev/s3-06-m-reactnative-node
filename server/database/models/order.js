@@ -27,14 +27,14 @@ const orderSchema = new Schema({
     products : [{
         type : Object
     }],
-    totalAmount : {
+    totalPrice : {
         type : Number
     },
     userId : {
         type : Schema.Types.ObjectId,
         ref : 'User'
     }
-  });
+  },{ timestamps: true });
   
   const orderModel = mongoose.model("Order", orderSchema);
   
