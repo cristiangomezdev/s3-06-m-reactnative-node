@@ -35,9 +35,9 @@ export default function SecundaryRoutes() {
   return (
     <View style={styles.container}>
       <Search />
-      {location.pathname === "/home" && <SubNavHome />}
+
       {location.pathname === "/products" && <SubNavProducts />}
-      {location.pathname === "/bag"  && <SubNavProducts />}
+      {location.pathname === "/bag" && <SubNavProducts />}
       <Routes>
         <Route path="/home" element={<Homepage />}></Route>
         <Route path="/bag" element={<ClientBag />} />
