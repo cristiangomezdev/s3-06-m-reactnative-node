@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { View, Text, Image, TouchableWithoutFeedback, Dimensions } from "react-native"
-
+import { useDispatch } from "react-redux";
+import { increase,decrease } from "../../actions/cart";
 const ScreenHeight = Dimensions.get("window").height;
 const ScreenWidth = Dimensions.get("window").width;
 
@@ -11,16 +12,24 @@ const ContenedorHeight = Math.floor(ScreenWidth * 0.5)
 
 const BagItem  = (props) => {
 
-    const [count, setCount] = useState(props.cantidad);
+    const [count, setCount] = useState(props.quantity); //lo cambie a quantity antes era cantidad
+
+    const dispatch = useDispatch();
+
 
     /* En cada funcion onPress se debe de poner una peticion api para 
     cambiar el valor de cantidad de la base de datos. 
     Tampoco estamos validando stock */
     const onPressMenos = () => {
         setCount(count == 0 ? 0 : count - 1);
+        if(count !== 0){
+            dispatch(decrease(props.id))
+        }
+        
       };
     const onPressMas = () => {
         setCount(count + 1);
+        dispatch(increase(props.id))
       };
     
     const valTotal = count * props.price

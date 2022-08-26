@@ -1,7 +1,7 @@
 import { types } from '../types/types';
-
+import products from '../data/productos'
 const initialState = { 
-    cart: []
+    cart: products
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -11,7 +11,6 @@ const cartReducer = (state = initialState, action) => {
             const { id } = action.payload;
             const find = state.cart.find((item) => item.id === id);
             if(find){
-                
                     let itemCart = state.cart.map((item) =>
                     item.id === id
                     ? {
@@ -20,24 +19,22 @@ const cartReducer = (state = initialState, action) => {
                       }
                     : item
                     )
-
-                /* let itemCart = {...action.payload,quantity:2}; */
                 newCart = itemCart;
-                console.log(state)
             return {
                 ...state,
                 cart: newCart}
             }
             let itemCart = {...action.payload,quantity:1};
             newCart = [...state.cart,itemCart];
-            console.log(state)
+
         return {
             ...state,
             cart: newCart}
 
         case types.cartIncrease:{
-            const {id} = action.payload;
+            const id = action.payload;
             newCart = state.cart.map(item => {
+                
                 if(id === item.id)
                     return {...item,quantity: item.quantity+1};
                 return item;
@@ -48,12 +45,13 @@ const cartReducer = (state = initialState, action) => {
             }
         }  
         case types.cartDecrease:{
-            const {id,number} = action.payload;
+            const id = action.payload;
             newCart = state.cart.map(item => {
                 if(id === item.id)
-                    return {...item,quantity: item.quantity-number};
+                    return {...item,quantity: item.quantity-1};
                 return item;
             })
+            console.log(newCart)
             return {
                 ...state,
                 cart:newCart
@@ -81,4 +79,10 @@ const cartReducer = (state = initialState, action) => {
             return state;
     }
 };
+
+export function getTotal(state) {
+    console.log(state)
+  }
+
 export default cartReducer;
+

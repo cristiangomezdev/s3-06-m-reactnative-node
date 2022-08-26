@@ -10,7 +10,7 @@ import { add } from "../actions/cart";
 import { useNavigate } from "react-router-native";
 const { width } = Dimensions.get("window");
 const ScreenHeight = Dimensions.get("window").height;
-useNavigate
+
 const images = [
   {
     description: "Comida",
