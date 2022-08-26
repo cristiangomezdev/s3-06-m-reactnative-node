@@ -46,7 +46,7 @@
  *      400:
  *        $ref: '#/components/responses/BadRequest'
  *      404:
- *        $ref: '#/components/responses/NotFound'
+ *        $ref: '#/components/responses/NotFoundUser'
  *      500:
  *        $ref: '#/components/responses/InternalServerError'
  * 
@@ -166,7 +166,7 @@
  *              msg: string
  *          example:
  *            msg: email already registered
- *    NotFound:
+ *    NotFoundUser:
  *      description: Not Found
  *      content:
  *        application/json:

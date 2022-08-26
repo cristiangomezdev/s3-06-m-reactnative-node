@@ -27,12 +27,16 @@ app.use(cors())
 //Routes
 let authRouter = require('./routes/auth')
 let categorieRouter = require('./routes/categorie')
+let productRouter = require('./routes/products')
+let ordersRouter = require('./routes/orders')
 
 app.use('/auth', authRouter)
 app.use('/categories', categorieRouter);
+app.use('/products', productRouter);
+app.use('/orders', ordersRouter);
 app.use('/', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 
 app.listen(PORT, ()=>{
-    console.log(`Server only in port: ${PORT}`)
+    console.log(`Server only in port: ${PORT} \nhttp://localhost:${PORT}`)
 })

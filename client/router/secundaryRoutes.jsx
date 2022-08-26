@@ -21,8 +21,6 @@ import { StatusBar } from "react-native";
 import SubNavHome from "../components/subNavforPage/subNavHome";
 import { useSelector } from "react-redux";
 import SubNavProducts from "../components/subNavforPage/subNavProducts";
-import CrisPage from "../devpages/CrisPage";
-import ClaudiaPageMyBag from "../devpages/ClaudiaPageMyBag";
 import ProductDetail from "../pages/ProductDetail";
 import ClientBag from "../pages/ClientBag";
 
@@ -35,9 +33,9 @@ export default function SecundaryRoutes() {
   return (
     <View style={styles.container}>
       <Search />
-      {location.pathname === "/home" && <SubNavHome />}
+
       {location.pathname === "/products" && <SubNavProducts />}
-      {location.pathname === "/bag"  && <SubNavProducts />}
+      {location.pathname === "/bag" && <SubNavProducts />}
       <Routes>
         <Route path="/home" element={<Homepage />}></Route>
         <Route path="/bag" element={<ClientBag />} />
