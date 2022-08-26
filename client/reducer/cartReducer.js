@@ -81,7 +81,9 @@ const cartReducer = (state = initialState, action) => {
 };
 
 export function getTotal(state) {
-    console.log(state)
+    return state.cart.reduce((acc,item)=> {
+      return acc = acc + item.price*item.quantity
+    },0)
   }
 
 export default cartReducer;

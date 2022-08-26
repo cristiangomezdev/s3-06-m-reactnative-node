@@ -6,7 +6,8 @@ import {getTotal} from '../../reducer/cartReducer'
 
 const ListaBag = () => {
     const products = useSelector((state) => state.CartReducer)
-
+    const productss = useSelector((state) => getTotal(state.CartReducer))
+    console.log(productss)
     return (
         <FlatList
             data= {products.cart}
