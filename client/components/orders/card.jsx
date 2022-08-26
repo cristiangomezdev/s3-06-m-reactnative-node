@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Text, TouchableHighlight } from "react-native";
-import { formatDate } from '../../helpers/parseDate'
+import { formatDate } from '../../helpers/FunctionVarious'
 import { Link } from 'react-router-native'
 const Card = ({NumberOrder, date, totalPrice, products, amount, status, _id}) => {
   const handleClick = ()=>{
