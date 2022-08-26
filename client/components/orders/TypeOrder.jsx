@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { Link, useLocation } from "react-router-native";
 
-const TypeOrder = () => {
+const TypeOrder = ({setStatus, setOrders}) => {
   let location = useLocation()
   let isActive = (pathname,route, type) =>{
     if (type) {
@@ -12,14 +12,14 @@ const TypeOrder = () => {
   } 
   return (
     <View style={styles.containButton}>
-      <Link to='/profile/orders?type=delivered' style={isActive(location.search, 'delivered', true)} underlayColor='rbga(0,0,0,0)'>
-        <Text style={isActive(location.search, 'delivered', false)} underlayColor='rbga(0,0,0,0)' >Delivered</Text>
+      <Link to='/profile/orders?type=Delivered' style={isActive(location.search, 'Delivered', true)} underlayColor='rbga(0,0,0,0)'>
+        <Text style={isActive(location.search, 'Delivered', false)} underlayColor='rbga(0,0,0,0)' >Delivered</Text>
       </Link>
-      <Link to='/profile/orders?type=processing' style={isActive(location.search, 'processing', true)} underlayColor='rbga(0,0,0,0)' >
-        <Text style={isActive(location.search, 'processing', false)} >Processing</Text>
+      <Link to='/profile/orders?type=Processing' style={isActive(location.search, 'Processing', true)} underlayColor='rbga(0,0,0,0)' >
+        <Text style={isActive(location.search, 'Processing', false)} >Processing</Text>
       </Link>
-      <Link to='/profile/orders?type=cancelled' style={isActive(location.search, 'cancelled', true)} underlayColor='rbga(0,0,0,0)' >
-        <Text style={isActive(location.search, 'cancelled', false)}>Cancelled</Text>
+      <Link to='/profile/orders?type=Cancelled' style={isActive(location.search, 'Cancelled', true)} underlayColor='rbga(0,0,0,0)' >
+        <Text style={isActive(location.search, 'Cancelled', false)}>Cancelled</Text>
       </Link>
     </View>
   );

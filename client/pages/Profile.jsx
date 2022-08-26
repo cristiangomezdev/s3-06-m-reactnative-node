@@ -41,7 +41,7 @@ const Profile = () => {
     {
       text1: "My orders",
       text2: "Already have 12 orders",
-      path: "/profile/orders?type=delivered",
+      path: "/profile/orders",
       ligth: false,
     },
     {

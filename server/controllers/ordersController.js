@@ -52,6 +52,7 @@ class ordersController {
     }
     static async getUserOrders(req,res){
         let idUser = req.params.idUser
+        let status = req.query.type
         let user;
         let order;
         try {
@@ -61,14 +62,14 @@ class ordersController {
                     msg : 'user not found'
                 })
             }
-            order = await Order.find({ userId : idUser}).populate('userId')
+            order = await Order.find({ userId : idUser, status}).populate('userId').sort({createdAt : -1})
         } catch (error) {
             console.log(error)   
             return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
                 msg : 'Something went wrong, the server was unable to complete your request'
             }) 
         }
-        if(!order){
+        if(!order || order.length < 1){
             return res.status(httpStatus.NOT_FOUND).json({
                 msg : 'orders not found'
             })
@@ -90,7 +91,7 @@ class ordersController {
                 let order = new Order({
                     NumberOrder : Date.now(),
                     date : formatDate(Date()),
-                    status : 'Processing',
+                    status : 'Delivered',
                     shippingAddress,
                     paymentMethod,
                     products : p,

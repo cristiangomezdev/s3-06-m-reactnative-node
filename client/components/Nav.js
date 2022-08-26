@@ -64,7 +64,7 @@ export default function Nav() {
             <Ionicons name={'heart'} color={isActive(location.pathname,'/EzePage')} size={size}/>
           </Link>
 
-          <Link style={styles.link} to="/profile?type=delivered" underlayColor="rgba(0,0,0,0)">
+          <Link style={styles.link} to="/profile" underlayColor="rgba(0,0,0,0)">
             <Ionicons name={'account'} color={isActive(location.pathname,'/profile')} size={size}/>
           </Link>
         </View>
