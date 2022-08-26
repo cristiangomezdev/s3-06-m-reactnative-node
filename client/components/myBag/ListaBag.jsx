@@ -16,7 +16,7 @@ const ScreenHeight = Dimensions.get("window").height;
 const ListaBag = () => {
     const products = useSelector((state) => state.CartReducer)
     const productss = useSelector((state) => getTotal(state.CartReducer))
-    console.log(productss)
+console.log(productss) 
     
     let [fontsLoaded] = useFonts({
         poppins: require("../../assets/fonts/Poppins-Light.ttf"),
@@ -42,13 +42,13 @@ const ListaBag = () => {
           <Text style={styles.titlePage}>My Bag</Text>
         </View>
         <View>          
-          {productos.map((item, i) => (             
+          {products.cart.map((item, i) => (             
               <BagItem {...item}
               key={i}                
               />
          ))}
           <View style={styles.contenedorTotal}>
-            <Text style={styles.totalBag}> Total: {totalBag} </Text>
+            <Text style={styles.totalBag}> Total: {productss} </Text>
           </View>
           <View>
             <ButtonCheckOut />

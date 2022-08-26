@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { View, Text, Image, TouchableWithoutFeedback, Dimensions } from "react-native"
 import { useDispatch } from "react-redux";
-import { increase,decrease } from "../../actions/cart";
+import { increase,decrease, eliminate } from "../../actions/cart";
 
 
 const ScreenHeight = Dimensions.get("window").height;
@@ -24,9 +24,7 @@ const BagItem  = (props) => {
     Tampoco estamos validando stock */
     const onPressMenos = () => {
         setCount(count == 0 ? 0 : count - 1);
-        if(count !== 0){
-            dispatch(decrease(props.id))
-        }
+        count !== 0 ? dispatch(decrease(props.id)) : dispatch(eliminate(props.id))
         
       };
     const onPressMas = () => {
@@ -34,8 +32,8 @@ const BagItem  = (props) => {
         dispatch(increase(props.id))
       };
       const onPressBorrar= () => {
-        ;
-      };
+        dispatch(eliminate(props.id))
+      }
     
     const valTotal = count * props.price
     

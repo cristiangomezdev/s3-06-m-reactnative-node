@@ -63,7 +63,7 @@ export default function Login() {
             .then((response) => {
 
                 if (response.status == "success") {
-                    navigate("/home");
+                    navigate("/home?cate=dog");
                 }
 
                 if (response.status == "error") {

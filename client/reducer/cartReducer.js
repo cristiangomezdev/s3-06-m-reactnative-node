@@ -1,7 +1,7 @@
 import { types } from '../types/types';
 import products from '../data/productos'
 const initialState = { 
-    cart: products
+    cart: ""
 };
 
 const cartReducer = (state = initialState, action) => {
@@ -9,6 +9,7 @@ const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.cartAdd:
             const { id } = action.payload;
+            console.log(id)
             const find = state.cart.find((item) => item.id === id);
             if(find){
                     let itemCart = state.cart.map((item) =>
@@ -80,11 +81,12 @@ const cartReducer = (state = initialState, action) => {
     }
 };
 
-export function getTotal(state) {
+ export function getTotal(state) {
+    console.log(state)
     return state.cart.reduce((acc,item)=> {
       return acc = acc + item.price*item.quantity
     },0)
-  }
+  } 
 
 export default cartReducer;
 

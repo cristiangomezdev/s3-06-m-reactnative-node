@@ -48,7 +48,7 @@ export default function ProductDetail() {
     return <Loader />;
   }
   let prod = {
-    id: 3,
+    id: 4,
     name : 'Alimento seco para perros, carne de res y arroz integral, bolsa de 5 libras',
     price : 6.99,
     size: '2.3 kg',

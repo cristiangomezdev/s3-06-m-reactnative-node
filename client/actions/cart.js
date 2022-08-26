@@ -26,3 +26,11 @@ export const decrease = (id) => {
     });
   };
 };
+export const eliminate = (id) => {
+  return (dispatch) => {
+    dispatch({
+      type: types.cartDelete,
+      payload: id,
+    });
+  };
+};

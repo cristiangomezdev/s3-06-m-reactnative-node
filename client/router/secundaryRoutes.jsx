@@ -43,7 +43,7 @@ export default function SecundaryRoutes() {
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/orders" element={<Orders />} />
-
+        <Route path="/products/idInventado" element={<ProductDetail />} />
         <Route path="*" element={<Text>Ruta Global</Text>} />
       </Routes>
       
