@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { register } from "./../actions/auth";
 import { useFonts } from 'expo-font';
 import { StyleSheet, TextInput, Image, Text, View, ScrollView, TouchableHighlight, StatusBar } from 'react-native';
-import { Dimensions } from 'react-native';
+import { Dimensions,Alert } from 'react-native';
 import Loader from './Loader';
 
 const ScreenWidth = Dimensions.get("window").width;
@@ -25,10 +25,13 @@ export default function Signup() {
     };
     dispatch(register(user))
       .then((response) => {
-        console.log("login" + response.status)
         if (response.status == "success") {
-          navigate("/");
+          Alert.alert("Success",response.message);
+          navigate("/home");
         }
+        if (response.status == "error") {
+          Alert.alert("Error",response.message);
+      }
       })
       .catch((error) => {
         navigate("/signup");

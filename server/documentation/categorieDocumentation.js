@@ -56,6 +56,8 @@
  *    responses:
  *      200:
  *        $ref: '#/components/responses/OKCREATE'
+ *      400:
+ *        $ref: '#/components/responses/BadRequestCategorieCreate'
  *      500:
  *        $ref: '#/components/responses/InternalServerError'
  * 
@@ -83,6 +85,8 @@
  *    responses:
  *      200:
  *        $ref: '#/components/responses/OKEDIT'
+ *      400:
+ *        $ref: '#/components/responses/BadRequestCategorieCreate'
  *      500:
  *        $ref: '#/components/responses/InternalServerError'
  * 
@@ -191,7 +195,7 @@
  *              msg: string
  *          example:
  *            msg : successful delete
- *    BadRequest:
+ *    BadRequestCategorieCreate:
  *      description: Bad Request
  *      content:
  *        application/json:
@@ -200,7 +204,18 @@
  *            content:
  *              msg: string
  *          example:
- *            msg: category not found
+ *            errors: [
+ *              {
+ *                msg : "name is required",
+ *                param : name,
+ *                location : body,
+ *              },
+ *              {
+ *                msg : "Wrong subCategoriesId, string only",
+ *                param : subCategoriesId,
+ *                location : body,
+ *              }
+ *            ]
  *    NotFound:
  *      description: Not Found
  *      content:

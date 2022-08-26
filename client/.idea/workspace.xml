@@ -5,16 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36f7e1bd-1d32-442f-9ee5-78b8cad8ea56" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/list_Perros/ListaProductos.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/list_Perros/ListaProductos.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/list_Perros/ProductoItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/list_Perros/ProductoItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/myBag/BagItem.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/myBag/BagItem.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/myBag/ListaBag.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/myBag/ListaBag.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/devpages/ClaudiaPageMyBag.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/subNavforPage/subNavHomeData.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/controllers/ordersController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/controllers/productsController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/database/models/order.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/database/models/product.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/documentation/ordersDocumentation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/documentation/productsDocumentation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/helpers/parseDate.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/helpers/variousFunctions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/routes/orders.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/routes/products.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/validator/addOrders.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/validator/categoriesValidator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/validator/productValidator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/validator/productsUpdateValidator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/validator/subCategoriesValidator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/validator/updateOrders.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/actions/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/subNavforPage/subNavHome.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/subNavforPage/subNavHome.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/devpages/CrisPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/devpages/CrisPage.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helpers/authService.js" beforeDir="false" afterPath="$PROJECT_DIR$/helpers/authService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/Signup.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/Signup.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/homepage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/homepage.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/router/AppRoutes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/router/AppRoutes.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/router/secundaryRoutes.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/router/secundaryRoutes.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/controllers/categoriesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server/controllers/categoriesController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/database/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server/database/models/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/documentation/authDocumentation.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server/documentation/authDocumentation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/documentation/categorieDocumentation.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server/documentation/categorieDocumentation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/documentation/subCategorieDocumentation.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server/documentation/subCategorieDocumentation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/routes/categorie.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server/routes/categorie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/routes/subCategorie.js" beforeDir="false" afterPath="$PROJECT_DIR$/../server/routes/subCategorie.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
