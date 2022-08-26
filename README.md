@@ -4,6 +4,6 @@ App e-commerce de Mascotas
 * ### Claudia Betancourt ###
 * ### Cristian Gomez ###
 * ### Marcos Britos ###
-* ### Oriana de Caro ###
+* ### Oriana De Caro ###
 * ### Richard Irala ###
 
