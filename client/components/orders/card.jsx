@@ -1,7 +1,8 @@
 import React from "react";
 import { View, StyleSheet, Text, TouchableHighlight } from "react-native";
-import { formatDate } from '../../helpers/parseDate'
-const Card = ({NumberOrder, date, totalPrice, products, amount, status}) => {
+import { formatDate } from '../../helpers/FunctionVarious'
+import { Link } from 'react-router-native'
+const Card = ({NumberOrder, date, totalPrice, products, amount, status, _id}) => {
   const handleClick = ()=>{
 
   }
@@ -20,9 +21,9 @@ const Card = ({NumberOrder, date, totalPrice, products, amount, status}) => {
         </Text>
       </View>
       <View style={styles.data}>
-        <TouchableHighlight style={styles.buttonOrder} underlayColor='rgba(170,170,170,0.1)' onPress={handleClick}>
+        <Link to={`/profile/orders/detail/${_id}`} style={styles.buttonOrder} underlayColor='rgba(170,170,170,0.1)'>
           <Text>Details</Text>
-        </TouchableHighlight>
+        </Link>
         <Text style={styles.status}>{status}</Text>
       </View>
     </View>
