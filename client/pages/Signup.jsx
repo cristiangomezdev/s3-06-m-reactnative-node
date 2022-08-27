@@ -14,15 +14,52 @@ export default function Signup() {
   const [name, setName] = useState();
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
+  const [confirmPass, setConfirmPass] = useState(); 
 
   const dispatch = useDispatch();
 
+  function isValidEmail(email) {
+    return /\S+@\S+.\S+/.test(email);
+}
+
+ const validacion = () => {
+    if (!isValidEmail(email)) {
+        Alert.alert('Email wrong - front validation');
+        return false
+    }
+    if (!email.trim()) {
+      Alert.alert('Email is required - front validation');
+      return false
+  }
+    if (!name.trim()) {
+        Alert.alert('Name and Lastname is required - front validation');
+        return false
+    }
+    if (!password.trim()) {
+        Alert.alert(' Password is required! - front validation');
+        return false
+    }
+    if (password.length < 8) {
+        Alert.alert('Password min 8 o max 12 characters! - front validation');
+        return false
+    }
+    if ( confirmPass !== password.value ) {
+      Alert.alert('Incorrect confirm Password - front validation');
+      return false
+  }
+}
+    
   const onRegister = () => {
     let user = {
       name: name,
       password: password,
       email: email,
     };
+
+    if (!validacion()) {
+      return
+  } 
+
     dispatch(register(user))
       .then((response) => {
         if (response.status == "success") {
@@ -73,6 +110,13 @@ export default function Signup() {
             onChangeText={(text) => setPassword(text)}
             secureTextEntry={true}
             placeholder='Password' 
+            style={styles.input} 
+            required />
+            <TextInput 
+            value={confirmPass}
+            onChangeText={(text) => setConfirmPass(text)}
+            secureTextEntry={true}
+            placeholder='Confirm Password' 
             style={styles.input} 
             required />
           </View>
@@ -165,5 +209,5 @@ const styles = StyleSheet.create({
   arrow: {
     width: 40,
     height: 18,
-  }
-});
+  },
+})
