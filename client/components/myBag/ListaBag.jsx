@@ -7,7 +7,7 @@ import {View, Text, FlatList, StyleSheet, ScrollView, Dimensions} from 'react-na
 import productos from '../../data/productosBag'
 import {useSelector} from 'react-redux';
 import BagItem from './BagItem'
-import {getTotal} from '../../reducer/cartReducer'
+import {getTotal,getProducts} from '../../reducer/cartReducer'
 
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
@@ -15,9 +15,8 @@ const ScreenHeight = Dimensions.get("window").height;
 
 const ListaBag = () => {
     const products = useSelector((state) => state.CartReducer)
-    const productss = useSelector((state) => getTotal(state.CartReducer))
-console.log(productss) 
-    
+    const totalCart = useSelector((state) => getTotal(state.CartReducer))
+  
     let [fontsLoaded] = useFonts({
         poppins: require("../../assets/fonts/Poppins-Light.ttf"),
         "poppins-regular": require("../../assets/fonts/Poppins-Regular.ttf"),
@@ -42,13 +41,9 @@ console.log(productss)
           <Text style={styles.titlePage}>My Bag</Text>
         </View>
         <View>          
-          {products.cart.map((item, i) => (             
-              <BagItem {...item}
-              key={i}                
-              />
-         ))}
+          {products.cart !== "" ? products.cart.map((item, i) => (<BagItem {...item} key={i}/>)) : null}
           <View style={styles.contenedorTotal}>
-            <Text style={styles.totalBag}> Total: {productss} </Text>
+            <Text style={styles.totalBag}> Total: ${totalCart} </Text>
           </View>
           <View>
             <ButtonCheckOut />
@@ -108,23 +103,3 @@ const styles = StyleSheet.create({
   });
 
   export default ListaBag
-
-  /* import React from "react";
-import {View, Text, FlatList, StyleSheet, ScrollView, Dimensions} from 'react-native'
-import productos from '../../data/productosBag'
-import {useSelector} from 'react-redux';
-import BagItem from './BagItem'
-import {getTotal} from '../../reducer/cartReducer'
-
-const ListaBag = () => {
-    const products = useSelector((state) => state.CartReducer)
-    const productss = useSelector((state) => getTotal(state.CartReducer))
-    console.log(productss)
-    return (
-        <FlatList
-            data= {products.cart}
-            style= {{backgroundColor: 'E5E5E5', margin: 5, marginBottom: 110}}
-            renderItem= {({item: producto}) => (
-                <BagItem {...producto} />
-            )}
-        /> */

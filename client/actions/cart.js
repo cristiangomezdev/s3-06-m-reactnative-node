@@ -2,12 +2,10 @@ import { types } from "../types/types";
 
 export const add = (product) => {
   return (dispatch) => {
-/*            dispatch({
-        type:types.cartClear})  */
-    dispatch({
+       dispatch({
       type: types.cartAdd,
       payload: product,
-    });
+    });   
   };
 };
 export const increase = (id) => {
@@ -32,5 +30,11 @@ export const eliminate = (id) => {
       type: types.cartDelete,
       payload: id,
     });
+  };
+};
+export const clear = (product) => {
+  return (dispatch) => {
+        dispatch({
+        type:types.cartClear})    
   };
 };

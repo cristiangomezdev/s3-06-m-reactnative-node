@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import { View, Text, Image, TouchableWithoutFeedback, Dimensions } from "react-native"
 import { useDispatch } from "react-redux";
 import { increase,decrease, eliminate } from "../../actions/cart";
@@ -13,9 +13,7 @@ const ContenedorHeight = 150
 
 
 const BagItem  = (props) => {
-
     const [count, setCount] = useState(props.quantity); //lo cambie a quantity antes era cantidad
-
     const dispatch = useDispatch();
 
 
@@ -24,7 +22,7 @@ const BagItem  = (props) => {
     Tampoco estamos validando stock */
     const onPressMenos = () => {
         setCount(count == 0 ? 0 : count - 1);
-        count !== 0 ? dispatch(decrease(props.id)) : dispatch(eliminate(props.id))
+        count !== 1 ? dispatch(decrease(props.id)) : dispatch(eliminate(props.id))
         
       };
     const onPressMas = () => {
@@ -34,9 +32,8 @@ const BagItem  = (props) => {
       const onPressBorrar= () => {
         dispatch(eliminate(props.id))
       }
-    
-    const valTotal = count * props.price
-    
+   
+
     return(
         <View key= {props.id} style={Styles.contenedor}>
             <View style={Styles.contenedorImagen}>
@@ -64,7 +61,7 @@ const BagItem  = (props) => {
                         </TouchableWithoutFeedback>                    
 
                         <View style={Styles.countContainer}>
-                            <Text style={Styles.countText}>{count}</Text>
+                            <Text style={Styles.countText}>{props.quantity}</Text>
                         </View>
 
                         <TouchableWithoutFeedback onPress={onPressMas}>
@@ -83,7 +80,7 @@ const BagItem  = (props) => {
                             </View>
                     
                             <View style= {Styles.contenedorPrice}>
-                                <Text style={Styles.price}>${valTotal}</Text>
+                                <Text style={Styles.price}>${Math.round(props.price * props.quantity)}</Text>
                             </View>                      
                     </View>                  
                 </View>

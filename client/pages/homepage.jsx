@@ -53,7 +53,7 @@ const Homepage = () => {
     <ScrollView>
       <View style={styles.container}>
         <SubNavHome setCategory={setCategory} />
-        <View>
+          <View>
           <View>
             {category ? <SimpleCard /> : <View></View>}
             {category ? (
@@ -70,7 +70,7 @@ const Homepage = () => {
               <View></View>
             )}
           </View>
-        </View>
+        </View>  
       </View>
     </ScrollView>
   );

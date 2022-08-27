@@ -14,7 +14,7 @@ const PathDetail = '/products/232'
 const ProductoItem = (props) => {
     const navigate = useNavigate()
     const handleClick = ()=>{
-        navigate(PathDetail)
+        navigate(`/products/${props.id}`)
     }
 
     return (

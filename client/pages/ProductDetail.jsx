@@ -7,7 +7,9 @@ import Button from "../components/Button";
 import { useSelector,useDispatch } from "react-redux";
 import { types } from "../types/types";
 import { add } from "../actions/cart";
-import { useNavigate } from "react-router-native";
+import { useNavigate ,useLocation,useParams} from "react-router-native";
+import productosDetail from "../data/productosDetail";
+
 const { width } = Dimensions.get("window");
 const ScreenHeight = Dimensions.get("window").height;
 
@@ -35,6 +37,7 @@ const images = [
 ];
 
 export default function ProductDetail() {
+  let params = useParams();
   let navigate = useNavigate();
   let dispatch = useDispatch();
   let [fontsLoaded] = useFonts({
@@ -47,17 +50,11 @@ export default function ProductDetail() {
   if (!fontsLoaded) {
     return <Loader />;
   }
-  let prod = {
-    id: 4,
-    name : 'Alimento seco para perros, carne de res y arroz integral, bolsa de 5 libras',
-    price : 6.99,
-    size: '2.3 kg',
-    brand: 'Wag',
-    image : require('../assets/imgs/Alimento1.jpg'),
-    cantidad: 1
-    }
+
+  let [product] = productosDetail.filter((item)=>{ return params.id == item.id})
+ 
   const onPressHandler = () => {
-    dispatch(add(prod));
+    dispatch(add(product));
     Alert.alert('Added','your product is now in your bag')
     navigate('/bag')
   };
@@ -65,14 +62,14 @@ export default function ProductDetail() {
   return (
     <>
       <ScrollView style={styles.scrollContainer}>
-         <ImageCarousel images={images}/> 
+         <ImageCarousel images={images} id={product.id}/> 
         <View style={styles.container}>
           <View style={styles.containerTitle}>
-            <Text style={styles.price}>Pedrige</Text>
-            <Text style={styles.price}>U$S 50.99</Text>
+            <Text style={styles.price}>{product.brand}</Text>
+            <Text style={styles.price}>U$S {product.price}</Text>
           </View>
           <View style={styles.containerSubtitle}>
-            <Text style={styles.subprice}>Comida balanceada 8kg</Text>
+            <Text style={styles.subprice}>{product.name}</Text>
           </View>
           <View style={styles.containerContent}>
             <Text style={styles.content}>

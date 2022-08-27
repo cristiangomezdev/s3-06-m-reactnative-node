@@ -10,6 +10,7 @@ export const ImageCarousel = ({images}) => {
   const [state, setFirst] = useState({
     active:0
   })
+
   let amount = width/images.length; 
 const change = ({nativeEvent}) =>{
   
@@ -27,13 +28,14 @@ const change = ({nativeEvent}) =>{
       showsHorizontalScrollIndicator={false}
       style={style.scroll}>
         {
-          images.length === 0 ? <Image source={noAvailable} style={style.image}/> :
+          images.length === 0 ? 
+          <Image source={noAvailable} style={style.image}/> :
           images.map((image,index)=>(
-            <Image
-            key={image.id}
-            source={{uri: image.uri}}
+             <Image
+             key={index} 
+            source={{uri:image.uri}}
             style={style.image}
-          />
+          /> 
           ))
         }
       </ScrollView>
