@@ -24,6 +24,7 @@ import SubNavProducts from "../components/subNavforPage/subNavProducts";
 import CrisPage from "../devpages/CrisPage";
 import ProductDetail from "../pages/ProductDetail";
 import ClientBag from "../pages/ClientBag";
+import DetailOrder from "../components/orders/DetailOrder";
 
 const ScreenHeight = Dimensions.get("window").height;
 
@@ -44,6 +45,7 @@ export default function SecundaryRoutes() {
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/orders" element={<Orders />} />
+        <Route path="/profile/orders/detail/:id" element={<DetailOrder />} />
 
         <Route path="*" element={<Text>Ruta Global</Text>} />
       </Routes>

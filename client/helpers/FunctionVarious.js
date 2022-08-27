@@ -11,3 +11,7 @@ export const formatDate = (date)=>{
     }
     return date
 }
+
+export const parseTargetCredit = (number)=>{
+    return(`**** **** **** ${number.slice((number.length - 4))}`)
+}

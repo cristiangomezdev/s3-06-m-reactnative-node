@@ -21,7 +21,7 @@ export default function AppRoutes() {
     <>
       <StatusBar style="black" backgroundColor="#F9F9F9" />
       <Routes>
-        <Route path="/" element={ !state.token ? <Login /> : <Navigate to='/home' /> } />
+        <Route path="/" element={ !state.token ? <Login /> : <Navigate to='/home?cate=dog' /> } />
         <Route path="/products/idInventado" element={<ProductDetail />} />
         <Route path="/ListBag" element={<ListBag />} />
         <Route path="/signup" element={ !state.token ? <Signup /> : <Navigate to='/home?cate=dog' /> } />

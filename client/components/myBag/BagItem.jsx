@@ -26,13 +26,16 @@ const BagItem  = (props) => {
       const onPressBorrar= () => {
         ;
       };
-    
     const valTotal = count * props.price
-    
     return(
         <View key= {props.id} style={Styles.contenedor}>
             <View style={Styles.contenedorImagen}>
-                <Image source={props.image} style={Styles.image} />
+                {!props.detailOrder && (
+                    <Image source={props.images[0]} style={Styles.image} /> 
+                )}
+                {props.detailOrder && (
+                    <Image source={{uri : props.images[0]}} style={Styles.image} />
+                )}
             </View>
 
             <View style={Styles.contenedorBag}>
@@ -40,43 +43,60 @@ const BagItem  = (props) => {
                     <Text style={Styles.name}>{props.name}</Text>
                 </View>
 
-                <View style={Styles.contenedorBrandSize}>
-                    <Text style={Styles.brand}>{props.brand}</Text>
-                    <Text style={Styles.size}>{props.size}</Text>
-                </View>
+                {!props.detailOrder && (
+                    <View style={Styles.contenedorBrandSize}>
+                        <Text style={Styles.brand}>{props.brand}</Text>
+                        <Text style={Styles.size}>{props.size}</Text>
+                    </View>
+                )}
 
                 <View style={Styles.contenedorCountPrice}>
-                    <View style= {Styles.contenedorCount}>
-                        <TouchableWithoutFeedback onPress={onPressMenos}>
-                            <View>
-                                <Image style={Styles.minusIcon}
-                                    source={require('../../assets/iconMenos.png')}
-                                />
-                            </View>
-                        </TouchableWithoutFeedback>                    
-
-                        <View style={Styles.countContainer}>
-                            <Text style={Styles.countText}>{count}</Text>
-                        </View>
-
-                        <TouchableWithoutFeedback onPress={onPressMas}>
-                            <Image style={Styles.plusIcon}
-                                source={require('../../assets/iconMas.png')}
-                            />
-                        </TouchableWithoutFeedback>
-                    </View>
-                    <View style= {Styles.contenedorBorrarPrecio}>
-                            <View style= {Styles.contenedorBorrar}>
-                                <TouchableWithoutFeedback onPress={onPressBorrar}>
-                                    <Image style={Styles.borrarIcon}
-                                        source={require('../../assets/icons_eliminar.png')}
+                    {!props.detailOrder && (
+                        <View style= {Styles.contenedorCount}>
+                            <TouchableWithoutFeedback onPress={onPressMenos}>
+                                <View>
+                                    <Image style={Styles.minusIcon}
+                                        source={require('../../assets/iconMenos.png')}
                                     />
-                                </TouchableWithoutFeedback>
+                                </View>
+                            </TouchableWithoutFeedback>                    
+
+                            <View style={Styles.countContainer}>
+                                <Text style={Styles.countText}>{count}</Text>
                             </View>
-                    
-                            <View style= {Styles.contenedorPrice}>
-                                <Text style={Styles.price}>${valTotal}</Text>
-                            </View>                      
+
+                            <TouchableWithoutFeedback onPress={onPressMas}>
+                                <Image style={Styles.plusIcon}
+                                    source={require('../../assets/iconMas.png')}
+                                />
+                            </TouchableWithoutFeedback>
+                        </View> 
+                    )}
+                    <View style= {Styles.contenedorBorrarPrecio}>
+                            {!props.detailOrder && (
+                                <View style= {Styles.contenedorBorrar}>
+                                    <TouchableWithoutFeedback onPress={onPressBorrar}>
+                                        <Image style={Styles.borrarIcon}
+                                            source={require('../../assets/icons_eliminar.png')}
+                                        />
+                                    </TouchableWithoutFeedback>
+                                </View>
+                            )}
+                            {!props.detailOrder && (
+                                <View style= {Styles.contenedorPrice}>
+                                    <Text style={Styles.price}>${valTotal}</Text>
+                                </View>                      
+                            )}
+                            {props.detailOrder && (
+                                <>
+                                    <View style= {Styles.contenedorPrice}>
+                                        <Text style={Styles.textLigth}>Cantidad: {props.amount}</Text>
+                                    </View>                     
+                                    <View style= {Styles.contenedorPrice}>
+                                        <Text style={Styles.price}>${props.price}</Text>
+                                    </View>                     
+                                </>
+                            )}
                     </View>                  
                 </View>
             </View>            
@@ -102,7 +122,8 @@ const Styles = {
     contenedorBorrarPrecio: {flex: 1, flexDirection: 'row', justifyContent: 'space-between'},
     borrarIcon:{tintColor: '#9B9B9B', width: 26, height:26, resizeMode: 'cover', borderRadius : 10},
     contenedorPrecio:{alignItems: 'rigth'},
-    price: {color: '#222222', fontWeight: "bold", fontSize: 14, padding: 5}
+    price: {color: '#222222', fontWeight: "bold", fontSize: 14, padding: 5},
+    textLigth : { color: '#9B9B9B', }
 }
     
 

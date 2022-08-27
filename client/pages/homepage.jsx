@@ -57,13 +57,13 @@ const Homepage = () => {
           <View>
             {category ? <SimpleCard /> : <View></View>}
             {category ? (
-              category.map((i) => (
+              category.map((item, i) => (
                 <Link
                   to="/home?cate=cat"
-                  key={i.id}
+                  key={i}
                   underlayColor="rgba(0,0,0,0)"
                 >
-                  <Card description={i.description} uri={i.uri} />
+                  <Card key={i} description={item.description} uri={item.uri} />
                 </Link>
               ))
             ) : (
