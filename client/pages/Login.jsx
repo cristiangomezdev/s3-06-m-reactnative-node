@@ -54,11 +54,11 @@ export default function Login() {
             username,
             password,
         };
-/*         if (!validacion()) {
+         if (!validacion()) {
             return
         }
 
- */
+ 
         dispatch(login(user))
             .then((response) => {
 
