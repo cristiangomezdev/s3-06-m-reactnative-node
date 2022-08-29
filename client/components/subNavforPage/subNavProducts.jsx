@@ -21,7 +21,7 @@ const SubNavProducts = () => {
       {subNavProductsData.map((data, i) => (
         <TouchableHighlight
           key={i}
-          underlayColor="rgba(155, 155, 155, 0.1)"
+          underlayColor="rgba(155, 155, 155, 0)"
           style={styles.card}
           onPress={() => {
             navigateTo(data.to);
