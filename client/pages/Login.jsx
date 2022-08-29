@@ -54,16 +54,16 @@ export default function Login() {
             username,
             password,
         };
-        if (!validacion()) {
+         if (!validacion()) {
             return
         }
 
-
+ 
         dispatch(login(user))
             .then((response) => {
 
                 if (response.status == "success") {
-                    navigate("/home");
+                    navigate("/home?cate=dog");
                 }
 
                 if (response.status == "error") {
@@ -72,6 +72,7 @@ export default function Login() {
 
             })
             .catch((error) => {
+                console.log(error)
                 navigate("/");
             });
 

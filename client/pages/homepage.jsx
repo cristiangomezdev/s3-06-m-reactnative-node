@@ -53,24 +53,24 @@ const Homepage = () => {
     <ScrollView>
       <View style={styles.container}>
         <SubNavHome setCategory={setCategory} />
-        <View>
+          <View>
           <View>
             {category ? <SimpleCard /> : <View></View>}
             {category ? (
-              category.map((item, i) => (
+              category.map((i,index) => (
                 <Link
                   to="/home?cate=cat"
-                  key={i}
+                  key={index}
                   underlayColor="rgba(0,0,0,0)"
                 >
-                  <Card key={i} description={item.description} uri={item.uri} />
+                  <Card key={i} description={i.description} uri={i.uri} />
                 </Link>
               ))
             ) : (
               <View></View>
             )}
           </View>
-        </View>
+        </View>  
       </View>
     </ScrollView>
   );
