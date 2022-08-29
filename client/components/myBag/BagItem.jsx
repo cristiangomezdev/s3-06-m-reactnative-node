@@ -1,5 +1,7 @@
-import React, { useState } from "react"
+import React, { useState,useEffect } from "react"
 import { View, Text, Image, TouchableWithoutFeedback, Dimensions } from "react-native"
+import { useDispatch } from "react-redux";
+import { increase,decrease, eliminate } from "../../actions/cart";
 
 
 const ScreenHeight = Dimensions.get("window").height;
@@ -11,96 +13,100 @@ const ContenedorHeight = 150
 
 
 const BagItem  = (props) => {
+    const [count, setCount] = useState(props.quantity); //lo cambie a quantity antes era cantidad
+    const dispatch = useDispatch();
 
-    const [count, setCount] = useState(props.cantidad);
 
     /* En cada funcion onPress se debe de poner una peticion api para 
     cambiar el valor de cantidad de la base de datos. 
     Tampoco estamos validando stock */
     const onPressMenos = () => {
         setCount(count == 0 ? 0 : count - 1);
+        count !== 1 ? dispatch(decrease(props.id)) : dispatch(eliminate(props.id))
+        
       };
     const onPressMas = () => {
         setCount(count + 1);
+        dispatch(increase(props.id))
       };
       const onPressBorrar= () => {
-        ;
-      };
-    const valTotal = count * props.price
+        dispatch(eliminate(props.id))
+      }
+
     return(
         <View key= {props.id} style={Styles.contenedor}>
-            <View style={Styles.contenedorImagen}>
-                {!props.detailOrder && (
-                    <Image source={props.images[0]} style={Styles.image} /> 
-                )}
-                {props.detailOrder && (
-                    <Image source={{uri : props.images[0]}} style={Styles.image} />
-                )}
+        <View style={[Styles.contenedorImagen, {"backgroundColor": "blue"}]}>
+            {!props.detailOrder && (
+                <Image source={{ uri: "https://centropet.com/wp-content/uploads/2020/06/964154-MLA41475665548_042020-500x931.jpg" }} style={Styles.image} /> 
+            )}
+            {props.detailOrder && (
+                <Image source={{ uri: "https://centropet.com/wp-content/uploads/2020/06/964154-MLA41475665548_042020-500x931.jpg" }} style={Styles.image} />
+            )}
+        </View>
+
+        <View style={Styles.contenedorBag}>
+            <View style={Styles.contenedorName}>
+                <Text style={Styles.name}>{props.name + "holiwis"}</Text>
             </View>
 
-            <View style={Styles.contenedorBag}>
-                <View style={Styles.contenedorName}>
-                    <Text style={Styles.name}>{props.name}</Text>
+            {!props.detailOrder && (
+                <View style={Styles.contenedorBrandSize}>
+                    <Text style={Styles.brand}>{props.brand}</Text>
+                    <Text style={Styles.size}>{props.size}</Text>
                 </View>
+            )}
 
+            <View style={Styles.contenedorCountPrice}>
                 {!props.detailOrder && (
-                    <View style={Styles.contenedorBrandSize}>
-                        <Text style={Styles.brand}>{props.brand}</Text>
-                        <Text style={Styles.size}>{props.size}</Text>
-                    </View>
-                )}
-
-                <View style={Styles.contenedorCountPrice}>
-                    {!props.detailOrder && (
-                        <View style= {Styles.contenedorCount}>
-                            <TouchableWithoutFeedback onPress={onPressMenos}>
-                                <View>
-                                    <Image style={Styles.minusIcon}
-                                        source={require('../../assets/iconMenos.png')}
-                                    />
-                                </View>
-                            </TouchableWithoutFeedback>                    
-
-                            <View style={Styles.countContainer}>
-                                <Text style={Styles.countText}>{count}</Text>
-                            </View>
-
-                            <TouchableWithoutFeedback onPress={onPressMas}>
-                                <Image style={Styles.plusIcon}
-                                    source={require('../../assets/iconMas.png')}
+                    <View style= {Styles.contenedorCount}>
+                        <TouchableWithoutFeedback onPress={onPressMenos}>
+                            <View>
+                                <Image style={Styles.minusIcon}
+                                    source={require('../../assets/iconMenos.png')}
                                 />
-                            </TouchableWithoutFeedback>
-                        </View> 
-                    )}
-                    <View style= {Styles.contenedorBorrarPrecio}>
-                            {!props.detailOrder && (
-                                <View style= {Styles.contenedorBorrar}>
-                                    <TouchableWithoutFeedback onPress={onPressBorrar}>
-                                        <Image style={Styles.borrarIcon}
-                                            source={require('../../assets/icons_eliminar.png')}
-                                        />
-                                    </TouchableWithoutFeedback>
-                                </View>
-                            )}
-                            {!props.detailOrder && (
+                            </View>
+                        </TouchableWithoutFeedback>                    
+
+                        <View style={Styles.countContainer}>
+                            <Text style={Styles.countText}>{count}</Text>
+                        </View>
+
+                        <TouchableWithoutFeedback onPress={onPressMas}>
+                            <Image style={Styles.plusIcon}
+                                source={require('../../assets/iconMas.png')}
+                            />
+                        </TouchableWithoutFeedback>
+                    </View> 
+                )}
+                <View style= {Styles.contenedorBorrarPrecio}>
+                        {!props.detailOrder && (
+                            <View style= {Styles.contenedorBorrar}>
+                                <TouchableWithoutFeedback onPress={onPressBorrar}>
+                                    <Image style={Styles.borrarIcon}
+                                        source={require('../../assets/icons_eliminar.png')}
+                                    />
+                                </TouchableWithoutFeedback>
+                            </View>
+                        )}
+                        {!props.detailOrder && (
+                            <View style= {Styles.contenedorPrice}>
+                                {/* <Text style={Styles.price}>${valTotal}</Text> */}
+                            </View>                      
+                        )}
+                        {props.detailOrder && (
+                            <>
                                 <View style= {Styles.contenedorPrice}>
-                                    <Text style={Styles.price}>${valTotal}</Text>
-                                </View>                      
-                            )}
-                            {props.detailOrder && (
-                                <>
-                                    <View style= {Styles.contenedorPrice}>
-                                        <Text style={Styles.textLigth}>Cantidad: {props.amount}</Text>
-                                    </View>                     
-                                    <View style= {Styles.contenedorPrice}>
-                                        <Text style={Styles.price}>${props.price}</Text>
-                                    </View>                     
-                                </>
-                            )}
-                    </View>                  
-                </View>
-            </View>            
-        </View>
+                                    <Text style={Styles.textLigth}>Cantidad: {props.amount}</Text>
+                                </View>                     
+                                <View style= {Styles.contenedorPrice}>
+                                    <Text style={Styles.price}>${props.price}</Text>
+                                </View>                     
+                            </>
+                        )}
+                </View>                  
+            </View>
+        </View>            
+    </View>
     )
     }
 

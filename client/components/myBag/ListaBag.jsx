@@ -1,17 +1,22 @@
-import React from "react";
-import {View, Text, FlatList, StyleSheet, ScrollView, Dimensions} from 'react-native'
-import productos from '../../data/productosBag'
-import BagItem from './BagItem'
 import { useFonts } from "expo-font";
 import Loader from "../../pages/Loader";
 import ButtonCheckOut from "../ButtonCheckOut";
+
+
+import {View, Text, FlatList, StyleSheet, ScrollView, Dimensions} from 'react-native'
+import productos from '../../data/productosBag'
+import {useSelector} from 'react-redux';
+import BagItem from './BagItem'
+import {getTotal,getProducts} from '../../reducer/cartReducer'
 
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
 
 
 const ListaBag = () => {
-
+    const products = useSelector((state) => state.CartReducer);
+    const totalCart = useSelector((state) => getTotal(state.CartReducer))
+  
     let [fontsLoaded] = useFonts({
         poppins: require("../../assets/fonts/Poppins-Light.ttf"),
         "poppins-regular": require("../../assets/fonts/Poppins-Regular.ttf"),
@@ -36,13 +41,9 @@ const ListaBag = () => {
           <Text style={styles.titlePage}>My Bag</Text>
         </View>
         <View>          
-          {productos.map((item, i) => (             
-              <BagItem {...item}
-              key={i}                
-              />
-         ))}
+          {products.cart !== "" ? products.cart.map((item, i) => (<BagItem {...item} key={i}/>)) : null}
           <View style={styles.contenedorTotal}>
-            <Text style={styles.totalBag}> Total: {totalBag} </Text>
+            <Text style={styles.totalBag}> Total: ${totalCart} </Text>
           </View>
           <View>
             <ButtonCheckOut />

@@ -15,7 +15,7 @@ const ListaProductos = () => {
         taviraj: require("../../assets/fonts/Taviraj-Light.ttf"),
         "taviraj-m": require("../../assets/fonts/Taviraj-Medium.ttf"),
       });
-    
+
       if (!fontsLoaded) {
         return <Loader />;
       }
