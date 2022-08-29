@@ -41,7 +41,7 @@ const Homepage = () => {
 
   useEffect(() => {
     const locationCategoryData = getCategoryQuery(location);
-    console.log(locationCategoryData);
+    
     if (!locationCategoryData) {
       setCategory(cardData);
     } else if (locationCategoryData == "dog") {
