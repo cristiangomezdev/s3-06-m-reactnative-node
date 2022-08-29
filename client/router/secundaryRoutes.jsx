@@ -13,7 +13,7 @@ import Homepage from "../pages/homepage";
 import Search from "../components/Search.jsx";
 import ListProducts from "../pages/ListProducts";
 import ListBag from "../pages/ListBag";
-
+import Success from '../pages/Success';
 import Nav from "../components/Nav";
 import Profile from "../pages/Profile.jsx";
 import Orders from "../pages/Orders";
@@ -23,6 +23,7 @@ import { useSelector } from "react-redux";
 import SubNavProducts from "../components/subNavforPage/subNavProducts";
 import ProductDetail from "../pages/ProductDetail";
 import ClientBag from "../pages/ClientBag";
+import CreditCheckout from "../pages/CreditCheckout";
 
 const ScreenHeight = Dimensions.get("window").height;
 
@@ -44,10 +45,13 @@ export default function SecundaryRoutes() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/orders" element={<Orders />} />
         <Route path="/products/idInventado" element={<ProductDetail />} />
+        <Route path="/credit" element={<CreditCheckout />} />
+        <Route path="/success" element={<Success />} />
         <Route path="*" element={<Text>Ruta Global</Text>} />
       </Routes>
+
+        { ((!location.pathname.includes('/products/')) && (!location.pathname.includes('/credit')) && (!location.pathname.includes('/success'))) ? <Nav /> : null}  
       
-      { !location.pathname.includes('/products/') ? <Nav /> : null}
     </View>
   );
 }
