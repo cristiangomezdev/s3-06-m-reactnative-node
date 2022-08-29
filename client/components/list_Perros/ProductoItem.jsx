@@ -1,6 +1,7 @@
 
 import React from "react"
-import { View, Text, Image, TouchableOpacity, Dimensions } from "react-native"
+import { View, Text, Image, TouchableOpacity, TouchableHighlight, Dimensions } from "react-native"
+import { useNavigate } from 'react-router-native'
 
 const ScreenHeight = Dimensions.get("window").height;
 const ScreenWidth = Dimensions.get("window").width;
@@ -8,12 +9,21 @@ const ScreenWidth = Dimensions.get("window").width;
 const ImageWidth = Math.floor(ScreenWidth * 0.3)
 const ContenedorHeight = Math.floor(ScreenWidth * 0.5)
 
+const PathDetail = '/products/idInventado'
 
-const ProductoItem = (props) => (
+const ProductoItem = (props) => {
+    const navigate = useNavigate()
+    const handleClick = ()=>{
+        navigate(PathDetail)
+    }
+
+    return (
         <View key= {props.id} style={Styles.contenedor}>
-            <View style={Styles.contenedorImagen}>
-                <Image source={props.image} style={Styles.image} />
-            </View>
+            <TouchableHighlight underlayColor="rgba(155, 155, 155, 0.1)" onPress={handleClick} >
+                <View style={Styles.contenedorImagen}>
+                    <Image source={props.image} style={Styles.image} />
+                </View>
+            </TouchableHighlight>
             <View style={Styles.contenedorProducto}>
                 <Text style={Styles.name}>{props.name}</Text>
                 <Text style={Styles.brand}>{props.brand}</Text>
@@ -21,8 +31,8 @@ const ProductoItem = (props) => (
                 <Text style={Styles.price}>${props.price}</Text>
             </View>
         </View>
-    )
-
+    );
+}
 
 const Styles = {
     contenedor: {flex: 1, flexDirection: 'row', backgroundColor : 'rgb(255,255,255)', borderRadius : 10, 

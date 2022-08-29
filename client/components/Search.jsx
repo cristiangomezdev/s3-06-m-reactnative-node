@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const Search = () => {
   let navigate = useNavigate()
+  let location = useLocation()
   const handleClick = (e)=>{
     e.preventDefault()
     navigate(-1)
@@ -17,6 +18,7 @@ const Search = () => {
       <Link to="/" onPress={handleClick} underlayColor="rgba(0,0,0,0)">
         <Image source={backToIcon} style={styles.image} />
       </Link>
+      { location.pathname.includes('/orders/detail') && <Text style={styles.title}>Detail Order</Text>}
       <Image source={searchIcon} style={styles.image} />
     </View>
   );
@@ -24,9 +26,10 @@ const Search = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#ff0000",
+    backgroundColor: "#FFFFFF",
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems : "center",
     paddingVertical: 10,
     width: "100%",
   },
@@ -34,6 +37,11 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
+  title:{
+    fontSize : 18,
+    color : '#9B9B9B',
+    fontWeight : '700'
+  }
 });
 
 export default Search;

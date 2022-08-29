@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-native";
+import { Route, Routes, useLocation } from "react-router-native";
 import {
   StyleSheet,
   Text,
@@ -14,30 +14,39 @@ import Search from "../components/Search.jsx";
 import ListProducts from "../pages/ListProducts";
 import ListBag from "../pages/ListBag";
 
-import OrianaPage from "../devpages/OrianaPage.jsx";
-import RichardPage from "../devpages/RichardPage.jsx";
 import Nav from "../components/Nav";
 import Profile from "../pages/Profile.jsx";
 import Orders from "../pages/Orders";
-
-import { StatusBar as barraDeEstado } from "react-native";
+import { StatusBar } from "react-native";
+import SubNavHome from "../components/subNavforPage/subNavHome";
+import { useSelector } from "react-redux";
+import SubNavProducts from "../components/subNavforPage/subNavProducts";
+import CrisPage from "../devpages/CrisPage";
+import ProductDetail from "../pages/ProductDetail";
+import ClientBag from "../pages/ClientBag";
+import DetailOrder from "../components/orders/DetailOrder";
 
 const ScreenHeight = Dimensions.get("window").height;
 
 export default function SecundaryRoutes() {
+  let location = useLocation();
+
+  const state = useSelector((state) => state);
   return (
     <View style={styles.container}>
       <Search />
-      <Routes>
-        <Route path="/" element={<Homepage />}></Route>
-        <Route path="/ClaudiaPage" element={<ListBag />} />
-        {/* <Route path="/ClaudiaPage" element={<ListProducts />} />
-        <Route path="/ClaudiaPageMyBag" element={<ListBag />} /> */}
 
-        <Route path="/EzePage" element={<Profile />} />
-        <Route path="/EzePage/orders" element={<Orders />} />
-        <Route path="/OrianaPage" element={<OrianaPage />} />
-        <Route path="/RichardPage" element={<RichardPage />} />
+      {location.pathname === "/products" && <SubNavProducts />}
+      {location.pathname === "/bag" && <SubNavProducts />}
+      <Routes>
+        <Route path="/home" element={<Homepage />}></Route>
+        <Route path="/bag" element={<ClientBag />} />
+        <Route path="/products" element={<ListProducts />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/orders" element={<Orders />} />
+        <Route path="/profile/orders/detail/:id" element={<DetailOrder />} />
+
         <Route path="*" element={<Text>Ruta Global</Text>} />
       </Routes>
       <Nav />
@@ -46,7 +55,7 @@ export default function SecundaryRoutes() {
 }
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: barraDeEstado.currentHeight,
+    paddingTop: StatusBar.currentHeight,
     height: ScreenHeight,
     flex: 1,
     backgroundColor: "#f3f3f3",
