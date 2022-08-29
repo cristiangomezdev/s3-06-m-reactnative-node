@@ -6,6 +6,7 @@ import { Dimensions } from 'react-native';
 import Loader from './Loader';
 
 const ScreenWidth = Dimensions.get("window").width;
+const { width } = Dimensions.get("window");
 
 export default function Success() {
     let navigate = useNavigate();
@@ -46,23 +47,22 @@ const styles = StyleSheet.create({
 
     },
     buttonContain: {
-        width: ScreenWidth,
-        flex: 1,
-        alignItems: 'center'
+        flex: 0,
+        alignItems: "center",
     },
     boton: {
         width: ScreenWidth - 50,
-        height: 70,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#2196F3',
-        borderRadius: 20,
-        color: 'white',
-        margin: 'auto'
+        backgroundColor: "#56CBF9",
+        width:  width - 40,
+        height: 50,
+        alignItems: "center",
+        borderRadius: 30,
     },
     botonText: {
-        fontSize: 25,
-        color: 'white',
+        color: "#fff",
+        fontSize: 20,
+        margin: 10,
+        fontFamily : 'poppins',
     },
     
     text: {
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     },
     image:{
       marginTop: 200,
-      marginLeft:150,
+      marginLeft:130,
       marginBottom: 40,
     }
 });
