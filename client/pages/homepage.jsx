@@ -63,7 +63,7 @@ const Homepage = () => {
                   key={index}
                   underlayColor="rgba(0,0,0,0)"
                 >
-                  <Card description={i.description} uri={i.uri} />
+                  <Card key={i} description={i.description} uri={i.uri} />
                 </Link>
               ))
             ) : (

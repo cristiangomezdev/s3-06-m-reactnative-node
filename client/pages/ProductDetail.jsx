@@ -14,7 +14,7 @@ const { width } = Dimensions.get("window");
 const ScreenHeight = Dimensions.get("window").height;
 
 const images = [
-  {
+ /*  {
     description: "Comida",
     uri: "https://4.imimg.com/data4/WX/DX/MY-2463817/dog-food-500x500.jpg",
     id: 1,
@@ -33,7 +33,7 @@ const images = [
     description: "Alimentos",
     uri: "https://4.imimg.com/data4/WX/DX/MY-2463817/dog-food-500x500.jpg",
     id: 4,
-  },
+  }, */
 ];
 
 export default function ProductDetail() {

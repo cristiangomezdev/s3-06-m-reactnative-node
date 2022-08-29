@@ -13,6 +13,7 @@ const ContenedorHeight = 150
 
 
 const BagItem  = (props) => {
+    console.log(props)
     const [count, setCount] = useState(props.quantity); //lo cambie a quantity antes era cantidad
     const dispatch = useDispatch();
 
@@ -36,21 +37,29 @@ const BagItem  = (props) => {
 
     return(
         <View key= {props.id} style={Styles.contenedor}>
-            <View style={Styles.contenedorImagen}>
-                <Image source={props.image} style={Styles.image} />
+        <View style={Styles.contenedorImagen}>
+            {!props.detailOrder && (
+                <Image source={props.images[0]} style={Styles.image} /> 
+            )}
+            {props.detailOrder && (
+                <Image source={{uri : props.images[0]}} style={Styles.image} />
+            )}
+        </View>
+
+        <View style={Styles.contenedorBag}>
+            <View style={Styles.contenedorName}>
+                <Text style={Styles.name}>{props.name}</Text>
             </View>
 
-            <View style={Styles.contenedorBag}>
-                <View style={Styles.contenedorName}>
-                    <Text style={Styles.name}>{props.name}</Text>
-                </View>
-
+            {!props.detailOrder && (
                 <View style={Styles.contenedorBrandSize}>
                     <Text style={Styles.brand}>{props.brand}</Text>
                     <Text style={Styles.size}>{props.size}</Text>
                 </View>
+            )}
 
-                <View style={Styles.contenedorCountPrice}>
+            <View style={Styles.contenedorCountPrice}>
+                {!props.detailOrder && (
                     <View style= {Styles.contenedorCount}>
                         <TouchableWithoutFeedback onPress={onPressMenos}>
                             <View>
@@ -61,7 +70,7 @@ const BagItem  = (props) => {
                         </TouchableWithoutFeedback>                    
 
                         <View style={Styles.countContainer}>
-                            <Text style={Styles.countText}>{props.quantity}</Text>
+                            <Text style={Styles.countText}>{count}</Text>
                         </View>
 
                         <TouchableWithoutFeedback onPress={onPressMas}>
@@ -69,8 +78,10 @@ const BagItem  = (props) => {
                                 source={require('../../assets/iconMas.png')}
                             />
                         </TouchableWithoutFeedback>
-                    </View>
-                    <View style= {Styles.contenedorBorrarPrecio}>
+                    </View> 
+                )}
+                <View style= {Styles.contenedorBorrarPrecio}>
+                        {!props.detailOrder && (
                             <View style= {Styles.contenedorBorrar}>
                                 <TouchableWithoutFeedback onPress={onPressBorrar}>
                                     <Image style={Styles.borrarIcon}
@@ -78,14 +89,26 @@ const BagItem  = (props) => {
                                     />
                                 </TouchableWithoutFeedback>
                             </View>
-                    
+                        )}
+                        {!props.detailOrder && (
                             <View style= {Styles.contenedorPrice}>
-                                <Text style={Styles.price}>${Math.round(props.price * props.quantity)}</Text>
+                                <Text style={Styles.price}>${valTotal}</Text>
                             </View>                      
-                    </View>                  
-                </View>
-            </View>            
-        </View>
+                        )}
+                        {props.detailOrder && (
+                            <>
+                                <View style= {Styles.contenedorPrice}>
+                                    <Text style={Styles.textLigth}>Cantidad: {props.amount}</Text>
+                                </View>                     
+                                <View style= {Styles.contenedorPrice}>
+                                    <Text style={Styles.price}>${props.price}</Text>
+                                </View>                     
+                            </>
+                        )}
+                </View>                  
+            </View>
+        </View>            
+    </View>
     )
     }
 
@@ -107,7 +130,8 @@ const Styles = {
     contenedorBorrarPrecio: {flex: 1, flexDirection: 'row', justifyContent: 'space-between'},
     borrarIcon:{tintColor: '#9B9B9B', width: 26, height:26, resizeMode: 'cover', borderRadius : 10},
     contenedorPrecio:{alignItems: 'rigth'},
-    price: {color: '#222222', fontWeight: "bold", fontSize: 14, padding: 5}
+    price: {color: '#222222', fontWeight: "bold", fontSize: 14, padding: 5},
+    textLigth : { color: '#9B9B9B', }
 }
     
 
