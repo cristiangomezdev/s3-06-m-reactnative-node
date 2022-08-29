@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import SubNavHome from "../components/subNavforPage/subNavHome.jsx";
 import { useEffect, useState } from "react";
 import { dogDataCard } from "../components/subNavforPage/subNavHomeData.js";
+import SubNavProducts from "../components/subNavforPage/subNavProducts.jsx";
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
 /* home?cate=dog <= Este componente homepage se estructura en base a los query params. 
@@ -52,6 +53,7 @@ const Homepage = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
+        <SubNavProducts/>
         <SubNavHome setCategory={setCategory} />
           <View>
           <View>
