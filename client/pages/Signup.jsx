@@ -70,7 +70,7 @@ export default function Signup() {
       .then((response) => {
         if (response.status == "success") {
           Alert.alert("Success", response.message);
-          navigate("/home");
+          navigate("/home?cate=dog");
         }
         if (response.status == "error") {
           Alert.alert("Error", response.message);
