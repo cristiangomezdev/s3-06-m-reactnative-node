@@ -14,7 +14,7 @@ const ScreenHeight = Dimensions.get("window").height;
 
 
 const ListaBag = () => {
-    const products = useSelector((state) => state.CartReducer)
+    const products = useSelector((state) => state.CartReducer);
     const totalCart = useSelector((state) => getTotal(state.CartReducer))
   
     let [fontsLoaded] = useFonts({

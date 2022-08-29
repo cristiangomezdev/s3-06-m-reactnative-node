@@ -21,7 +21,7 @@ const ProductoItem = (props) => {
         <View key= {props.id} style={Styles.contenedor}>
             <TouchableHighlight underlayColor="rgba(155, 155, 155, 0.1)" onPress={handleClick} >
                 <View style={Styles.contenedorImagen}>
-                    <Image source={props.image} style={Styles.image} />
+                    <Image source={{uri: props.image}} style={Styles.image} />
                 </View>
             </TouchableHighlight>
             <View style={Styles.contenedorProducto}>

@@ -1,6 +1,6 @@
 const productosBag = [{
     id: 1,
-    name : 'Alimento seco para perros, carne de res y arroz integral, bolsa de 5 libras',
+    name : 'Alimento seco para perros, carne de res y arroz integral, bolsa de 1010 librasasasas',
     price : 6.99,
     size: '2.3 kg',
     brand: 'Wag',
