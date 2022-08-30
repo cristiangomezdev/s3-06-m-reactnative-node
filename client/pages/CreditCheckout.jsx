@@ -20,27 +20,48 @@ export default function CreditCheckout() {
   const dispatch = useDispatch();
 
   const onSubmit = () => {
-    navigate("/success");
+    //navigate("/success");
     let user = {
       code: code,
       name: name,
       date: date,
       cvv:cvv
     };
-   /*  dispatch(register(user))
-      .then((response) => {
-        if (response.status == "success") {
-          Alert.alert("Success",response.message);
-          navigate("/home");
+
+function validateCreditCardNumber(number) {
+
+  let ccNum = number.replace(/\s/g, '')
+
+    let visaPattern = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+    let mastPattern = /^(?:5[1-5][0-9]{14})$/;
+    let amexPattern = /^(?:3[47][0-9]{13})$/;
+    let discPattern = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/; 
+    
+    var isVisa = visaPattern.test( ccNum ) === true;
+    var isMast = mastPattern.test( ccNum ) === true;
+    var isAmex = amexPattern.test( ccNum ) === true;
+    var isDisc = discPattern.test( ccNum ) === true;
+
+    if( isVisa || isMast || isAmex || isDisc ) {
+        // at least one regex matches, so the card number is valid.
+
+        if( isVisa ) {
+            return 'visa'
         }
-        if (response.status == "error") {
-          Alert.alert("Error",response.message);
-      }
-      })
-      .catch((error) => {
-        navigate("/signup");
-      }); */
-  };
+        else if( isMast ) {
+          return 'mastercard'
+        }
+        else if( isAmex ) {
+          return 'american express'
+        }
+        else if( isDisc ) {
+            return 'discover'
+        }
+    }
+    else {
+        Alert.alert("Please enter a valid card number.");
+    }
+}
 
   let [fontsLoaded] = useFonts({
     'poppins': require('../assets/fonts/Poppins-Light.ttf'),
@@ -63,28 +84,33 @@ export default function CreditCheckout() {
             <Text style={styles.titlePage}>Credit Payment</Text>
          
             <TextInput value={code}
-              onChangeText={(text) => setName(text)}
-              placeholder='XXXX-XXXXX-XXXXX-XXXXX'
+              onChangeText={(text) =>setCode(text.replace(/\W/gi, '').replace(/(.{4})/g, '$1 '))}
+              placeholder='XXXX-XXXX-XXXX-XXXX'
+              keyboardType = 'numeric'
               required
               style={styles.input} />
             <TextInput
               value={name}
-              onChangeText={(text) => setEmail(text)}
+              onChangeText={(text) => setName(text)}
               placeholder='Name'
               required
               style={styles.input} />
             <View style={styles.inputsmallcontainer}>
                 <TextInput 
                 value={date}
-                onChangeText={(text) => setPassword(text)}
+                onChangeText={(text) => setDate(text)}
                 secureTextEntry={true}
+                keyboardType = 'numeric'
+                maxLength={4}
                 placeholder='03/15' 
                 style={styles.inputsmall} 
                 required />
                 <TextInput 
                 value={cvv}
-                onChangeText={(text) => setPassword(text)}
+                onChangeText={(text) => setCvv(text)}
                 secureTextEntry={true}
+                keyboardType = 'numeric'
+                maxLength={4}
                 placeholder='CVV' 
                 style={styles.inputsmall} 
                 required />
