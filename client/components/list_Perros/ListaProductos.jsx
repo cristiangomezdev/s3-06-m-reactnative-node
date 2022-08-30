@@ -4,11 +4,11 @@ import productos from '../../data/productos'
 import ProductoItem from './ProductoItem'
 import { useFonts } from "expo-font";
 import Loader from "../../pages/Loader";
-
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
 
-const ListaProductos = () => {
+const ListaProductos = ({products}) => {
+
     let [fontsLoaded] = useFonts({
         poppins: require("../../assets/fonts/Poppins-Light.ttf"),
         "poppins-regular": require("../../assets/fonts/Poppins-Regular.ttf"),
@@ -28,7 +28,7 @@ const ListaProductos = () => {
           </View>
 
           <View>       
-            {productos.map((item, i) => (             
+            {products.map((item, i) => (             
               <ProductoItem {...item}
               key={i}                
               />
