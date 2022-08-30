@@ -7,7 +7,7 @@
     "icon": "./assets/iconspet.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/logos/background_3.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

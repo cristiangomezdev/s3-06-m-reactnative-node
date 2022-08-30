@@ -1,31 +1,29 @@
 import React from "react";
 import { View, StyleSheet, Text, TouchableHighlight } from "react-native";
-
-const Card = ({order, date, tracking, quantity, amount, status}) => {
+import { formatDate } from '../../helpers/FunctionVarious'
+import { Link } from 'react-router-native'
+const Card = ({NumberOrder, date, totalPrice, products, amount, status, _id}) => {
   const handleClick = ()=>{
 
   }
   return (
     <View style={[styles.card, styles.shadowProp]}>
       <View style={styles.data}>
-        <Text style={styles.nOrder}>{`Order Nº  ${order}`}</Text>
-        <Text style={styles.dateOrder}>{date}</Text>
+        <Text style={styles.nOrder}>{`Order Nº  ${NumberOrder}`}</Text>
+        <Text style={styles.dateOrder}>{formatDate(date)}</Text>
       </View>
-      <Text style={styles.dateOrder}>
-        Tracking number: <Text style={styles.bold}> {tracking}</Text>{" "}
-      </Text>
       <View style={styles.data}>
         <Text style={styles.dateOrder}>
-          Quantity: <Text style={styles.bold}>{quantity}</Text>
+          Quantity: <Text style={styles.bold}>{products.length}</Text>
         </Text>
         <Text style={styles.dateOrder}>
-          Total Amount: <Text style={styles.bold}>${amount}</Text>
+          Total Amount: <Text style={styles.bold}>${totalPrice}</Text>
         </Text>
       </View>
       <View style={styles.data}>
-        <TouchableHighlight style={styles.buttonOrder} underlayColor='rgba(170,170,170,0.1)' onPress={handleClick}>
+        <Link to={`/profile/orders/detail/${_id}`} style={styles.buttonOrder} underlayColor='rgba(170,170,170,0.1)'>
           <Text>Details</Text>
-        </TouchableHighlight>
+        </Link>
         <Text style={styles.status}>{status}</Text>
       </View>
     </View>
