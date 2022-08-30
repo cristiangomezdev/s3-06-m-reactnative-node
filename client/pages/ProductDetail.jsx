@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Text, View, ScrollView, StyleSheet, Dimensions, Alert } from "react-native";
 import { ImageCarousel } from "../components/ImageCarousel";
 import { useFonts } from 'expo-font';
@@ -9,6 +9,8 @@ import { types } from "../types/types";
 import { add } from "../actions/cart";
 import { useNavigate ,useLocation,useParams} from "react-router-native";
 import productosDetail from "../data/productosDetail";
+import { api } from "../helpers/api";
+
 
 const { width } = Dimensions.get("window");
 const ScreenHeight = Dimensions.get("window").height;
@@ -37,6 +39,7 @@ const images = [
 ];
 
 export default function ProductDetail() {
+  const [product, setProduct] = useState('');
   let params = useParams();
   let navigate = useNavigate();
   let dispatch = useDispatch();
@@ -47,25 +50,35 @@ export default function ProductDetail() {
     "taviraj-m": require("../assets/fonts/Taviraj-Medium.ttf"),
   });
 
-  if (!fontsLoaded) {
+
+   useEffect(() => {
+      api.getProduct(params.id).then((response)=>{
+        console.log(response)
+          setProduct(response.resjson.product)
+      })
+  }, []);
+ console.log(!fontsLoaded)
+ console.log(!product)
+  if (!fontsLoaded || !product) {
     return <Loader />;
   }
 
-  let [product] = productosDetail.filter((item)=>{ return params.id == item.id})
+  console.log(params)
+  /* let [product] = productosDetail.filter((item)=>{ return params.id == item._id}) */
  
   const onPressHandler = () => {
     dispatch(add(product));
     Alert.alert('Added','your product is now in your bag')
     navigate('/bag')
   };
-
+  console.log(product)
   return (
     <>
       <ScrollView style={styles.scrollContainer}>
-         <ImageCarousel images={images} id={product.id}/> 
+         <ImageCarousel images={product.images} id={product._id}/> 
         <View style={styles.container}>
           <View style={styles.containerTitle}>
-            <Text style={styles.price}>{product.brand}</Text>
+            <Text style={styles.exced} numberOfLines={1}>{product.name}</Text>
             <Text style={styles.price}>U$S {product.price}</Text>
           </View>
           <View style={styles.containerSubtitle}>
@@ -73,30 +86,7 @@ export default function ProductDetail() {
           </View>
           <View style={styles.containerContent}>
             <Text style={styles.content}>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Cupiditate culpa officia mollitia facere illum reiciendis error
-              explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis
-              quod, asperiores ipsa alias. Lorem ipsum dolor sit, amet
-              consectetur adipisicing elit. Cupiditate culpa officia mollitia
-              facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
-              quisquam odit aut officiis quod, asperiores ipsa alias.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Cupiditate culpa officia mollitia facere illum reiciendis error
-              explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis
-              quod, asperiores ipsa alias. Lorem ipsum dolor sit, amet
-              consectetur adipisicing elit. Cupiditate culpa officia mollitia
-              facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
-              quisquam odit aut officiis quod, asperiores ipsa alias.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Cupiditate culpa officia mollitia facere illum reiciendis error
-              explicabo, rem, eos ut ipsam eveniet quisquam odit aut officiis
-              quod, asperiores ipsa alias. Lorem ipsum dolor sit, amet
-              consectetur adipisicing elit. Cupiditate culpa officia mollitia
-              facere illum reiciendis error explicabo, rem, eos ut ipsam eveniet
-              quisquam odit aut officiis quod, asperiores ipsa alias.
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+             {product.description}
             </Text>
           </View>
         </View>
@@ -123,6 +113,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     color: "#000",
+  },
+  exced:{
+    fontFamily: "poppins-regular",
+    color: "#000",
+    fontSize: 24,
+    marginBottom: 0,
+    width:180,
+    flexWrap: 'wrap'
   },
   containerSubtitle: {
     fontWeight:'1000'

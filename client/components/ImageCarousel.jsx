@@ -33,7 +33,7 @@ const change = ({nativeEvent}) =>{
           images.map((image,index)=>(
              <Image
              key={index} 
-            source={{uri:image.uri}}
+            source={{uri:image}}
             style={style.image}
           /> 
           ))
@@ -45,7 +45,7 @@ const change = ({nativeEvent}) =>{
             <View 
             pagingEnabled
             showsHorizontalScrollIndicator={false}
-            key={i.id} 
+            key={index} 
             style={index==state.active ? {height:3,backgroundColor:'#56CBF9',width:amount} : {height:3,width:amount} }
             />
           ))
