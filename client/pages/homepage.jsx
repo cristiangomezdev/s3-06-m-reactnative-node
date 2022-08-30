@@ -53,9 +53,8 @@ const Homepage = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <SubNavProducts/>
+        {/* <SubNavProducts/> */}
         <SubNavHome setCategory={setCategory} />
-          <View>
           <View>
             {category ? <SimpleCard /> : <View></View>}
             {category ? (
@@ -71,8 +70,7 @@ const Homepage = () => {
             ) : (
               <View></View>
             )}
-          </View>
-        </View>  
+          </View> 
       </View>
     </ScrollView>
   );
