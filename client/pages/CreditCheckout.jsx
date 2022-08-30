@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-native";
 import { useDispatch } from "react-redux";
-import { register } from "./../actions/auth";
 import Button from '../components/Button'
 import { useFonts } from 'expo-font';
-import { StyleSheet, TextInput, Image, Text, View, ScrollView, TouchableHighlight, StatusBar } from 'react-native';
+import { StyleSheet, TextInput, Image, Text, View, ScrollView, StatusBar } from 'react-native';
 import { Dimensions,Alert } from 'react-native';
 import Loader from './Loader';
 
@@ -19,18 +18,9 @@ export default function CreditCheckout() {
   const [cvv, setCvv] = useState();
   const dispatch = useDispatch();
 
-  const onSubmit = () => {
-    //navigate("/success");
-    let user = {
-      code: code,
-      name: name,
-      date: date,
-      cvv:cvv
-    };
+function validateCreditCardNumber(ccNum) {
 
-function validateCreditCardNumber(number) {
-
-  let ccNum = number.replace(/\s/g, '')
+  //let ccNum = number.replace(/\s/g, '')
 
     let visaPattern = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
     let mastPattern = /^(?:5[1-5][0-9]{14})$/;
@@ -63,12 +53,38 @@ function validateCreditCardNumber(number) {
     }
 }
 
+
+const onSubmit = () => {
+  
+  let user = {
+    code: code,
+    name: name,
+    date: date,
+    cvv:cvv
+  };
+  if(!code || !name || !date || !cvv){
+    return Alert.alert("please don't leave empty spaces");
+  }
+  const validation = validateCreditCardNumber(code);
+
+  if(!validation){
+    return null
+  }
+    console.log('comunicacion con backend')
+    navigate("/success");
+    
+  }
+    
   let [fontsLoaded] = useFonts({
     'poppins': require('../assets/fonts/Poppins-Light.ttf'),
     'poppins-regular': require('../assets/fonts/Poppins-Regular.ttf'),
     'taviraj': require('../assets/fonts/Taviraj-Light.ttf'),
     'taviraj-m': require('../assets/fonts/Taviraj-Medium.ttf'),
   });
+  const onChangeCode = (text) =>{
+    setCode(text)
+  }
+  //replace(/\W/gi, '').replace(/(.{4})/g, '$1 ')
   if (!fontsLoaded) {
     return <Loader />;
   }
@@ -84,7 +100,7 @@ function validateCreditCardNumber(number) {
             <Text style={styles.titlePage}>Credit Payment</Text>
          
             <TextInput value={code}
-              onChangeText={(text) =>setCode(text.replace(/\W/gi, '').replace(/(.{4})/g, '$1 '))}
+              onChangeText={(text) =>onChangeCode(text)}
               placeholder='XXXX-XXXX-XXXX-XXXX'
               keyboardType = 'numeric'
               required
