@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Button } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-native";
 import { logout } from "../actions/auth";
-
+import { clear} from '../actions/cart'
 export const LogoutButton = () => {
   const state = useSelector((state) => state);
   let navigate = useNavigate();
@@ -11,6 +11,7 @@ export const LogoutButton = () => {
   const onLogout = () => {
     dispatch(logout()).then((response) => {
       if (response.status === "success") {
+        dispatch(clear())
         navigate("/");
       }
     });
@@ -22,4 +23,4 @@ export const LogoutButton = () => {
   );
 };
 
-const styles = StyleSheet.create({ container: { backgroundColor: "red" } });
+const styles = StyleSheet.create({ container: { backgroundColor: "red", marginBottom : 40 } });

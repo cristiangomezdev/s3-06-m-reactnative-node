@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { register } from "./../actions/auth";
 import { useFonts } from 'expo-font';
 import { StyleSheet, TextInput, Image, Text, View, ScrollView, TouchableHighlight, StatusBar } from 'react-native';
-import { Dimensions } from 'react-native';
+import { Dimensions, Alert } from 'react-native';
 import Loader from './Loader';
 
 const ScreenWidth = Dimensions.get("window").width;
@@ -14,20 +14,66 @@ export default function Signup() {
   const [name, setName] = useState();
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
+  const [confirmPass, setConfirmPass] = useState();
 
   const dispatch = useDispatch();
+
+  function isValidEmail(email) {
+    return /\S+@\S+.\S+/.test(email);
+  }
+
+  const validacion = () => {
+    if (!isValidEmail(email)) {
+      Alert.alert('Email wrong - front validation');
+      return false
+    }
+    if (email === '') {
+      Alert.alert('Email is required - front validation');
+      return false
+    }
+    if (name === '') {
+      Alert.alert('Name is required - front validation');
+      return false
+    }
+    if (name.length < 3) {
+      Alert.alert('Name min 8 o max 12 characters! - front validation');
+      return false
+    }
+    if (password === '') {
+      Alert.alert(' Password is required! - front validation');
+      return false
+    }
+    if (password.length < 8) {
+      Alert.alert('Password min 8 o max 12 characters! - front validation');
+      return false
+    }
+    if (confirmPass !== password) {
+      Alert.alert('Incorrect confirm Password - front validation');
+      return false
+    }
+    return true
+  }
 
   const onRegister = () => {
     let user = {
       name: name,
       password: password,
       email: email,
+      confirmPass: confirmPass,
     };
+
+    if (!validacion()) {
+      return false
+    }
+
     dispatch(register(user))
       .then((response) => {
-        console.log("login" + response.status)
         if (response.status == "success") {
-          navigate("/");
+          Alert.alert("Success", response.message);
+          navigate("/home?cate=dog");
+        }
+        if (response.status == "error") {
+          Alert.alert("Error", response.message);
         }
       })
       .catch((error) => {
@@ -65,13 +111,20 @@ export default function Signup() {
               placeholder='Email'
               required
               style={styles.input} />
-            <TextInput 
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-            secureTextEntry={true}
-            placeholder='Password' 
-            style={styles.input} 
-            required />
+            <TextInput
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+              secureTextEntry={true}
+              placeholder='Password'
+              style={styles.input}
+              required />
+            <TextInput
+              value={confirmPass}
+              onChangeText={(text) => setConfirmPass(text)}
+              secureTextEntry={true}
+              placeholder='Confirm Password'
+              style={styles.input}
+              required />
           </View>
           <TouchableHighlight onPress={() => navigate('/')} underlayColor="rgba(0,0,0,0)">
             <Text style={styles.text1}>Already have account?  <Image style={styles.arrow} source={require('../assets/Vector.png')} /> </Text>
@@ -81,11 +134,11 @@ export default function Signup() {
               <Text style={styles.botonText}>SIGN UP</Text>
             </TouchableHighlight>
           </View>
-          <Text style={styles.text2}>Or sign up with social account </Text>
-          <View style={styles.image}>
+          {/* <Text style={styles.text2}>Or sign up with social account </Text>
+           <View style={styles.image}>
             <Image source={require('../assets/iconsgoogle.png')} />
             <Image source={require('../assets/iconofacebook.png')} />
-          </View>
+          </View> */}
         </View>
       </ScrollView>
     </View>
@@ -152,6 +205,7 @@ const styles = StyleSheet.create({
     elevation: 3,
     marginRight: 10,
     marginLeft: 10,
+    paddingLeft: 20,
   },
   image: {
     flexDirection: 'row',
@@ -161,5 +215,5 @@ const styles = StyleSheet.create({
   arrow: {
     width: 40,
     height: 18,
-  }
-});
+  },
+})

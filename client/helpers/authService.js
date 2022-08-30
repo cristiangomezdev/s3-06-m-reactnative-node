@@ -2,47 +2,63 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { api } from "./api";
 
 const logIn = async (user) => {
-  console.log("user info", user);
+
   const { username, password } = user;
   const email = username;
   const datajson = await api.authLogin(email, password);
-
-  console.log(datajson);
-
-  if (datajson.msg === "successful login" && datajson.token) {
-    AsyncStorage.setItem("token", JSON.stringify({ token: datajson.token }));
-    AsyncStorage.setItem("user", JSON.stringify({ user: datajson.user }));
-    // console.log(datajson);
+  if (datajson.status === 200 && datajson.resjson.token) {
     return {
       status: "success",
       message: "You are redirecting to home page",
       user: {
-        token: datajson.token,
-        user: datajson.user,
+        token: datajson.resjson.token,
+        user: datajson.resjson.user,
       },
+    };
+  }else{
+
+  }
+
+  if (datajson.status === 400) {
+     if(datajson.resjson.msg === "credentials incorrect"){
+      return {
+        status: "error",
+        message: datajson.resjson.msg
+      };
+    } 
+    return {
+      status: "error",
+      message: datajson.resjson.errors[0].msg
     };
   }
 };
 
-//corregir AsyncStorage.setItem("user", JSON.stringify(user)); por datos de DataJson
 const register = async (user) => {
-  console.log("user info", user);
   const { email, password, name } = user;
-
   const datajson = await api.authRegister(email, password, name);
-
-  console.log(datajson);
-
-  if (datajson.msg === "user succesfelly created" && datajson.token) {
+  if (datajson.resjson.msg === "user succesfelly created" && datajson.resjson.token) {
     // backend mal response message
-    console.log("entranding");
-    AsyncStorage.setItem("user", JSON.stringify(user));
     return {
       status: "success",
       message: "You are redirecting to home page",
-      user: name,
+      user: {
+        token: datajson.resjson.token,
+        user: datajson.resjson.user,
+      },
     };
   }
+  if (datajson.status === 400) {
+    if(datajson.resjson.msg){
+      return {
+        status: "error",
+        message: datajson.resjson.msg
+      };
+    }
+   return {
+     status: "error",
+     message: datajson.resjson.errors[0].msg || datajson.resjson.msg
+   };
+ }
 };
 
 const logOut = async () => {
