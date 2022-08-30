@@ -1,3 +1,4 @@
+//Constante útil para generalizar ciertos valores o colores en la APP
 const theme = {
   colors: {
     //Celeste
