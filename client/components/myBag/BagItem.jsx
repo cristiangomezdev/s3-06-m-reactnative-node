@@ -22,25 +22,25 @@ const BagItem  = (props) => {
     Tampoco estamos validando stock */
     const onPressMenos = () => {
         setCount(count == 0 ? 0 : count - 1);
-        count !== 1 ? dispatch(decrease(props.id)) : dispatch(eliminate(props.id))
-        
+        count !== 1 ? dispatch(decrease(props._id)) : dispatch(eliminate(props._id))  
       };
+      
     const onPressMas = () => {
         setCount(count + 1);
-        dispatch(increase(props.id))
+        dispatch(increase(props._id))
       };
       const onPressBorrar= () => {
-        dispatch(eliminate(props.id))
+        dispatch(eliminate(props._id))
       }
 
     return(
         <View key= {props.id} style={Styles.contenedor}>
         <View style={[Styles.contenedorImagen, {"backgroundColor": "blue"}]}>
             {!props.detailOrder && (
-                <Image source={{ uri: "https://centropet.com/wp-content/uploads/2020/06/964154-MLA41475665548_042020-500x931.jpg" }} style={Styles.image} /> 
+                <Image source={{ uri: props.images[0] }} style={Styles.image} /> 
             )}
             {props.detailOrder && (
-                <Image source={{ uri: "https://centropet.com/wp-content/uploads/2020/06/964154-MLA41475665548_042020-500x931.jpg" }} style={Styles.image} />
+                <Image source={{ uri: props.images[0] }} style={Styles.image} />
             )}
         </View>
 
@@ -90,7 +90,7 @@ const BagItem  = (props) => {
                         )}
                         {!props.detailOrder && (
                             <View style= {Styles.contenedorPrice}>
-                                {/* <Text style={Styles.price}>${valTotal}</Text> */}
+                                 <Text style={Styles.price}>${Math.round(props.price * props.quantity)}</Text> 
                             </View>                      
                         )}
                         {props.detailOrder && (

@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-native";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import Button from '../components/Button'
 import { useFonts } from 'expo-font';
 import { StyleSheet, TextInput, Image, Text, View, ScrollView, StatusBar } from 'react-native';
 import { Dimensions,Alert } from 'react-native';
 import Loader from './Loader';
+import { validateCreditCardNumber } from "../helpers/FunctionVarious";
+import { buy } from "../actions/cart";
+import { getUser } from "../reducer/authReducer";
+import { getProducts,getTotal } from "../reducer/cartReducer";
 
 
 const ScreenWidth = Dimensions.get("window").width;
@@ -16,63 +20,42 @@ export default function CreditCheckout() {
   const [code, setCode] = useState();
   const [date, setDate] = useState();
   const [cvv, setCvv] = useState();
+  const [address, setAdress] = useState();
   const dispatch = useDispatch();
 
-function validateCreditCardNumber(ccNum) {
-
-  //let ccNum = number.replace(/\s/g, '')
-
-    let visaPattern = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
-    let mastPattern = /^(?:5[1-5][0-9]{14})$/;
-    let amexPattern = /^(?:3[47][0-9]{13})$/;
-    let discPattern = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/; 
-    
-    var isVisa = visaPattern.test( ccNum ) === true;
-    var isMast = mastPattern.test( ccNum ) === true;
-    var isAmex = amexPattern.test( ccNum ) === true;
-    var isDisc = discPattern.test( ccNum ) === true;
-
-    if( isVisa || isMast || isAmex || isDisc ) {
-        // at least one regex matches, so the card number is valid.
-
-        if( isVisa ) {
-            return 'visa'
-        }
-        else if( isMast ) {
-          return 'mastercard'
-        }
-        else if( isAmex ) {
-          return 'american express'
-        }
-        else if( isDisc ) {
-            return 'discover'
-        }
-    }
-    else {
-        Alert.alert("Please enter a valid card number.");
-    }
-}
-
+  const user = useSelector(state=>getUser(state.AuthReducer))
+  const cart = useSelector(state=>getProducts(state.CartReducer))
+  const total = useSelector((state) => getTotal(state.CartReducer))
 
 const onSubmit = () => {
   
-  let user = {
+   let card = {
     code: code,
     name: name,
     date: date,
-    cvv:cvv
-  };
-  if(!code || !name || !date || !cvv){
-    return Alert.alert("please don't leave empty spaces");
-  }
-  const validation = validateCreditCardNumber(code);
+    address:address,
+    cvv:cvv,
+  }; 
+
+   if(!code || !name || !date || !cvv || !address){
+    return Alert.alert("please don't leave any input empty - front validation");
+  } 
+   const validation = validateCreditCardNumber(code);
 
   if(!validation){
     return null
-  }
-    console.log('comunicacion con backend')
+  } 
+
     navigate("/success");
+    dispatch(buy(user,cart,card,total)).then((response)=>{
+      if(response.status === 'success'){
+        //works
+      }
+      if(response.status === 'error'){
+        Alert.alert("error")
+      }
     
+    }) 
   }
     
   let [fontsLoaded] = useFonts({
@@ -81,9 +64,6 @@ const onSubmit = () => {
     'taviraj': require('../assets/fonts/Taviraj-Light.ttf'),
     'taviraj-m': require('../assets/fonts/Taviraj-Medium.ttf'),
   });
-  const onChangeCode = (text) =>{
-    setCode(text)
-  }
   //replace(/\W/gi, '').replace(/(.{4})/g, '$1 ')
   if (!fontsLoaded) {
     return <Loader />;
@@ -100,7 +80,7 @@ const onSubmit = () => {
             <Text style={styles.titlePage}>Credit Payment</Text>
          
             <TextInput value={code}
-              onChangeText={(text) =>onChangeCode(text)}
+              onChangeText={(text) =>setCode(text.replace(/\W/gi, '').replace(/(.{4})/g, '$1 '))}
               placeholder='XXXX-XXXX-XXXX-XXXX'
               keyboardType = 'numeric'
               required
@@ -109,6 +89,11 @@ const onSubmit = () => {
               value={name}
               onChangeText={(text) => setName(text)}
               placeholder='Name'
+              required
+              style={styles.input} />
+              <TextInput value={address}
+              onChangeText={(text) =>setAdress(text)}
+              placeholder='Address'
               required
               style={styles.input} />
             <View style={styles.inputsmallcontainer}>
@@ -227,7 +212,9 @@ creditcard:{
     paddingLeft: 20,
   },
   inputsmallcontainer:{
-    flexDirection: 'row', flexWrap: 'wrap' ,justifyContent:'center'
+    flexDirection: 'row',
+     flexWrap: 'wrap' ,
+    justifyContent:'center'
   },
   inputsmall:{
     height: 74,
