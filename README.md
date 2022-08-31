@@ -1,4 +1,4 @@
-                                                   ## PRETTY PETS
+ # PRETTY PETS
 
 App e-commerce de Mascotas
 
