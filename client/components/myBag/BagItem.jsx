@@ -91,7 +91,7 @@ const BagItem  = (props) => {
                         )}
                         {!props.detailOrder && (
                             <View style= {Styles.contenedorPrice}>
-                                {/* <Text style={Styles.price}>${valTotal}</Text> */}
+                                 <Text style={Styles.price}>${Math.round(props.price * props.quantity)}</Text> 
                             </View>                      
                         )}
                         {props.detailOrder && (
