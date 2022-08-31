@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+</head>
+
+<body>
+    <main class="container">
+        <div class="container-fluid top-5 ">
+            <div class="row  ">
+                <div class="col-xs-10">
+                    <h1><strong><u>Factura Nro:</u> </strong></h1>
+                </div>
+                <div class="col-xs-2 ">
+                    <img class="img img-responsive " src="https://github.com/parzibyte.png" alt="Logotipo">
+                </div>
+            </div>
+            <hr>
+            <div class="row ">
+                <div class="col-xs-8">
+                    <p>Nombre de la empresa:</p>
+                    <p>Direccion de la empresa:</p>
+                    <p>Numero de la empresa:</p>
+                    <p>CUIT de la empresa:</p>
+                </div>
+                <div class="col-xs-2 text-center">
+                    <p>Fecha:</p>
+                    <p>Nro de Orden:</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row text-center" style="margin-bottom: 2rem;">
+                <div class="col-xs-4">
+                    <p><u>Cliente</u> </p>
+                    <p> Cliente:</p>
+                    <p>Nro Telefono:</p>
+                </div>
+                <div class="col-xs-6">
+                    <p><u> Direccion de envio</u></p>
+                    <p>Direccion:</p>
+                    <p>Localidad:</p>
+                    <p>Provincia:</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-xs-12 ">
+                    <table class="table table-condensed table-bordered table-striped  ">
+                        <thead>
+                            <tr>
+                                <th class="text-center bg-info ">Descripcion</th>
+                                <th class="text-center bg-info">Cantidad</th>
+                                <th class="text-center bg-info">Precio unitario</th>
+                                <th class="text-center bg-info">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{tablaProductos}}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-right border border-dark">Subtotal</td>
+                                <td>{{subtotal}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-right">Descuento</td>
+                                <td>{{descuento}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-right">Subtotal con descuento</td>
+                                <td>{{subtotalConDescuento}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-right">Impuestos</td>
+                                <td>{{impuestos}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-right">
+                                    <h4><strong> Total</strong></h4>
+                                </td>
+                                <td>
+                                    <h4>{{total}}</h4>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>
