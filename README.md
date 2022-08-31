@@ -15,9 +15,18 @@ App e-commerce de Mascotas
 
 ## Stack/Tecnologias:
 * ### React Native ###
-* ### Node ###
+* ### NodeJs###
 * ### Mongodb ###
 * ### Express ###
 
 
+## _Roles:_
+* ### Claudia Betancourt - Fullstack ###
+* ### Cristian Gomez - Fullstack ###
+* ### Marcos Britos - Fullstack ###
+* ### Oriana De Caro - Fullstack###
+* ### Richard Irala - Fullstack###
+
+
 ## Link Deploy:
+
