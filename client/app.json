@@ -2,7 +2,7 @@
   "expo": {
     "name": "pet-shop",
     "slug": "pet-shop",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/iconspet.png",
     "userInterfaceStyle": "light",
@@ -24,7 +24,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.s306.petShop"
     },
     "web": {
       "favicon": "./assets/favicon.png"
