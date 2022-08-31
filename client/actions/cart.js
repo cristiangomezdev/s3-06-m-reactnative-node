@@ -1,4 +1,9 @@
+import { api } from "../helpers/api";
+import { createOrder } from "../helpers/FunctionVarious";
 import { types } from "../types/types";
+
+
+
 
 export const add = (product) => {
   return (dispatch) => {
@@ -37,4 +42,29 @@ export const clear = (product) => {
         dispatch({
         type:types.cartClear})    
   };
+};
+
+export const buy = ({user},cart,card,total) => {
+  return (dispatch) => {
+    if(!user || !cart || !card){
+      return Alert.alert("something gone wrong");
+    }
+    const cartProducts = cart.cart.map((item)=>{
+      return{
+        _id:item._id,
+        amount:item.quantity
+      } 
+    })
+    
+    const formdata = {
+      shippingAddress : card.address,
+      paymentMethod : card.code,
+      products : cartProducts,
+      totalPrice : total
+  }
+  api.postOneOrder(formdata,user._id).then((response)=>{
+    console.log(response)
+  })
+
+  }
 };
