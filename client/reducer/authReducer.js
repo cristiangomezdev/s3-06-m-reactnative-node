@@ -25,5 +25,11 @@ const AuthReducer = ( state = initialState, action) => {
             return state
     }
 }
-
+export const getUser = (state) =>{
+    if(state){
+        return state
+    }else{
+        return null
+    }
+}
 export default AuthReducer;

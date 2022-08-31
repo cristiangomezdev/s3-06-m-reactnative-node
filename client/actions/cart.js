@@ -1,4 +1,8 @@
+import { createOrder } from "../helpers/FunctionVarious";
 import { types } from "../types/types";
+
+
+
 
 export const add = (product) => {
   return (dispatch) => {
@@ -37,4 +41,18 @@ export const clear = (product) => {
         dispatch({
         type:types.cartClear})    
   };
+};
+
+export const buy = (user,cart,card) => {
+  return (dispatch) => {
+    if(!user || !cart || !card){
+      return Alert.alert("something gone wrong");
+    }
+    const cartProducts = cart.map((item)=>{
+      console.log(item)  
+    })
+
+    const status = createOrder(user,cart,card)
+
+  }
 };

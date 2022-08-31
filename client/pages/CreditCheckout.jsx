@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-native";
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import Button from '../components/Button'
 import { useFonts } from 'expo-font';
 import { StyleSheet, TextInput, Image, Text, View, ScrollView, StatusBar } from 'react-native';
 import { Dimensions,Alert } from 'react-native';
 import Loader from './Loader';
+import { validateCreditCardNumber } from "../helpers/FunctionVarious";
+import { buy } from "../actions/cart";
+import { getUser } from "../reducer/authReducer";
+import { getProducts } from "../reducer/cartReducer";
 
 
 const ScreenWidth = Dimensions.get("window").width;
@@ -18,61 +22,29 @@ export default function CreditCheckout() {
   const [cvv, setCvv] = useState();
   const dispatch = useDispatch();
 
-function validateCreditCardNumber(ccNum) {
-
-  //let ccNum = number.replace(/\s/g, '')
-
-    let visaPattern = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
-    let mastPattern = /^(?:5[1-5][0-9]{14})$/;
-    let amexPattern = /^(?:3[47][0-9]{13})$/;
-    let discPattern = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/; 
-    
-    var isVisa = visaPattern.test( ccNum ) === true;
-    var isMast = mastPattern.test( ccNum ) === true;
-    var isAmex = amexPattern.test( ccNum ) === true;
-    var isDisc = discPattern.test( ccNum ) === true;
-
-    if( isVisa || isMast || isAmex || isDisc ) {
-        // at least one regex matches, so the card number is valid.
-
-        if( isVisa ) {
-            return 'visa'
-        }
-        else if( isMast ) {
-          return 'mastercard'
-        }
-        else if( isAmex ) {
-          return 'american express'
-        }
-        else if( isDisc ) {
-            return 'discover'
-        }
-    }
-    else {
-        Alert.alert("Please enter a valid card number.");
-    }
-}
+  const user = useSelector(state=>getUser(state.AuthReducer))
+  const cart = useSelector(state=>getProducts(state.CartReducer))
 
 
 const onSubmit = () => {
   
-  let user = {
+  let card = {
     code: code,
     name: name,
     date: date,
     cvv:cvv
   };
-  if(!code || !name || !date || !cvv){
+/*   if(!code || !name || !date || !cvv){
     return Alert.alert("please don't leave empty spaces");
-  }
-  const validation = validateCreditCardNumber(code);
+  } */
+/*   const validation = validateCreditCardNumber(code);
 
   if(!validation){
     return null
-  }
+  } */
     console.log('comunicacion con backend')
     navigate("/success");
-    
+    dispatch(buy(user,cart,card))
   }
     
   let [fontsLoaded] = useFonts({
@@ -81,9 +53,6 @@ const onSubmit = () => {
     'taviraj': require('../assets/fonts/Taviraj-Light.ttf'),
     'taviraj-m': require('../assets/fonts/Taviraj-Medium.ttf'),
   });
-  const onChangeCode = (text) =>{
-    setCode(text)
-  }
   //replace(/\W/gi, '').replace(/(.{4})/g, '$1 ')
   if (!fontsLoaded) {
     return <Loader />;

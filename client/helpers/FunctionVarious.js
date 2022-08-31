@@ -15,3 +15,73 @@ export const formatDate = (date)=>{
 export const parseTargetCredit = (number)=>{
     return(`**** **** **** ${number.slice((number.length - 4))}`)
 }
+
+export function validateCreditCardNumber(ccNum) {
+
+    //let ccNum = number.replace(/\s/g, '')
+  
+      let visaPattern = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
+      let mastPattern = /^(?:5[1-5][0-9]{14})$/;
+      let amexPattern = /^(?:3[47][0-9]{13})$/;
+      let discPattern = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/; 
+      
+      var isVisa = visaPattern.test( ccNum ) === true;
+      var isMast = mastPattern.test( ccNum ) === true;
+      var isAmex = amexPattern.test( ccNum ) === true;
+      var isDisc = discPattern.test( ccNum ) === true;
+  
+      if( isVisa || isMast || isAmex || isDisc ) {
+          // at least one regex matches, so the card number is valid.
+  
+          if( isVisa ) {
+              return 'visa'
+          }
+          else if( isMast ) {
+            return 'mastercard'
+          }
+          else if( isAmex ) {
+            return 'american express'
+          }
+          else if( isDisc ) {
+              return 'discover'
+          }
+      }
+      else {
+          Alert.alert("Please enter a valid card number.");
+      }
+  }
+  
+  export function createOrder (user,cart,card){
+    const formdata = {
+        products: {
+          _id: "62f6g46as7/8ewqc74657",
+          NumberOrder: "1661441503736",
+          date: "2022-08-26T00:00:00.000Z",
+          shippingAddress: "Street 23, Barrio, city, Country",
+          paymentMethod: "1111 2222 3333 4444",
+          products: [
+            {
+              _id: "630415ff9789e34cd4cb873e",
+              name: "Prueba de filtrado2",
+              images: [
+                "urls images"
+              ],
+              description: "description",
+              price: 7777.7,
+              amount: 2
+            },
+            {
+              _id: "630415ff9789e34cd4cb873e",
+              name: "Prueba de filtrado2",
+              images: [
+                "urls images"
+              ],
+              description: "description",
+              price: 7777.7,
+              amount: 2
+            }
+          ],
+          userId: "62fd0aa4b3907553ae8a7cbc"
+        }
+      }
+  }
