@@ -33,10 +33,10 @@ class createPdf{
             subtotal += totalProducto;
             // Y concatenar los productos
             tabla += `<tr>
-            <td>${producto.name}</td>
-            <td>${producto.amount}</td>
-            <td>${formateador.format(producto.price)}</td>
-            <td>${formateador.format(totalProducto)}</td>
+            <td style="font-size: 0.8rem;" >${producto.name}</td>
+            <td style="font-size: 0.8rem;">${producto.amount}</td>
+            <td style="font-size: 0.8rem;">${formateador.format(producto.price)}</td>
+            <td style="font-size: 0.8rem;">${formateador.format(totalProducto)}</td>
             </tr>`;
         }
 

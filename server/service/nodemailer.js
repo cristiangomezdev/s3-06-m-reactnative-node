@@ -13,6 +13,7 @@ class Nodemailer{
   }
 
   async sendEmail(order, nro) {
+    
     const str = read(join(__dirname, '../template/welcomeTemplate.ejs'), 'utf8');
     const body = ejs.compile(str)(this.data);
     const transporter = await nodemailer.createTransport({
@@ -24,6 +25,7 @@ class Nodemailer{
     });
     let mailOptions ;
     if(order){
+      let pathOrder = join(__dirname, `../recibe/${nro}.pdf`)
       mailOptions = {
         from: `"E-commercer" <${process.env.EMAIL}>`,
         to: this.email,
@@ -32,7 +34,7 @@ class Nodemailer{
         attachments: [
           {
             filename: `${nro}.pdf`,
-            path: `../recibe/${nro}.pdf`,
+            path: pathOrder,
             cid: `uniq-${nro}.pdf` 
           }
         ]
