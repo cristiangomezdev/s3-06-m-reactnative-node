@@ -13,7 +13,6 @@ const ContenedorHeight = 150
 
 
 const BagItem  = (props) => {
-    console.log(props)
     const [count, setCount] = useState(props.quantity); //lo cambie a quantity antes era cantidad
     const dispatch = useDispatch();
 

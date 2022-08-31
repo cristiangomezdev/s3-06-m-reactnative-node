@@ -1,3 +1,4 @@
+import {Alert} from 'react-native'
 export const formatDate = (date)=>{
     date = new Date(date)
     let day = date.getDate()
@@ -16,9 +17,9 @@ export const parseTargetCredit = (number)=>{
     return(`**** **** **** ${number.slice((number.length - 4))}`)
 }
 
-export function validateCreditCardNumber(ccNum) {
+export function validateCreditCardNumber(number) {
 
-    //let ccNum = number.replace(/\s/g, '')
+    let ccNum = number.replace(/\s/g, '')
   
       let visaPattern = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/;
       let mastPattern = /^(?:5[1-5][0-9]{14})$/;
@@ -47,7 +48,7 @@ export function validateCreditCardNumber(ccNum) {
           }
       }
       else {
-          Alert.alert("Please enter a valid card number.");
+          Alert.alert("Please enter a valid card number - front validation");
       }
   }
   

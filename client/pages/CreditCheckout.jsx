@@ -29,31 +29,33 @@ export default function CreditCheckout() {
 
 const onSubmit = () => {
   
-/*   let card = {
+   let card = {
     code: code,
     name: name,
     date: date,
     address:address,
     cvv:cvv,
-  }; */
-  let card = {
-    code: '4111111111111111',
-    name: 'name',
-    date: '0325',
-    address:'avenida',
-    cvv:'cvv',
-  };
-/*   if(!code || !name || !date || !cvv){
-    return Alert.alert("please don't leave empty spaces");
-  } */
-/*   const validation = validateCreditCardNumber(code);
+  }; 
+
+   if(!code || !name || !date || !cvv || !address){
+    return Alert.alert("please don't leave any input empty - front validation");
+  } 
+   const validation = validateCreditCardNumber(code);
 
   if(!validation){
     return null
-  } */
-    console.log('comunicacion con backend')
+  } 
+
     navigate("/success");
-    dispatch(buy(user,cart,card,total))
+    dispatch(buy(user,cart,card,total)).then((response)=>{
+      if(response.status === 'success'){
+        //works
+      }
+      if(response.status === 'error'){
+        Alert.alert("error")
+      }
+    
+    }) 
   }
     
   let [fontsLoaded] = useFonts({
@@ -78,7 +80,7 @@ const onSubmit = () => {
             <Text style={styles.titlePage}>Credit Payment</Text>
          
             <TextInput value={code}
-              onChangeText={(text) =>setCode(text)}
+              onChangeText={(text) =>setCode(text.replace(/\W/gi, '').replace(/(.{4})/g, '$1 '))}
               placeholder='XXXX-XXXX-XXXX-XXXX'
               keyboardType = 'numeric'
               required
