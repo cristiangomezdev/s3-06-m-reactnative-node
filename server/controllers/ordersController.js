@@ -4,7 +4,7 @@ let Order = require('../database/models/order')
 const formatDate = require('../helpers/parseDate');
 const httpStatus = require('../helpers/httpStatus');
 const [restAmountProducts, obtainDataProducts] = require('../helpers/variousFunctions');
-
+let createPdf = require('../service/html-pdf')
 
 class ordersController {
 
@@ -86,6 +86,7 @@ class ordersController {
 
         try {
             let [p, totalPrice] = await obtainDataProducts(products)
+            console.log(p)
             user = await User.findById(idUser)
             if (user) {
                 let order = new Order({
@@ -98,11 +99,16 @@ class ordersController {
                     totalPrice: totalPrice,
                     userId : idUser
                 })
-    
+                
                 order.products.forEach(p => {
                     restAmountProducts(p._id, p.amount)
                 });
                 await order.save()
+
+
+                let template = require.resolve('../template/factura2.html')
+                let serviceHtmlPdf = new createPdf(template, p, order.NumberOrder, order.shippingAddress, formatDate(order.date), idUser)
+                serviceHtmlPdf.addData()
                 return res.status(httpStatus.CREATED).json({
                     order
                 })

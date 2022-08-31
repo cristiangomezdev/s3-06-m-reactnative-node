@@ -14,7 +14,7 @@
         <div class="container-fluid top-5 ">
             <div class="row  ">
                 <div class="col-xs-10">
-                    <h1><strong><u>Factura Nro:</u> </strong></h1>
+                    <h1><strong><u>Factura Nro: {{NumberOrder}}</u> </strong></h1>
                 </div>
                 <div class="col-xs-2 ">
                     <img class="img img-responsive " src="https://github.com/parzibyte.png" alt="Logotipo">
@@ -23,28 +23,28 @@
             <hr>
             <div class="row ">
                 <div class="col-xs-8">
-                    <p>Nombre de la empresa:</p>
-                    <p>Direccion de la empresa:</p>
-                    <p>Numero de la empresa:</p>
-                    <p>CUIT de la empresa:</p>
+                    <p>Nombre de la empresa: {{nameOrganization}}</p>
+                    <p>Direccion de la empresa: {{addressOrganization}} </p>
+                    <p>Numero de la empresa: {{numberOrganization}}</p>
+                    <p>CUIT de la empresa: {{CUITorganization}} </p>
                 </div>
-                <div class="col-xs-2 text-center">
-                    <p>Fecha:</p>
-                    <p>Nro de Orden:</p>
+                <div class="col-xs-4 text-center">
+                    <p>Fecha: {{date}}</p>
+                    <p>Nro de Orden: {{order}}</p>
                 </div>
             </div>
             <hr>
             <div class="row text-center" style="margin-bottom: 2rem;">
                 <div class="col-xs-4">
                     <p><u>Cliente</u> </p>
-                    <p> Cliente:</p>
-                    <p>Nro Telefono:</p>
+                    <p>Nombre: {{nameUser}} </p>
+                    <p>Nro Telefono: {{userPhone}} </p>
                 </div>
                 <div class="col-xs-6">
                     <p><u> Direccion de envio</u></p>
-                    <p>Direccion:</p>
-                    <p>Localidad:</p>
-                    <p>Provincia:</p>
+                    <p>Direccion: {{address}}</p>
+                    <p>Localidad: {{city}}</p>
+                    <p>Provincia: {{province}}</p>
                 </div>
             </div>
             <hr>
@@ -67,14 +67,14 @@
                                 <td colspan="3" class="text-right border border-dark">Subtotal</td>
                                 <td>{{subtotal}}</td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td colspan="3" class="text-right">Descuento</td>
                                 <td>{{descuento}}</td>
                             </tr>
                             <tr>
                                 <td colspan="3" class="text-right">Subtotal con descuento</td>
                                 <td>{{subtotalConDescuento}}</td>
-                            </tr>
+                            </tr> -->
                             <tr>
                                 <td colspan="3" class="text-right">Impuestos</td>
                                 <td>{{impuestos}}</td>
