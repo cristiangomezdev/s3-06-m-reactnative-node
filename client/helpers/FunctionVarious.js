@@ -51,18 +51,4 @@ export function validateCreditCardNumber(ccNum) {
       }
   }
   
-  export function createOrder (user,cart,card){
-    const formdata = {
-        shippingAddress : "Street 23, Barrio, city, Country",
-        paymentMethod : "1111 2222 3333 4444",
-        products : [{
-            "_id" : "630415ff9789e34cd4cb873e",
-            "amount" : 2
-            }, {
-                "_id" : "630628507bd9ff5788a97017",
-                "amount" : 2
-            }
-        ],
-        "totalPrice" : 13456
-    }
-  }
+  

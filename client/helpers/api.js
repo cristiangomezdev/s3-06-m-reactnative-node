@@ -58,9 +58,10 @@ export const api = {
     let resjson = await res.json();
     return { resjson, status };
   },
-  async postOneOrder(order) {
+  async postOneOrder(order,idOrder) {
+    console.log(idOrder)
     let raw = JSON.stringify(order);
-    let res = await fetch(path(`/orders/create`), {
+    let res = await fetch(path(`/orders/create/${idOrder}`), {
       method: "post",
       headers: { "content-type": "application/json" },
       body:raw

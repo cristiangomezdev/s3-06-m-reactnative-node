@@ -41,7 +41,7 @@ const BagItem  = (props) => {
                 <Image source={{ uri: props.images[0] }} style={Styles.image} /> 
             )}
             {props.detailOrder && (
-                <Image source={{ uri: "https://centropet.com/wp-content/uploads/2020/06/964154-MLA41475665548_042020-500x931.jpg" }} style={Styles.image} />
+                <Image source={{ uri: props.images[0] }} style={Styles.image} />
             )}
         </View>
 

@@ -29,13 +29,19 @@ export default function CreditCheckout() {
 
 const onSubmit = () => {
   
-  let card = {
+/*   let card = {
     code: code,
     name: name,
     date: date,
     address:address,
     cvv:cvv,
-
+  }; */
+  let card = {
+    code: '4111111111111111',
+    name: 'name',
+    date: '0325',
+    address:'avenida',
+    cvv:'cvv',
   };
 /*   if(!code || !name || !date || !cvv){
     return Alert.alert("please don't leave empty spaces");
