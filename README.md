@@ -24,8 +24,8 @@ App e-commerce de Mascotas
 * ### Claudia Betancourt - Fullstack ###
 * ### Cristian Gomez - Fullstack ###
 * ### Marcos Britos - Fullstack ###
-* ### Oriana De Caro - Fullstack###
-* ### Richard Irala - Fullstack###
+* ### Oriana De Caro - Fullstack ###
+* ### Richard Irala - Fullstack ###
 
 
 ## Link Deploy:
