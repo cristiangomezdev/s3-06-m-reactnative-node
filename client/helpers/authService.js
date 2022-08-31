@@ -15,6 +15,8 @@ const logIn = async (user) => {
         user: datajson.resjson.user,
       },
     };
+  }else{
+
   }
 
   if (datajson.status === 400) {

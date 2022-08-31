@@ -9,23 +9,22 @@ const ScreenWidth = Dimensions.get("window").width;
 const ImageWidth = Math.floor(ScreenWidth * 0.3)
 const ContenedorHeight = Math.floor(ScreenWidth * 0.5)
 
-const PathDetail = '/CrisPage'
-
 const ProductoItem = (props) => {
+
     const navigate = useNavigate()
     const handleClick = ()=>{
-        navigate(PathDetail)
+        navigate(`/products/${props._id}`)
     }
 
     return (
         <View key= {props.id} style={Styles.contenedor}>
             <TouchableHighlight underlayColor="rgba(155, 155, 155, 0.1)" onPress={handleClick} >
                 <View style={Styles.contenedorImagen}>
-                    <Image source={props.image} style={Styles.image} />
+                    <Image source={{uri: props.images[0]}} style={Styles.image} />
                 </View>
             </TouchableHighlight>
             <View style={Styles.contenedorProducto}>
-                <Text style={Styles.name}>{props.name}</Text>
+                <Text style={Styles.name}>{props.name}...</Text>
                 <Text style={Styles.brand}>{props.brand}</Text>
                 <Text style={Styles.size}>{props.size}</Text>
                 <Text style={Styles.price}>${props.price}</Text>

@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import SubNavHome from "../components/subNavforPage/subNavHome.jsx";
 import { useEffect, useState } from "react";
 import { dogDataCard } from "../components/subNavforPage/subNavHomeData.js";
+import SubNavProducts from "../components/subNavforPage/subNavProducts.jsx";
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
 /* home?cate=dog <= Este componente homepage se estructura en base a los query params. 
@@ -24,24 +25,24 @@ const Homepage = () => {
     },
     {
       description: "Estas redirigiendo a /home en vez de a /home?cate=dog",
-      uri: "https://res.cloudinary.com/richardiral/image/upload/v1658156550/cld-sample-5.jpg",
+      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTszOWXq3WKsNSrRqbstYIRS1cMCAVCEBBSuQ&usqp=CAU",
       id: 2,
     },
     {
       description: "Estas redirigiendo a /home en vez de a /home?cate='dog'",
-      uri: "https://res.cloudinary.com/richardiral/image/upload/v1658156548/cld-sample.jpg",
+      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRtiVh84JNf7hIgkROHcyl7VLS0lsyebJSDA&usqp=CAU",
       id: 3,
     },
     {
       description: "Estas redirigiendo a /home en vez de a /home?cate='dog'",
-      uri: "https://res.cloudinary.com/richardiral/image/upload/v1658156550/cld-sample-5.jpg",
+      uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnfpOEK4I3ilAXi3xNdHdu3n5Izp_mmUJpyA&usqp=CAU",
       id: 4,
     },
   ];
 
   useEffect(() => {
     const locationCategoryData = getCategoryQuery(location);
-    console.log(locationCategoryData);
+    
     if (!locationCategoryData) {
       setCategory(cardData);
     } else if (locationCategoryData == "dog") {
@@ -52,25 +53,26 @@ const Homepage = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
+        <SubNavProducts/>
         <SubNavHome setCategory={setCategory} />
-        <View>
+          <View>
           <View>
             {category ? <SimpleCard /> : <View></View>}
             {category ? (
-              category.map((i) => (
+              category.map((i,index) => (
                 <Link
                   to="/home?cate=cat"
-                  key={i.id}
+                  key={index}
                   underlayColor="rgba(0,0,0,0)"
                 >
-                  <Card description={i.description} uri={i.uri} />
+                  <Card key={i} description={i.description} uri={i.uri} />
                 </Link>
               ))
             ) : (
               <View></View>
             )}
           </View>
-        </View>
+        </View>  
       </View>
     </ScrollView>
   );

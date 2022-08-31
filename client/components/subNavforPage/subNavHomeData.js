@@ -1,22 +1,21 @@
 export const dogDataCard = [
   {
     description: "Comida",
-    uri: "https://res.cloudinary.com/richardiral/image/upload/v1661286161/hffbr0yzv5ixpdpkhbsd.jpg",
+    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK5dSkKSwXQgJ6Gtltu5F4yGp0-QnhzA66ig&usqp=CAU",
     id: 1,
   },
   {
     description: "Accesorios",
-    uri: "https://res.cloudinary.com/richardiral/image/upload/v1661286161/hffbr0yzv5ixpdpkhbsd.jpg",
-    id: 2,
+    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkgFSNCOuZnpfkjn0LyM3BXw48ZdsJS5zAQw&usqp=CAU",
   },
   {
     description: "Juguetes",
-    uri: "https://res.cloudinary.com/richardiral/image/upload/v1661286161/hffbr0yzv5ixpdpkhbsd.jpg",
+    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbGONeMU3cBWYBSUyCOiO-O47ECTAYomU62Q&usqp=CAU",
     id: 3,
   },
   {
     description: "Alimentos",
-    uri: "https://res.cloudinary.com/richardiral/image/upload/v1661286161/hffbr0yzv5ixpdpkhbsd.jpg",
+    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBuBJOlhmPOwmZNtV3WY9SotctFpHmm3GFwQ&usqp=CAU",
     id: 4,
   },
 ];
@@ -24,45 +23,45 @@ export const dogDataCard = [
 export const catDataCard = [
   {
     description: "Comida",
-    uri: "https://res.cloudinary.com/richardiral/image/upload/v1661287306/dmxsgrbgkotmvkma3pyj.jpg",
-    id: 1,
+    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuzx2HKMzGAdMzSmo7GGayo6NCOTxnFg6c5w&usqp=CAU",
+    id: 5,
   },
   {
     description: "Accesorios",
-    uri: "https://res.cloudinary.com/richardiral/image/upload/v1661287306/dmxsgrbgkotmvkma3pyj.jpg",
-    id: 2,
+    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyTnt15JiyMIdllHtbD31-CxF5diNPxjB7MA&usqp=CAU",
+    id: 6,
   },
   {
     description: "Juguetes",
-    uri: "https://res.cloudinary.com/richardiral/image/upload/v1661287306/dmxsgrbgkotmvkma3pyj.jpg",
-    id: 3,
+    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyGXOIjU065eSpw7QsRTcoN8aEDxlbQl6tlQ&usqp=CAU",
+    id: 7,
   },
   {
     description: "Alimentos",
-    uri: "https://res.cloudinary.com/richardiral/image/upload/v1661287306/dmxsgrbgkotmvkma3pyj.jpg",
-    id: 4,
+    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2moAXLhQ3QtDotkNB-M9keJWlUatwSnmmAA&usqp=CAU",
+    id: 8,
   },
 ];
 
 export const otherDataCard = [
   {
     description: "Comida",
-    uri: "https://res.cloudinary.com/richardiral/image/upload/v1658156518/sample.jpg",
-    id: 1,
+    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3-W_XfUrChDwH85jdlmhqF9et3Ej49LIong&usqp=CAU",
+    id: 9,
   },
   {
     description: "Accesorios",
-    uri: "https://res.cloudinary.com/richardiral/image/upload/v1658156518/sample.jpg",
-    id: 2,
+    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfT0ge3yP48ypKoBNLVxidUEu9FNxiIT6V2w&usqp=CAU",
+    id: 10,
   },
   {
     description: "Juguetes",
-    uri: "https://res.cloudinary.com/richardiral/image/upload/v1658156518/sample.jpg",
-    id: 3,
+    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxKcClGoiqLG9dwnLduoKn6Dlxaz2_EnEPGQ&usqp=CAU",
+    id: 11,
   },
   {
     description: "Alimentos",
-    uri: "https://res.cloudinary.com/richardiral/image/upload/v1658156518/sample.jpg",
-    id: 4,
+    uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_Lxa3LQiM0PVjee15j3x7fixiVX0xvmJkKw&usqp=CAU",
+    id: 12,
   },
 ];
