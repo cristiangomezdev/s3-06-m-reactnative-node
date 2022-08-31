@@ -3,7 +3,7 @@ import Loader from "../../pages/Loader";
 import ButtonCheckOut from "../ButtonCheckOut";
 
 
-import {View, Text, FlatList, StyleSheet, ScrollView, Dimensions} from 'react-native'
+import {View, Text, FlatList, StyleSheet, ScrollView, Dimensions,Alert} from 'react-native'
 import productos from '../../data/productosBag'
 import {useSelector} from 'react-redux';
 import BagItem from './BagItem'

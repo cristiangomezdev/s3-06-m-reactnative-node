@@ -1,6 +1,6 @@
 import { types } from '../types/types';
 import AuthService from "../helpers/authService";
-import {} from '@react-native-async-storage/async-storage'
+
 
 export const login = (user) => (dispatch) => {
   return AuthService.logIn(user).then(
