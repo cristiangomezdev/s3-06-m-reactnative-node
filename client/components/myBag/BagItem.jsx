@@ -23,9 +23,9 @@ const BagItem  = (props) => {
     Tampoco estamos validando stock */
     const onPressMenos = () => {
         setCount(count == 0 ? 0 : count - 1);
-        count !== 1 ? dispatch(decrease(props._id)) : dispatch(eliminate(props._id))
-        
+        count !== 1 ? dispatch(decrease(props._id)) : dispatch(eliminate(props._id))  
       };
+      
     const onPressMas = () => {
         setCount(count + 1);
         dispatch(increase(props._id))

@@ -1,3 +1,4 @@
+import { api } from "../helpers/api";
 import { createOrder } from "../helpers/FunctionVarious";
 import { types } from "../types/types";
 
@@ -43,16 +44,28 @@ export const clear = (product) => {
   };
 };
 
-export const buy = (user,cart,card) => {
+export const buy = (user,cart,card,total) => {
   return (dispatch) => {
     if(!user || !cart || !card){
       return Alert.alert("something gone wrong");
     }
-    const cartProducts = cart.map((item)=>{
-      console.log(item)  
+    const cartProducts = cart.cart.map((item)=>{
+      return{
+        _id:item._id,
+        amount:item.quantity
+      } 
     })
-
+    
     const status = createOrder(user,cart,card)
-
+    const formdata = {
+      shippingAddress : card.address,
+      paymentMethod : card.code,
+      products : cartProducts,
+      totalPrice : total
+  }
+  api.postOneOrder(formdata).then((response)=>{
+    console.log("opasjdojapsdojpa")
+  })
+  console.log(formdata)
   }
 };

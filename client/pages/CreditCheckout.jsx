@@ -9,7 +9,7 @@ import Loader from './Loader';
 import { validateCreditCardNumber } from "../helpers/FunctionVarious";
 import { buy } from "../actions/cart";
 import { getUser } from "../reducer/authReducer";
-import { getProducts } from "../reducer/cartReducer";
+import { getProducts,getTotal } from "../reducer/cartReducer";
 
 
 const ScreenWidth = Dimensions.get("window").width;
@@ -20,11 +20,12 @@ export default function CreditCheckout() {
   const [code, setCode] = useState();
   const [date, setDate] = useState();
   const [cvv, setCvv] = useState();
+  const [address, setAdress] = useState();
   const dispatch = useDispatch();
 
   const user = useSelector(state=>getUser(state.AuthReducer))
   const cart = useSelector(state=>getProducts(state.CartReducer))
-
+  const total = useSelector((state) => getTotal(state.CartReducer))
 
 const onSubmit = () => {
   
@@ -32,7 +33,9 @@ const onSubmit = () => {
     code: code,
     name: name,
     date: date,
-    cvv:cvv
+    address:address,
+    cvv:cvv,
+
   };
 /*   if(!code || !name || !date || !cvv){
     return Alert.alert("please don't leave empty spaces");
@@ -44,7 +47,7 @@ const onSubmit = () => {
   } */
     console.log('comunicacion con backend')
     navigate("/success");
-    dispatch(buy(user,cart,card))
+    dispatch(buy(user,cart,card,total))
   }
     
   let [fontsLoaded] = useFonts({
@@ -69,7 +72,7 @@ const onSubmit = () => {
             <Text style={styles.titlePage}>Credit Payment</Text>
          
             <TextInput value={code}
-              onChangeText={(text) =>onChangeCode(text)}
+              onChangeText={(text) =>setCode(text)}
               placeholder='XXXX-XXXX-XXXX-XXXX'
               keyboardType = 'numeric'
               required
@@ -78,6 +81,11 @@ const onSubmit = () => {
               value={name}
               onChangeText={(text) => setName(text)}
               placeholder='Name'
+              required
+              style={styles.input} />
+              <TextInput value={address}
+              onChangeText={(text) =>setAdress(text)}
+              placeholder='Address'
               required
               style={styles.input} />
             <View style={styles.inputsmallcontainer}>
@@ -196,7 +204,9 @@ creditcard:{
     paddingLeft: 20,
   },
   inputsmallcontainer:{
-    flexDirection: 'row', flexWrap: 'wrap' ,justifyContent:'center'
+    flexDirection: 'row',
+     flexWrap: 'wrap' ,
+    justifyContent:'center'
   },
   inputsmall:{
     height: 74,

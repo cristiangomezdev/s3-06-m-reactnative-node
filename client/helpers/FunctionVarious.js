@@ -53,35 +53,16 @@ export function validateCreditCardNumber(ccNum) {
   
   export function createOrder (user,cart,card){
     const formdata = {
-        products: {
-          _id: "62f6g46as7/8ewqc74657",
-          NumberOrder: "1661441503736",
-          date: "2022-08-26T00:00:00.000Z",
-          shippingAddress: "Street 23, Barrio, city, Country",
-          paymentMethod: "1111 2222 3333 4444",
-          products: [
-            {
-              _id: "630415ff9789e34cd4cb873e",
-              name: "Prueba de filtrado2",
-              images: [
-                "urls images"
-              ],
-              description: "description",
-              price: 7777.7,
-              amount: 2
-            },
-            {
-              _id: "630415ff9789e34cd4cb873e",
-              name: "Prueba de filtrado2",
-              images: [
-                "urls images"
-              ],
-              description: "description",
-              price: 7777.7,
-              amount: 2
+        shippingAddress : "Street 23, Barrio, city, Country",
+        paymentMethod : "1111 2222 3333 4444",
+        products : [{
+            "_id" : "630415ff9789e34cd4cb873e",
+            "amount" : 2
+            }, {
+                "_id" : "630628507bd9ff5788a97017",
+                "amount" : 2
             }
-          ],
-          userId: "62fd0aa4b3907553ae8a7cbc"
-        }
-      }
+        ],
+        "totalPrice" : 13456
+    }
   }
