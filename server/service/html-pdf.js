@@ -4,7 +4,7 @@ let User = require('../database/models/user')
 let path = require('path')
 
 class createPdf{
-    constructor(template, products, nrOrder, address, date, idUser, city, province,){
+    constructor(template, products, nrOrder, address, date, user, city, province,){
         this.template = template || require.resolve('../template/factura2.html')
         this.products = products
         this.contenidoHtml = fs.readFileSync(this.template, 'utf-8')
@@ -19,7 +19,7 @@ class createPdf{
         }
         this.city = city || 'Córdoba'
         this.province = province || 'Córdoba'
-        this.idUser = idUser
+        this.user = user
 
     }
 
@@ -44,10 +44,7 @@ class createPdf{
     }
 
     async addData (){
-        let user = await this.getDataUser(this.idUser)
-        if(!user){
-            return
-        }
+        
         const formateador = new Intl.NumberFormat("en", { style: "currency", "currency": "ARG" });
         let [tabla, subtotal] = this.addPorducts()
         const impuestos = subtotal * 0.0
@@ -56,8 +53,8 @@ class createPdf{
         this.contenidoHtml = this.contenidoHtml.replace("{{NumberOrder}}", this.nrOrder);
         this.contenidoHtml = this.contenidoHtml.replace("{{order}}", this.nrOrder);
         this.contenidoHtml = this.contenidoHtml.replace("{{date}}", this.date);
-        this.contenidoHtml = this.contenidoHtml.replace("{{nameUser}}", user.name);
-        this.contenidoHtml = this.contenidoHtml.replace("{{userPhone}}", user.phone || "");
+        this.contenidoHtml = this.contenidoHtml.replace("{{nameUser}}", this.user.name);
+        this.contenidoHtml = this.contenidoHtml.replace("{{userPhone}}", this.user.phone || "");
         this.contenidoHtml = this.contenidoHtml.replace("{{nameOrganization}}", this.organization.name);
         this.contenidoHtml = this.contenidoHtml.replace("{{addressOrganization}} ", this.organization.address);
         this.contenidoHtml = this.contenidoHtml.replace("{{numberOrganization}}", this.organization.phone);

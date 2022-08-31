@@ -5,7 +5,8 @@ const formatDate = require('../helpers/parseDate');
 const httpStatus = require('../helpers/httpStatus');
 const [restAmountProducts, obtainDataProducts] = require('../helpers/variousFunctions');
 let createPdf = require('../service/html-pdf')
-
+let Nodemailer = require('../service/nodemailer')
+require('dotenv').config()
 class ordersController {
 
     static async getAllOrders(req,res){
@@ -86,12 +87,12 @@ class ordersController {
 
         try {
             let [p, totalPrice] = await obtainDataProducts(products)
-            console.log(p)
             user = await User.findById(idUser)
             if (user) {
+                console.log(Date())
                 let order = new Order({
                     NumberOrder : Date.now(),
-                    date : formatDate(Date()),
+                    date : Date(),
                     status : 'Delivered',
                     shippingAddress,
                     paymentMethod,
@@ -107,8 +108,24 @@ class ordersController {
 
 
                 let template = require.resolve('../template/factura2.html')
-                let serviceHtmlPdf = new createPdf(template, p, order.NumberOrder, order.shippingAddress, formatDate(order.date), idUser)
-                serviceHtmlPdf.addData()
+                let serviceHtmlPdf = new createPdf(template, p, order.NumberOrder, order.shippingAddress, formatDate(order.date), user)
+                try {
+                    const data = {
+                        name : user.name,
+                        subject : '¡Gracias por su compra!',
+                        bod : 'Gracias por tu compra',
+                        url : process.env.HOST_FRONT
+                    };
+                    let email = new Nodemailer(data, user.email)
+                    await serviceHtmlPdf.addData()
+                    setTimeout(function(){
+                        email.sendEmail(true, order.NumberOrder)
+                    }, 10000);
+                    
+
+                } catch (error) {
+                    console.log(error)
+                }
                 return res.status(httpStatus.CREATED).json({
                     order
                 })
