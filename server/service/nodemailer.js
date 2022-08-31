@@ -32,7 +32,7 @@ class Nodemailer{
         attachments: [
           {
             filename: `${nro}.pdf`,
-            path: `../server/recibe/${nro}.pdf`,
+            path: `../recibe/${nro}.pdf`,
             cid: `uniq-${nro}.pdf` 
           }
         ]
