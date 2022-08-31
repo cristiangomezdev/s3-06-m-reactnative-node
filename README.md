@@ -1,4 +1,4 @@
-                                                   #PRETTY PETS
+                                                   # PRETTY PETS
 
 App e-commerce de Mascotas
 
@@ -16,7 +16,7 @@ App e-commerce de Mascotas
 ## Stack/Tecnologias:
 * ### React Native ###
 * ### Node ###
-* ###Mongodb ###
+* ### Mongodb ###
 * ### Express ###
 
 
