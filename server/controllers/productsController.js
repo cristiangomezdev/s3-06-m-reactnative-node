@@ -62,7 +62,7 @@ class ProductController{
     }
 
     static async addProduct(req, res){
-        let {name, images, description, price, discount, categoriesId, subCategoriesId, weigth } = req.body
+        let {name, images, description, price, discount, categoriesId, subCategoriesId, weigth, amount } = req.body
         let newProduct = new Product({
             name,
             images : images || "default-image.png",
@@ -71,7 +71,8 @@ class ProductController{
             discount : discount || 0,
             categoriesId,
             subCategoriesId,
-            weigth
+            weigth,
+            amount
         })
 
         try {

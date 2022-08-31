@@ -14,6 +14,7 @@ const productSchema = new Schema({
     ],
     description : {
         type : String,
+        default : "Sin descripción"
     },
     price : {
         type : Number
