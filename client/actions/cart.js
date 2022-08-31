@@ -55,7 +55,6 @@ export const buy = ({user},cart,card,total) => {
         amount:item.quantity
       } 
     })
-    console.log(user._id)
     
     const formdata = {
       shippingAddress : card.address,
@@ -66,6 +65,6 @@ export const buy = ({user},cart,card,total) => {
   api.postOneOrder(formdata,user._id).then((response)=>{
     console.log(response)
   })
-  console.log(formdata)
+
   }
 };

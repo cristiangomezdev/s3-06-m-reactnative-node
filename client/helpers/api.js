@@ -59,7 +59,7 @@ export const api = {
     return { resjson, status };
   },
   async postOneOrder(order,idOrder) {
-    console.log(idOrder)
+
     let raw = JSON.stringify(order);
     let res = await fetch(path(`/orders/create/${idOrder}`), {
       method: "post",
