@@ -18,7 +18,7 @@ const SubNavProducts = () => {
 
   return (
     <ScrollView horizontal style={styles.container}>
-      {subNavProductsData.map((data, i) => (
+      {subNavProductsData.perros.data.map((data, i) => (
         <TouchableHighlight
           key={i}
           underlayColor="rgba(155, 155, 155, 0)"
@@ -27,7 +27,7 @@ const SubNavProducts = () => {
             navigateTo(data.to);
           }}
         >
-          <Text style={styles.link}>{data.text}</Text>
+          <Text style={styles.link}>{data.subcategory}</Text>
         </TouchableHighlight>
       ))}
     </ScrollView>

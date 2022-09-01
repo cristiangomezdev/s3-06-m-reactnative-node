@@ -53,7 +53,6 @@ const Homepage = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <SubNavProducts />
         <SubNavHome setCategory={setCategory} />
         <View>
           <View>
