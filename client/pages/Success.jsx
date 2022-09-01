@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-native";
 import { useFonts } from 'expo-font';
 import { StyleSheet, TouchableHighlight, Image, Text, View, ScrollView, StatusBar } from 'react-native';
 import { Dimensions } from 'react-native';
+import Button from '../components/Button'
 import Loader from './Loader';
 
 const ScreenWidth = Dimensions.get("window").width;
+const { width } = Dimensions.get("window");
 
 export default function Success() {
     let navigate = useNavigate();
@@ -30,9 +32,7 @@ export default function Success() {
                 <Text style={styles.text}> Success!  </Text>
                 <Text style={styles.text1}> Your order will be delivered soon. Thank you for choosing our app!  </Text>
                 <View style={styles.buttonContain} >
-                    <TouchableHighlight style={styles.boton} onPress={() => navigate(-1)}>
-                        <Text style={styles.botonText}>CONTINUE SHOPPING</Text>
-                    </TouchableHighlight>
+                <Button text={'Download PDF'} onPressHandler={() => navigate(-1)}/>
                 </View>
             </ScrollView>
         </View>
@@ -44,27 +44,7 @@ const styles = StyleSheet.create({
     container: {
         width: ScreenWidth,
 
-    },
-    buttonContain: {
-        width: ScreenWidth,
-        flex: 1,
-        alignItems: 'center'
-    },
-    boton: {
-        width: ScreenWidth - 50,
-        height: 70,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: '#2196F3',
-        borderRadius: 20,
-        color: 'white',
-        margin: 'auto'
-    },
-    botonText: {
-        fontSize: 25,
-        color: 'white',
-    },
-    
+    },    
     text: {
         color: 'black',
         fontWeight: 'bold',
@@ -83,8 +63,8 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     image:{
-      marginTop: 200,
-      marginLeft:150,
-      marginBottom: 40,
+        marginTop:50,
+        width:ScreenWidth,
+        resizeMode:'contain'
     }
 });
