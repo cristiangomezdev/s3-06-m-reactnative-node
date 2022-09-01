@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-native";
-import { useDispatch } from "react-redux";
-import { register } from "./../actions/auth";
+import { useDispatch,useSelector } from "react-redux";
 import Button from '../components/Button'
 import { useFonts } from 'expo-font';
-import { StyleSheet, TextInput, Image, Text, View, ScrollView, TouchableHighlight, StatusBar } from 'react-native';
+import { StyleSheet, TextInput, Image, Text, View, ScrollView, StatusBar } from 'react-native';
 import { Dimensions,Alert } from 'react-native';
 import Loader from './Loader';
+import { validateCreditCardNumber } from "../helpers/FunctionVarious";
+import { buy } from "../actions/cart";
+import { getUser } from "../reducer/authReducer";
+import { getProducts,getTotal } from "../reducer/cartReducer";
 
 
 const ScreenWidth = Dimensions.get("window").width;
@@ -17,37 +20,51 @@ export default function CreditCheckout() {
   const [code, setCode] = useState();
   const [date, setDate] = useState();
   const [cvv, setCvv] = useState();
+  const [address, setAdress] = useState();
   const dispatch = useDispatch();
 
-  const onSubmit = () => {
-    navigate("/success");
-    let user = {
-      code: code,
-      name: name,
-      date: date,
-      cvv:cvv
-    };
-   /*  dispatch(register(user))
-      .then((response) => {
-        if (response.status == "success") {
-          Alert.alert("Success",response.message);
-          navigate("/home");
-        }
-        if (response.status == "error") {
-          Alert.alert("Error",response.message);
-      }
-      })
-      .catch((error) => {
-        navigate("/signup");
-      }); */
-  };
+  const user = useSelector(state=>getUser(state.AuthReducer))
+  const cart = useSelector(state=>getProducts(state.CartReducer))
+  const total = useSelector((state) => getTotal(state.CartReducer))
 
+const onSubmit = () => {
+  
+   let card = {
+    code: code,
+    name: name,
+    date: date,
+    address:address,
+    cvv:cvv,
+  }; 
+
+   if(!code || !name || !date || !cvv || !address){
+    return Alert.alert("please don't leave any input empty - front validation");
+  } 
+   const validation = validateCreditCardNumber(code);
+
+  if(!validation){
+    return null
+  } 
+
+    navigate("/success");
+    dispatch(buy(user,cart,card,total)).then((response)=>{
+      if(response.status === 'success'){
+        //works
+      }
+      if(response.status === 'error'){
+        Alert.alert("error")
+      }
+    
+    }) 
+  }
+    
   let [fontsLoaded] = useFonts({
     'poppins': require('../assets/fonts/Poppins-Light.ttf'),
     'poppins-regular': require('../assets/fonts/Poppins-Regular.ttf'),
     'taviraj': require('../assets/fonts/Taviraj-Light.ttf'),
     'taviraj-m': require('../assets/fonts/Taviraj-Medium.ttf'),
   });
+  //replace(/\W/gi, '').replace(/(.{4})/g, '$1 ')
   if (!fontsLoaded) {
     return <Loader />;
   }
@@ -63,28 +80,38 @@ export default function CreditCheckout() {
             <Text style={styles.titlePage}>Credit Payment</Text>
          
             <TextInput value={code}
-              onChangeText={(text) => setName(text)}
-              placeholder='XXXX-XXXXX-XXXXX-XXXXX'
+              onChangeText={(text) =>setCode(text.replace(/\W/gi, '').replace(/(.{4})/g, '$1 '))}
+              placeholder='XXXX-XXXX-XXXX-XXXX'
+              keyboardType = 'numeric'
               required
               style={styles.input} />
             <TextInput
               value={name}
-              onChangeText={(text) => setEmail(text)}
+              onChangeText={(text) => setName(text)}
               placeholder='Name'
+              required
+              style={styles.input} />
+              <TextInput value={address}
+              onChangeText={(text) =>setAdress(text)}
+              placeholder='Address'
               required
               style={styles.input} />
             <View style={styles.inputsmallcontainer}>
                 <TextInput 
                 value={date}
-                onChangeText={(text) => setPassword(text)}
+                onChangeText={(text) => setDate(text)}
                 secureTextEntry={true}
+                keyboardType = 'numeric'
+                maxLength={4}
                 placeholder='03/15' 
                 style={styles.inputsmall} 
                 required />
                 <TextInput 
                 value={cvv}
-                onChangeText={(text) => setPassword(text)}
+                onChangeText={(text) => setCvv(text)}
                 secureTextEntry={true}
+                keyboardType = 'numeric'
+                maxLength={4}
                 placeholder='CVV' 
                 style={styles.inputsmall} 
                 required />
@@ -185,7 +212,9 @@ creditcard:{
     paddingLeft: 20,
   },
   inputsmallcontainer:{
-    flexDirection: 'row', flexWrap: 'wrap' ,justifyContent:'center'
+    flexDirection: 'row',
+     flexWrap: 'wrap' ,
+    justifyContent:'center'
   },
   inputsmall:{
     height: 74,

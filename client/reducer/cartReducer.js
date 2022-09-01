@@ -9,11 +9,11 @@ const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.cartAdd:
             if(state.cart !== ""){
-                const { id } = action.payload;
-                const find = state.cart.find((item) => item.id === id);
+                const { _id } = action.payload;
+                const find = state.cart.find((item) => item._id === _id);
                 if(find){
                         let itemCart = state.cart.map((item) =>
-                        item.id === id
+                        item._id === _id
                         ? {
                             ...item,
                             quantity: item.quantity + 1,
@@ -46,7 +46,7 @@ const cartReducer = (state = initialState, action) => {
             const id = action.payload;
             newCart = state.cart.map(item => {
                 
-                if(id === item.id)
+                if(id === item._id)
                     return {...item,quantity: item.quantity+1};
                 return item;
             })
@@ -59,7 +59,7 @@ const cartReducer = (state = initialState, action) => {
         case types.cartDecrease:{
             const id = action.payload;
             newCart = state.cart.map(item => {
-                if(id === item.id)
+                if(id === item._id)
                     return {...item,quantity: item.quantity-1};
                 return item;
             })
@@ -69,8 +69,9 @@ const cartReducer = (state = initialState, action) => {
             }
         }  
         case types.cartDelete:
+            console.log(action.payload)
             newCart = state.cart.filter(item => {
-                return item.id !== action.payload
+                return item._id !== action.payload
             });  
             return {
                 ...state,

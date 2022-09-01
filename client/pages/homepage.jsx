@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import SubNavHome from "../components/subNavforPage/subNavHome.jsx";
 import { useEffect, useState } from "react";
 import { dogDataCard } from "../components/subNavforPage/subNavHomeData.js";
+import SubNavProducts from "../components/subNavforPage/subNavProducts.jsx";
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
 /* home?cate=dog <= Este componente homepage se estructura en base a los query params. 
@@ -41,7 +42,7 @@ const Homepage = () => {
 
   useEffect(() => {
     const locationCategoryData = getCategoryQuery(location);
-    console.log(locationCategoryData);
+    
     if (!locationCategoryData) {
       setCategory(cardData);
     } else if (locationCategoryData == "dog") {
@@ -52,14 +53,15 @@ const Homepage = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
+        <SubNavProducts />
         <SubNavHome setCategory={setCategory} />
-          <View>
+        <View>
           <View>
             {category ? <SimpleCard /> : <View></View>}
             {category ? (
-              category.map((i,index) => (
+              category.map((i, index) => (
                 <Link
-                  to="/home?cate=cat"
+                  to={"/products?category=" + i.id}
                   key={index}
                   underlayColor="rgba(0,0,0,0)"
                 >
@@ -70,7 +72,7 @@ const Homepage = () => {
               <View></View>
             )}
           </View>
-        </View>  
+        </View>
       </View>
     </ScrollView>
   );

@@ -5,9 +5,9 @@ const formatDate = (date)=>{
     let year = date.getFullYear()
 
     if(month < 10){
-    date = `${year}-0${month}-${day + 1}`
+    date = `${year}-0${month}-${day}`
     }else{
-    date = `${year}-${month}-${day + 1}`
+    date = `${year}-${month}-${day}`
     }
     return date
 }

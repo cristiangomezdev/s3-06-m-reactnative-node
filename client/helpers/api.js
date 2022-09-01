@@ -58,6 +58,38 @@ export const api = {
     let resjson = await res.json();
     return { resjson, status };
   },
+  async postOneOrder(order,idOrder) {
+
+    let raw = JSON.stringify(order);
+    let res = await fetch(path(`/orders/create/${idOrder}`), {
+      method: "post",
+      headers: { "content-type": "application/json" },
+      body:raw
+    });
+
+    const status = res.status;
+
+    let resjson = await res.json();
+
+    return { resjson, status };
+  },
+  async getProducts() {
+    let res = await fetch(path("/products"));
+
+    const status = res.status;
+    let resjson = await res.json();
+
+    return {resjson, status}
+  },
+
+  async getProduct(productId) {
+    let res = await fetch(path(`/products/${productId}`));
+
+    const status = res.status;
+    let resjson = await res.json();
+
+    return {resjson, status};
+  }
 };
 
 function path(pathname) {

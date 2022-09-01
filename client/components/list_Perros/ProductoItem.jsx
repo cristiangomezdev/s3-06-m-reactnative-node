@@ -9,19 +9,18 @@ const ScreenWidth = Dimensions.get("window").width;
 const ImageWidth = Math.floor(ScreenWidth * 0.3)
 const ContenedorHeight = Math.floor(ScreenWidth * 0.5)
 
-const PathDetail = '/products/232'
-
 const ProductoItem = (props) => {
+
     const navigate = useNavigate()
     const handleClick = ()=>{
-        navigate(`/products/${props.id}`)
+        navigate(`/products/${props._id}`)
     }
 
     return (
         <View key= {props.id} style={Styles.contenedor}>
             <TouchableHighlight underlayColor="rgba(155, 155, 155, 0.1)" onPress={handleClick} >
                 <View style={Styles.contenedorImagen}>
-                    <Image source={{uri: props.image}} style={Styles.image} />
+                    <Image source={{uri: props.images[0]}} style={Styles.image} />
                 </View>
             </TouchableHighlight>
             <View style={Styles.contenedorProducto}>
