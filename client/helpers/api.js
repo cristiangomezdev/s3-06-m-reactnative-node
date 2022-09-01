@@ -73,8 +73,16 @@ export const api = {
 
     return { resjson, status };
   },
-  async getProducts() {
-    let res = await fetch(path("/products"));
+  async getProducts(categoriesId, subCategoriesId) {
+    let res = await fetch(
+      path(
+        `/products` + categoriesId
+          ? "?categoriesId=" + categoriesId
+          : subCategoriesId
+          ? "?subCategoriesId=" + subCategoriesId
+          : ""
+      )
+    );
 
     const status = res.status;
     let resjson = await res.json();
