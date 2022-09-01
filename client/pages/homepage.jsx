@@ -60,7 +60,7 @@ const Homepage = () => {
             {category ? (
               category.map((i, index) => (
                 <Link
-                  to={"/products?category=" + i.id}
+                  to={"/products?subcategoriesId=" + i.id}
                   key={index}
                   underlayColor="rgba(0,0,0,0)"
                 >
