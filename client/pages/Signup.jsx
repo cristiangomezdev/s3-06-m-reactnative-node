@@ -57,9 +57,9 @@ export default function Signup() {
   const onRegister = () => {
     let user = {
       name: name,
-      password: password,
-      email: email,
-      confirmPass: confirmPass,
+      password: password.trim(),
+      email: email.trim(),
+      confirmPass: confirmPass.trim(),
     };
 
     if (!validacion()) {

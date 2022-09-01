@@ -51,8 +51,8 @@ export default function Login() {
 
     const onLogin = () => {
         let user = {
-            username,
-            password,
+            username:username.trim(),
+            password:password.trim(),
         };
          if (!validacion()) {
             return
