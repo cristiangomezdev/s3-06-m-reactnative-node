@@ -1,14 +1,8 @@
-<div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="https://i.ibb.co/pfH7wrK/f1e1a3603342.png" alt="Logo" width="300" height="300">
-  </a>
-</div>
-
 <div>
- <h1><img src="https://i.ibb.co/zsN34By/127965b46dea.png" alt="title"></h1>
+ <h1><img src="https://github.com/No-Country/s3-06-m-reactnative-node/blob/develop/client/assets/logos/logo_3.png" alt="title" ></h1>
 </div>
 
-App e-commerce de Mascotas desarrollada con React Native, Express y MongoDB, este proyecto es una emulacion de 1 mes a travez de No Country. Cuenta con vistas Home, List Products, Detail Products, Cart, Bag Item, Profile, List Orders, Detail Orders, Login and Register.
+### App e-commerce de Mascotas desarrollada con React Native, Express y MongoDB, este proyecto es una emulacion de 1 mes a travez de No Country. Cuenta con vistas Home, List Products, Detail Products, Cart, Bag Item, Profile, List Orders, Detail Orders, Login and Register.
 
 ## _Deployment_
 
