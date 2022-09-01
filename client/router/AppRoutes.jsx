@@ -19,7 +19,7 @@ export default function AppRoutes() {
 
   return (
     <>
-      <StatusBar style="black" backgroundColor="#F9F9F9" />
+      <StatusBar style="black" backgroundColor="#FFFFFF" />
       <Routes>
         <Route path="/" element={ !state.token ? <Login /> : <Navigate to='/home?cate=dog' /> } />
         <Route path="/products/idInventado" element={<ProductDetail />} />
