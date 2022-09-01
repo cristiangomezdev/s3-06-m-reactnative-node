@@ -8,6 +8,7 @@ import productos from '../../data/productosBag'
 import {useSelector} from 'react-redux';
 import BagItem from './BagItem'
 import {getTotal,getProducts} from '../../reducer/cartReducer'
+import SubNavProducts from "../subNavforPage/subNavProducts";
 
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
@@ -36,6 +37,7 @@ const ListaBag = () => {
     return (
       <View style={styles.containView}>  
         <ScrollView style={styles.container}>
+        <SubNavProducts />
           
         <View>
           <Text style={styles.titlePage}>My Bag</Text>
