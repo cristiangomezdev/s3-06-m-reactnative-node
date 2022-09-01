@@ -4,7 +4,7 @@
     "slug": "pet-shop",
     "version": "1.1.0",
     "orientation": "portrait",
-    "icon": "./assets/iconspet.png",
+    "icon": "./assets/logos/logo_icon_2.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/logos/background_3.png",
@@ -22,7 +22,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logos/logo_icon_2.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.s306.pet"

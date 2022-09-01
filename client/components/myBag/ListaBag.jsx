@@ -37,7 +37,6 @@ const ListaBag = () => {
     return (
       <View style={styles.containView}>  
         <ScrollView style={styles.container}>
-        <SubNavProducts />
           
         <View>
           <Text style={styles.titlePage}>My Bag</Text>
