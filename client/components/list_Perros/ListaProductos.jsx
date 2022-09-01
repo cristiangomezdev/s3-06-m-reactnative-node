@@ -4,6 +4,7 @@ import productos from '../../data/productos'
 import ProductoItem from './ProductoItem'
 import { useFonts } from "expo-font";
 import Loader from "../../pages/Loader";
+import SubNavProducts from "../subNavforPage/subNavProducts";
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
 
@@ -22,6 +23,7 @@ const ListaProductos = ({products}) => {
     return (
       <View style={styles.containView}>  
         <ScrollView style={styles.container}>
+        <SubNavProducts />
 
           <View>
             <Text style={styles.titlePage}>Comida</Text>
