@@ -58,13 +58,12 @@ export const api = {
     let resjson = await res.json();
     return { resjson, status };
   },
-  async postOneOrder(order,idOrder) {
-
+  async postOneOrder(order, idOrder) {
     let raw = JSON.stringify(order);
     let res = await fetch(path(`/orders/create/${idOrder}`), {
       method: "post",
       headers: { "content-type": "application/json" },
-      body:raw
+      body: raw,
     });
 
     const status = res.status;
@@ -73,22 +72,19 @@ export const api = {
 
     return { resjson, status };
   },
-  async getProducts(categoriesId, subcategoriesId) {
+  async getProducts(subcategoriesId) {
+    console.log(".")
     let res = await fetch(
       path(
         `/products` +
-          (categoriesId
-            ? "?categoriesId=" + categoriesId
-            : subcategoriesId
-            ? "?subcategoriesId=" + subcategoriesId
-            : "")
+          (subcategoriesId ? "?subcategoriesId=" + subcategoriesId : "")
       )
     );
 
     const status = res.status;
     let resjson = await res.json();
 
-    return {resjson, status}
+    return { resjson, status };
   },
 
   async getProduct(productId) {
@@ -97,8 +93,8 @@ export const api = {
     const status = res.status;
     let resjson = await res.json();
 
-    return {resjson, status};
-  }
+    return { resjson, status };
+  },
 };
 
 function path(pathname) {
