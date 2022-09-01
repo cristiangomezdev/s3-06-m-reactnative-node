@@ -1,7 +1,7 @@
  # PRETTY PETS
 <div align="center">
   <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="https://i.ibb.co/pfH7wrK/f1e1a3603342.png" alt="Logo" width="140" height="110">
+    <img src="https://i.ibb.co/pfH7wrK/f1e1a3603342.png" alt="Logo" width="300" height="300">
   </a>
 </div>
 
