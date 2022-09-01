@@ -20,16 +20,17 @@ let obtainDataProducts = async (products)=>{
     let totalPrice = 0
     for (let i = 0; i < products.length; i++) {
         let { _id, name, images, description, price, discount} = await Product.findById(products[i]._id)
+        let priceOr = (price - (( price * discount) / 100)) * products[i].amount
         let priceProduct = (price - (( price * discount) / 100))
         product.push({
             _id,
             name,
             images,
             description,
-            price : priceProduct,
+            price : priceProduct ,
             amount : products[i].amount
         })
-        totalPrice = totalPrice + priceProduct
+        totalPrice = totalPrice + priceOr
 
     }
     return [product, totalPrice]

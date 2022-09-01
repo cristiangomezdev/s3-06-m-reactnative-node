@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura</title>
+</head>
+
+<body>
+    <main class="container">
+        <div class="container-fluid top-5 ">
+            <div class="row  ">
+                <div class="col-xs-10">
+                    <h1 style="font-size: 1rem;"><strong><u>Factura Nro: {{NumberOrder}}</u> </strong></h1>
+                </div>
+                <div class="col-xs-2 ">
+                    <img class="img img-responsive " src="https://i.ibb.co/pfH7wrK/f1e1a3603342.png" alt="Pretty Pets">
+                </div>
+            </div>
+            <hr>
+            <div class="row ">
+                <div class="col-xs-8">
+                    <p style="font-size: 0.8rem;">Nombre de la empresa: {{nameOrganization}}</p>
+                    <p style="font-size: 0.8rem;">Direccion de la empresa: {{addressOrganization}} </p>
+                    <p style="font-size: 0.8rem;">Numero de la empresa: {{numberOrganization}}</p>
+                    <p style="font-size: 0.8rem;">CUIT de la empresa: {{CUITorganization}} </p>
+                </div>
+                <div class="col-xs-4 text-center">
+                    <p style="font-size: 0.8rem;">Fecha: {{date}}</p>
+                    <p style="font-size: 0.8rem;"> Nro de Orden: {{order}}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row text-center" style="margin-bottom: 2rem;">
+                <div class="col-xs-4">
+                    <p style="font-size: 0.9rem;"><u>Cliente</u> </p>
+                    <p style="font-size: 0.8rem;">Nombre: {{nameUser}} </p>
+                    <p style="font-size: 0.8rem;">Nro Telefono: {{userPhone}} </p>
+                </div>
+                <div class="col-xs-6">
+                    <p style="font-size: 0.9rem;"><u> Direccion de envio</u></p>
+                    <p style="font-size: 0.8rem;">Direccion: {{address}}</p>
+                    <p style="font-size: 0.8rem;">Localidad: {{city}}</p>
+                    <p style="font-size: 0.8rem;">Provincia: {{province}}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-xs-12 ">
+                    <table class="table table-condensed table-bordered table-striped  ">
+                        <thead>
+                            <tr>
+                                <th class="text-center bg-info" style="font-size: 0.9rem;">Descripcion</th>
+                                <th class="text-center bg-info" style="font-size: 0.9rem;">Cantidad</th>
+                                <th class="text-center bg-info" style="font-size: 0.9rem;">Precio unitario</th>
+                                <th class="text-center bg-info" style="font-size: 0.9rem;">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{tablaProductos}}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="text-right border border-dark"style="font-size: 0.9rem;">Subtotal</td>
+                                <td style="font-size: 0.8rem;">{{subtotal}}</td>
+                            </tr>
+                            <!-- <tr>
+                                <td colspan="3" class="text-right">Descuento</td>
+                                <td>{{descuento}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-right">Subtotal con descuento</td>
+                                <td>{{subtotalConDescuento}}</td>
+                            </tr> -->
+                            <tr>
+                                <td colspan="3" class="text-right" style="font-size: 0.9rem;">Impuestos</td>
+                                <td style="font-size: 0.8rem;">{{impuestos}}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="text-right">
+                                    <h4 style="font-size: 0.9rem;"><strong> Total</strong></h4>
+                                </td>
+                                <td>
+                                    <h4 style="font-size: 0.9rem;">{{total}}</h4>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>

@@ -11,7 +11,7 @@ module.exports = [
     check('description')
     .isString()
     .withMessage('Wrong description, string only').bail()
-    .isLength({min : 0,max : 500})
+    .isLength({min : 0,max : 1000})
     .withMessage('max 500 characters').bail(),
 
     check('price')

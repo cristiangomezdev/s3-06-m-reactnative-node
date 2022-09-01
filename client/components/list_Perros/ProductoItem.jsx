@@ -24,7 +24,7 @@ const ProductoItem = (props) => {
                 </View>
             </TouchableHighlight>
             <View style={Styles.contenedorProducto}>
-                <Text style={Styles.name}>{props.name}...</Text>
+                <Text style={Styles.name}>{props.name}</Text>
                 <Text style={Styles.brand}>{props.brand}</Text>
                 <Text style={Styles.size}>{props.size}</Text>
                 <Text style={Styles.price}>${props.price}</Text>

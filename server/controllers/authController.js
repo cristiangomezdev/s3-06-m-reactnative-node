@@ -32,6 +32,7 @@ class AuthController {
         const data = {
             name : user.name,
             subject : '¡Gracias por registrarte con nosotros!',
+            bod : 'Gracias por registrarte',
             url : process.env.HOST_FRONT
         };
         let token = jwt.tokenSign(user)
