@@ -94,6 +94,23 @@ export const api = {
 
     return { resjson, status };
   },
+
+  //Helper prueba Clau Category
+  async getCategory(CategoriesId) {
+    let res = await fetch(
+      path(
+        `/categories/` +
+          (CategoriesId ?  CategoriesId : "")
+      )
+    );
+
+    const status = res.status;
+    let resjson = await res.json();
+
+    return { resjson, status };
+  },
+
+
 };
 
 function path(pathname) {
