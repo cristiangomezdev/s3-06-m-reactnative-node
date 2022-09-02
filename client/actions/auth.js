@@ -31,7 +31,7 @@ export const register = (user) => (dispatch) => {
 
         dispatch({
           type: types.authRegister,
-          payload: { user: response.user },
+          payload: response.user ,
         });
 
 Promise.resolve();

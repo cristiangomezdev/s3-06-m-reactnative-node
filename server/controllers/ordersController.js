@@ -93,7 +93,7 @@ class ordersController {
                 let order = new Order({
                     NumberOrder : Date.now(),
                     date : Date(),
-                    status : 'Delivered',
+                    status : 'Processing',
                     shippingAddress,
                     paymentMethod,
                     products : p,
