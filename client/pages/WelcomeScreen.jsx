@@ -6,7 +6,8 @@ import {
   Image,
   ImageBackground,
   ActivityIndicator,
-  Text
+  Text,
+  StatusBar
 } from "react-native";
 import { useFonts } from 'expo-font';
 import background from "../assets/logos/background_3.png";
@@ -17,6 +18,7 @@ const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
 
 export default function WelcomeScreen() {
+
     let [fontsLoaded] = useFonts({
         poppins: require("../assets/fonts/Poppins-Light.ttf"),
         "poppins-regular": require("../assets/fonts/Poppins-Regular.ttf"),
@@ -28,29 +30,41 @@ export default function WelcomeScreen() {
         return <ActivityIndicator style={{top:-150}} size={480} color="#FF729F" />;
       }
   return (
-    <View>
+    <View style={styles.container}>
       <ImageBackground
-        resizeMode="contain"
+        resizeMode="cover"
         source={background}
         style={styles.imagebackground}
       >
-        <Image source={logo} style={styles.imagelogo} />
+         <Image source={logo} style={styles.imagelogo} />
         <ActivityIndicator style={{top:-140}} size={360} color="#FF729F" />
-        <Text style={styles.loadingtext}>Loading</Text>
+        <Text style={styles.loadingtext}>Loading</Text> 
       </ImageBackground>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container:{
+    width: null,
+    height: null,
+    flex: 1
+  },
     imagelogo:{
-        width:320,height:320,top:200
+        width:320,
+        height:320,
+        top:200
     },
     imagebackground:{
-        width: width, height: height,justifyContent: 'center',
+        width:width,
+         height: height+StatusBar.currentHeight,
+        justifyContent: 'center',
         alignItems: 'center'
-
     },
-    loadingtext:{fontFamily:'poppins-regular',top:-50,fontSize:30}
+    loadingtext:{
+      fontFamily:'poppins-regular',
+      top:-50,
+      fontSize:30
+  }
 });
 

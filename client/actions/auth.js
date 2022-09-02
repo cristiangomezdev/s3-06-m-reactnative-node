@@ -1,6 +1,6 @@
 import { types } from '../types/types';
 import AuthService from "../helpers/authService";
-import {} from '@react-native-async-storage/async-storage'
+
 
 export const login = (user) => (dispatch) => {
   return AuthService.logIn(user).then(
@@ -31,7 +31,7 @@ export const register = (user) => (dispatch) => {
 
         dispatch({
           type: types.authRegister,
-          payload: { user: response.user },
+          payload: response.user ,
         });
 
 Promise.resolve();

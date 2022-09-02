@@ -3,11 +3,12 @@ import Loader from "../../pages/Loader";
 import ButtonCheckOut from "../ButtonCheckOut";
 
 
-import {View, Text, FlatList, StyleSheet, ScrollView, Dimensions} from 'react-native'
+import {View, Text, FlatList, StyleSheet, ScrollView, Dimensions,Alert} from 'react-native'
 import productos from '../../data/productosBag'
 import {useSelector} from 'react-redux';
 import BagItem from './BagItem'
 import {getTotal,getProducts} from '../../reducer/cartReducer'
+import SubNavProducts from "../subNavforPage/subNavProducts";
 
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
@@ -64,9 +65,9 @@ const styles = StyleSheet.create({
       },
     container: {
         width: "100%",
-        backgroundColor: "#F9F9F9",
+        backgroundColor: "#F3F3F3",
         paddingBottom: 0,
-        paddingTop: 5,
+        paddingTop: 5, 
         marginBottom: 30,
       },        
     titlePage: {
@@ -81,7 +82,7 @@ const styles = StyleSheet.create({
     },
     contenedorTotal: {
       width: "100%",
-      backgroundColor: "#F9F9F9",
+      backgroundColor: "#F3F3F3",
       paddingBottom: 0,
       paddingTop: 5,
       marginBottom: 30,

@@ -57,9 +57,9 @@ export default function Signup() {
   const onRegister = () => {
     let user = {
       name: name,
-      password: password,
-      email: email,
-      confirmPass: confirmPass,
+      password: password.trim(),
+      email: email.trim(),
+      confirmPass: confirmPass.trim(),
     };
 
     if (!validacion()) {
@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 50,
     width: ScreenWidth,
+    paddingBottom : 50
   },
   boton: {
     width: ScreenWidth - 40,
