@@ -74,7 +74,7 @@ export default function ProductDetail() {
         <View style={styles.container}>
           <View style={styles.containerTitle}>
             <Text style={styles.exced} numberOfLines={1}>{product.name}</Text>
-            <Text style={styles.price}>U$S {product.price}</Text>
+            <Text style={styles.price}>$ {product.price}</Text>
           </View>
           <View style={styles.containerSubtitle}>
             <Text style={styles.subprice}>{product.name}</Text>

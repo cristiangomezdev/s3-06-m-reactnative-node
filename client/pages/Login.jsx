@@ -101,58 +101,52 @@ export default function Login() {
 
     /*  */
     return (<>
-        <View style={styles.container}  >
-            <StatusBar
-                animated={true}
-                backgroundColor="#61dafb"
-            />
-            {load && <Loader load={styles.loader} />}
-            <ScrollView>
-                <View>
-                    <Text style={styles.text} >Login</Text>
-                    <TextInput
-                        type='email'
-                        value={username}
-                        onChangeText={setUsername}
-                        placeholder='Email'
-                        style={styles.input} />
-                    <TextInput
-                        type='password'
-                        value={password}
-                        onChangeText={setPassword}
-                        secureTextEntry={true}
-                        placeholder='Password'
-                        style={styles.input} />
-                </View>
-                {/* <TouchableHighlight onPress={() => navigate('/')} underlayColor="rgba(0,0,0,0)">
-                    <Text style={styles.text1}>Forgot your password?  <Image style={styles.arrow} source={require('../assets/Vector.png')} /> </Text>
-                </TouchableHighlight> */}
-                <View style={styles.buttonContain} >
-                    <TouchableHighlight onPress={(e) => onLogin()} style={styles.boton}>
-                        <Text style={styles.botonText}>LOGIN</Text>
-                    </TouchableHighlight>
-                </View>
-                <TouchableHighlight onPress={handleClick} underlayColor="rgba(0,0,0,0)">
-                    <Text style={styles.text2}>Or Sign up </Text>
-                </TouchableHighlight>
-                {/*   <View style={styles.image}>
-                    <Image source={require('../assets/iconsgoogle.png')} />
-                    <Image source={require('../assets/iconofacebook.png')} />
-                </View> */}
-            </ScrollView>
-        </View></>)
+            <View style={styles.container}>
+                <StatusBar
+                    animated={true}
+                    backgroundColor="#61dafb"
+                />
+                {load && <Loader load={styles.loader} />}
+                
+                        <Text style={styles.text} >Login</Text>
+                        <TextInput
+                            type='email'
+                            value={username}
+                            onChangeText={setUsername}
+                            placeholder='Email'
+                            style={styles.input} />
+                        <TextInput
+                            type='password'
+                            value={password}
+                            onChangeText={setPassword}
+                            secureTextEntry={true}
+                            placeholder='Password'
+                            style={styles.input} />
+                        
+                    <View style={styles.buttonContain} >
+                        <TouchableHighlight onPress={(e) => onLogin()} style={styles.boton}>
+                            <Text style={styles.botonText}>LOGIN</Text>
+                        </TouchableHighlight>
+                        <TouchableHighlight onPress={handleClick} underlayColor="rgba(0,0,0,0)">
+                            <Text style={styles.text2}>Or Sign up </Text>
+                        </TouchableHighlight>
+                    </View>
+            </View>
+        </>)
 }
 
 const styles = StyleSheet.create({
     container: {
+
+        height:ScreenHeight,
         paddingTop: 0,
         width: ScreenWidth,
         zIndex : 10,
-        alignItems : "center"
+        justifyContent:'center',
+        alignItems:'center'
     },
     buttonContain: {
         width: ScreenWidth,
-        flex: 1,
         alignItems: 'center'
     },
     boton: {
@@ -174,8 +168,9 @@ const styles = StyleSheet.create({
         fontWeight: 'normal',
         fontSize: 80,
         fontFamily: 'poppins',
-        marginBottom: 80,
-        marginTop: 30,
+        marginBottom: 50,
+        //marginTop: 100,
+
     },
     text1: {
         color: 'black',
@@ -191,11 +186,12 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontFamily: 'taviraj',
         marginBottom: 40,
-        marginTop: 40,
+        marginTop: 20,
         textAlign: "center",
     },
     input: {
         height: 74,
+        width:ScreenWidth-40,
         backgroundColor: 'white',
         borderColor: 'grey',
         marginBottom: 40,

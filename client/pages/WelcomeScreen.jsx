@@ -18,8 +18,7 @@ const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
 
 export default function WelcomeScreen() {
-  console.log(StatusBar.currentHeight)
-  console.log(height)
+
     let [fontsLoaded] = useFonts({
         poppins: require("../assets/fonts/Poppins-Light.ttf"),
         "poppins-regular": require("../assets/fonts/Poppins-Regular.ttf"),
