@@ -115,10 +115,12 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   exced:{
-    fontFamily: "poppins-regular",
+    fontFamily: "poppins",
     color: "#000",
     fontSize: 24,
+    fontWeight: "700",
     marginBottom: 0,
+    letterSpacing : 1,
     width:180,
     flexWrap: 'wrap'
   },
@@ -129,8 +131,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   content: {
-    fontFamily: "taviraj-m",
-    fontSize: 12
+    fontFamily: "taviraj",
+    fontWeight: "700",
+    lineHeight:20,
+    fontSize: 14,
+    color:'grey',
+    
   },
   containerButton: {
     alignItems: "center",
@@ -152,14 +158,18 @@ const styles = StyleSheet.create({
     color: "#FFFF",
   },
   price: {
-    fontFamily: "poppins-regular",
+    fontFamily: "poppins",
     color: "#000",
+    fontWeight: "700",
     fontSize: 24,
     marginBottom: 0,
   },
   subprice: { 
     fontFamily: "taviraj-m",
      color: "#aaa",
+     letterSpacing : 0.1,
+     fontWeight: "700",
       fontSize: 14,
-       top: -8 }
+       top: -8,
+      marginBottom:15 }
 });
