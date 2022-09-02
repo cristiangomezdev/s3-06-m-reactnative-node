@@ -145,9 +145,10 @@ export default function Login() {
 
 const styles = StyleSheet.create({
     container: {
-        paddingTop: 70,
+        paddingTop: 0,
         width: ScreenWidth,
-        zIndex : 10
+        zIndex : 10,
+        alignItems : "center"
     },
     buttonContain: {
         width: ScreenWidth,

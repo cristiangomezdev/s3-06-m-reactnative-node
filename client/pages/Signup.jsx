@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 50,
     width: ScreenWidth,
+    paddingBottom : 50
   },
   boton: {
     width: ScreenWidth - 40,
