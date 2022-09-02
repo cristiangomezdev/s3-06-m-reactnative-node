@@ -4,12 +4,26 @@ import productos from '../../data/productos'
 import ProductoItem from './ProductoItem'
 import { useFonts } from "expo-font";
 import {useParams,useLocation} from 'react-router-native';
+import {useState,useEffect} from "react";
+import {api} from '../../helpers/api'
 import Loader from "../../pages/Loader";
 
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
 
 const ListaProductos = ({products}) => {
+  const categoryId = products [0].categoriesId
+  const subCategoryId = products [0].subCategoriesId
+
+  const [subcategoryname, setSubcategoryname] = useState('');
+
+   useEffect(() => {
+      api.getCategory(categoryId).then((response)=>{
+          const subCategorias = response.resjson.categorie.subCategories
+          const subCategoria = subCategorias.filter(obj=> {return obj._id === subCategoryId})
+          setSubcategoryname(subCategoria[0].name)
+      })
+  }); 
 
 
     let [fontsLoaded] = useFonts({
@@ -28,7 +42,7 @@ const ListaProductos = ({products}) => {
    
 
           <View>
-            <Text style={styles.titlePage}>Productos</Text>
+            <Text style={styles.titlePage}>{subcategoryname}</Text>
           </View>
 
           <View>       
