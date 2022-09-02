@@ -57,10 +57,8 @@ const change = ({nativeEvent}) =>{
 }
 
 const style = StyleSheet.create({
-  container:{width,height:height,backgroundColor: "#f3f3f3",},
+  container:{width,height:height,backgroundColor: "white",},
   scroll:{width,height},
   image:{width,height:height,resizeMode:'contain'},
   pagination:{flexDirection:'row',position:'absolute',bottom:0,width:'100%'},
-/*   pagingline:{height:3,width:amount},
-  paginglineActive:{height:3,backgroundColor:'#56CBF9',width:amount}, */
 })

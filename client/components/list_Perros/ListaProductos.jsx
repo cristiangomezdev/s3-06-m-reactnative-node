@@ -7,7 +7,7 @@ import {useParams,useLocation} from 'react-router-native';
 import {useState,useEffect} from "react";
 import {api} from '../../helpers/api'
 import Loader from "../../pages/Loader";
-import SubNavProducts from "../subNavforPage/subNavProducts";
+
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
 
@@ -39,7 +39,7 @@ const ListaProductos = ({products}) => {
     return (
       <View style={styles.containView}>  
         <ScrollView style={styles.container}>
-        <SubNavProducts />
+   
 
           <View>
             <Text style={styles.titlePage}>{subcategoryname}</Text>
@@ -60,7 +60,7 @@ const ListaProductos = ({products}) => {
 const styles = StyleSheet.create({
 
   containView : {
-    paddingBottom : 100,
+    paddingBottom : 110,
     height : ScreenHeight,
   },
   container: {
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F3F3F3",
     paddingBottom: 0,
     //paddingTop: 5,
-    marginBottom: 30,
+    marginBottom: 80,
   },       
   titlePage: {
     marginLeft:20,

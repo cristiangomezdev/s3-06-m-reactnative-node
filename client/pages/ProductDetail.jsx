@@ -53,25 +53,20 @@ export default function ProductDetail() {
 
    useEffect(() => {
       api.getProduct(params.id).then((response)=>{
-        console.log(response)
           setProduct(response.resjson.product)
       })
   }, []);
- console.log(!fontsLoaded)
- console.log(!product)
+
   if (!fontsLoaded || !product) {
     return <Loader />;
   }
-
-  console.log(params)
-  /* let [product] = productosDetail.filter((item)=>{ return params.id == item._id}) */
  
   const onPressHandler = () => {
     dispatch(add(product));
     Alert.alert('Added','your product is now in your bag')
     navigate('/bag')
   };
-  console.log(product)
+
   return (
     <>
       <ScrollView style={styles.scrollContainer}>
@@ -115,10 +110,12 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   exced:{
-    fontFamily: "poppins-regular",
+    fontFamily: "poppins",
     color: "#000",
     fontSize: 24,
+    fontWeight: "700",
     marginBottom: 0,
+    letterSpacing : 1,
     width:180,
     flexWrap: 'wrap'
   },
@@ -129,8 +126,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   content: {
-    fontFamily: "taviraj-m",
-    fontSize: 12
+    fontFamily: "taviraj",
+    fontWeight: "700",
+    lineHeight:20,
+    fontSize: 14,
+    color:'grey',
+    
   },
   containerButton: {
     alignItems: "center",
@@ -152,14 +153,18 @@ const styles = StyleSheet.create({
     color: "#FFFF",
   },
   price: {
-    fontFamily: "poppins-regular",
+    fontFamily: "poppins",
     color: "#000",
+    fontWeight: "700",
     fontSize: 24,
     marginBottom: 0,
   },
   subprice: { 
     fontFamily: "taviraj-m",
      color: "#aaa",
+     letterSpacing : 0.1,
+     fontWeight: "700",
       fontSize: 14,
-       top: -8 }
+       top: -8,
+      marginBottom:15 }
 });
