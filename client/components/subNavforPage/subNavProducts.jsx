@@ -21,7 +21,7 @@ const SubNavProducts = () => {
 
   return (
     <ScrollView horizontal style={styles.container}>
-      {subNavProductsData[category].data.map((data, i) => (
+      {subNavProductsData[category]?.data.map((data, i) => (
         <TouchableHighlight
           key={i}
           underlayColor="rgba(155, 155, 155, 0)"
