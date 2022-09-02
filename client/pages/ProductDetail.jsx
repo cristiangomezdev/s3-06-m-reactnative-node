@@ -53,25 +53,20 @@ export default function ProductDetail() {
 
    useEffect(() => {
       api.getProduct(params.id).then((response)=>{
-        console.log(response)
           setProduct(response.resjson.product)
       })
   }, []);
- console.log(!fontsLoaded)
- console.log(!product)
+
   if (!fontsLoaded || !product) {
     return <Loader />;
   }
-
-  console.log(params)
-  /* let [product] = productosDetail.filter((item)=>{ return params.id == item._id}) */
  
   const onPressHandler = () => {
     dispatch(add(product));
     Alert.alert('Added','your product is now in your bag')
     navigate('/bag')
   };
-  console.log(product)
+
   return (
     <>
       <ScrollView style={styles.scrollContainer}>

@@ -32,7 +32,7 @@ export default function Success() {
                 <Text style={styles.text}> Success!  </Text>
                 <Text style={styles.text1}> Your order will be delivered soon. Thank you for choosing our app!  </Text>
                 <View style={styles.buttonContain} >
-                <Button text={'Download PDF'} onPressHandler={() => navigate(-1)}/>
+                <Button text={'track your shipment!'} onPressHandler={() => navigate('/profile/orders')}/>
                 </View>
             </ScrollView>
         </View>
