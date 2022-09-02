@@ -13,6 +13,7 @@ import { subNavProductsData } from "./subNavProductsData";
 const SubNavProducts = () => {
   const location = useLocation();
   const subcategory =  new URLSearchParams(location.search).get('subcategoriesId');
+  const category =  new URLSearchParams(location.search).get('category');
   const navigate = useNavigate();
   const navigateTo = (path) => {
     navigate(path);
@@ -20,7 +21,7 @@ const SubNavProducts = () => {
 
   return (
     <ScrollView horizontal style={styles.container}>
-      {subNavProductsData.perros.data.map((data, i) => (
+      {subNavProductsData[category]?.data.map((data, i) => (
         <TouchableHighlight
           key={i}
           underlayColor="rgba(155, 155, 155, 0)"

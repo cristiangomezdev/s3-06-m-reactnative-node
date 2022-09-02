@@ -4,14 +4,36 @@ import productos from '../../data/productos'
 import ProductoItem from './ProductoItem'
 import { useFonts } from "expo-font";
 import {useParams,useLocation} from 'react-router-native';
+import {useState,useEffect} from "react";
+import {api} from '../../helpers/api'
 import Loader from "../../pages/Loader";
 
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
 
 const ListaProductos = ({products}) => {
+  const categoryId = products [0].categoriesId
+  const subCategoryId = products [0].subCategoriesId
+  const location = useLocation();
+  const subcategory =  new URLSearchParams(location.search).get('subcategoriesId');
+  const [subcategoryname, setSubcategoryname] = useState('');
 
+   useEffect(() => {
+      api.getCategory(categoryId).then((response)=>{
+          const subCategorias = response.resjson.categorie.subCategories
+          const subCategoria = subCategorias.filter(obj=> {return obj._id === subCategoryId})
+          setSubcategoryname(subCategoria[0].name)
 
+      })
+  }); 
+
+    const margin = () =>{
+      if(subcategory){
+        return 'margin'
+      }else{
+        return null
+      }
+    }
     let [fontsLoaded] = useFonts({
         poppins: require("../../assets/fonts/Poppins-Light.ttf"),
         "poppins-regular": require("../../assets/fonts/Poppins-Regular.ttf"),
@@ -24,11 +46,11 @@ const ListaProductos = ({products}) => {
       }
     return (
       <View style={styles.containView}>  
-        <ScrollView style={styles.container}>
+        <ScrollView style={[styles.container,{marginBottom: subcategory ? 80 : 25}]}>
    
 
           <View>
-            <Text style={styles.titlePage}>Productos</Text>
+            <Text style={styles.titlePage}>{subcategoryname}</Text>
           </View>
 
           <View>       
@@ -54,7 +76,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F3F3F3",
     paddingBottom: 0,
     //paddingTop: 5,
-    marginBottom: 80,
+    marginBottom: 25,
   },       
   titlePage: {
     marginLeft:20,

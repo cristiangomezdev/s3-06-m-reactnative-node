@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { useNavigate } from "react-router-native";
 import { useFonts } from 'expo-font';
-import { StyleSheet, TextInput, Image, Text, View, TouchableHighlight, ScrollView, StatusBar } from 'react-native';
+import { StyleSheet, TextInput, Text, View, TouchableHighlight, ScrollView, StatusBar } from 'react-native';
 import { Dimensions, Alert } from 'react-native';
 import { login } from "./../actions/auth";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,12 +9,14 @@ import Loader from './Loader';
 
 
 const ScreenWidth = Dimensions.get("window").width;
+const ScreenHeight = Dimensions.get("window").height;
 
 export default function Login() {
 
     let navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [load, setLoad] = useState(false);
     const dispatch = useDispatch();
 
 
@@ -50,35 +52,41 @@ export default function Login() {
     }
 
     const onLogin = () => {
+        setLoad(true)
         let user = {
             username:username.trim(),
             password:password.trim(),
         };
          if (!validacion()) {
+            setLoad(false)
             return
         }
 
- 
+        
         dispatch(login(user))
             .then((response) => {
 
                 if (response.status == "success") {
+                    setLoad(false)
                     navigate("/home?cate=dog");
                 }
 
                 if (response.status == "error") {
+                    setLoad(false)
                     Alert.alert("Error", response.message);
                 }
+                
 
             })
             .catch((error) => {
                 console.log(error)
+                setLoad(false)
                 navigate("/");
             });
 
 
-
     };
+
 
     let [fontsLoaded] = useFonts({
         'poppins': require('../assets/fonts/Poppins-Light.ttf'),
@@ -90,6 +98,7 @@ export default function Login() {
     if (!fontsLoaded) {
         return <Loader />;
     }
+
     /*  */
     return (<>
         <View style={styles.container}  >
@@ -97,6 +106,7 @@ export default function Login() {
                 animated={true}
                 backgroundColor="#61dafb"
             />
+            {load && <Loader load={styles.loader} />}
             <ScrollView>
                 <View>
                     <Text style={styles.text} >Login</Text>
@@ -137,6 +147,7 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: 70,
         width: ScreenWidth,
+        zIndex : 10
     },
     buttonContain: {
         width: ScreenWidth,
@@ -205,4 +216,13 @@ const styles = StyleSheet.create({
         width: 40,
         height: 18,
     },
+    loader : {
+        position : 'absolute',
+        backgroundColor : 'rgba(10,10,10,0.3)',
+        width : ScreenWidth,
+        height : ScreenHeight+StatusBar.currentHeight,
+        flex:1,
+        zIndex: 100
+    }
+    
 })
