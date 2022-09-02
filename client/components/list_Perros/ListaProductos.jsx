@@ -3,12 +3,14 @@ import {View, Text, FlatList, StyleSheet, ScrollView, Dimensions} from 'react-na
 import productos from '../../data/productos'
 import ProductoItem from './ProductoItem'
 import { useFonts } from "expo-font";
+import {useParams,useLocation} from 'react-router-native';
 import Loader from "../../pages/Loader";
-import SubNavProducts from "../subNavforPage/subNavProducts";
+
 const ScreenWidth = Dimensions.get("window").width;
 const ScreenHeight = Dimensions.get("window").height;
 
 const ListaProductos = ({products}) => {
+
 
     let [fontsLoaded] = useFonts({
         poppins: require("../../assets/fonts/Poppins-Light.ttf"),
@@ -23,10 +25,10 @@ const ListaProductos = ({products}) => {
     return (
       <View style={styles.containView}>  
         <ScrollView style={styles.container}>
-        <SubNavProducts />
+   
 
           <View>
-            <Text style={styles.titlePage}>Comida</Text>
+            <Text style={styles.titlePage}>Productos</Text>
           </View>
 
           <View>       
@@ -44,15 +46,15 @@ const ListaProductos = ({products}) => {
 const styles = StyleSheet.create({
 
   containView : {
-    paddingBottom : 100,
+    paddingBottom : 110,
     height : ScreenHeight,
   },
   container: {
     width: "100%",
-    backgroundColor: "#F9F9F9",
+    backgroundColor: "#F3F3F3",
     paddingBottom: 0,
-    paddingTop: 5,
-    marginBottom: 30,
+    //paddingTop: 5,
+    marginBottom: 80,
   },       
   titlePage: {
     marginLeft:20,

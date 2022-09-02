@@ -114,9 +114,9 @@ export default function Login() {
                         placeholder='Password'
                         style={styles.input} />
                 </View>
-                <TouchableHighlight onPress={() => navigate('/forgotpassword')} underlayColor="rgba(0,0,0,0)">
+                {/* <TouchableHighlight onPress={() => navigate('/')} underlayColor="rgba(0,0,0,0)">
                     <Text style={styles.text1}>Forgot your password?  <Image style={styles.arrow} source={require('../assets/Vector.png')} /> </Text>
-                </TouchableHighlight>
+                </TouchableHighlight> */}
                 <View style={styles.buttonContain} >
                     <TouchableHighlight onPress={(e) => onLogin()} style={styles.boton}>
                         <Text style={styles.botonText}>LOGIN</Text>
