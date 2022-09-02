@@ -220,7 +220,8 @@ const styles = StyleSheet.create({
         position : 'absolute',
         backgroundColor : 'rgba(10,10,10,0.3)',
         width : ScreenWidth,
-        height : ScreenHeight,
+        height : ScreenHeight+StatusBar.currentHeight,
+        flex:1,
         zIndex: 100
     }
     
