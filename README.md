@@ -6,7 +6,7 @@
 
 ## _Deployment_
 
-- [Cliente] - [Apk de la aplicación para Android](Apk de la aplicación para Android) 
+- [Cliente] - [Descargar Apk de la aplicación para Android](https://expo.dev/artifacts/eas/7cB7P6awBEmkFCXypzmbaf.apk) 
 - [API] - [Api deployada en Heroku](https://api-s306.herokuapp.com/)
 
 
