@@ -6,7 +6,8 @@
 
 ## _Deployment_
 
-- [Cliente] - [Apk de la aplicación para Android](Apk de la aplicación para Android) 
+- [Android] - [Descargar Apk de la aplicación para Android](https://expo.dev/artifacts/eas/7cB7P6awBEmkFCXypzmbaf.apk) 
+- [IOS] - [Descargar Simulacion de la aplicación para IOS](https://expo.dev/artifacts/eas/vWoZF554Wn2bqg7KgjRKSD.tar.gz) 
 - [API] - [Api deployada en Heroku](https://api-s306.herokuapp.com/)
 
 
