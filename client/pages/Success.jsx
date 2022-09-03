@@ -8,6 +8,7 @@ import Loader from './Loader';
 
 const ScreenWidth = Dimensions.get("window").width;
 const { width } = Dimensions.get("window");
+const { height } = Dimensions.get("window");
 
 export default function Success() {
     let navigate = useNavigate();
@@ -25,7 +26,8 @@ export default function Success() {
         <View style={styles.container}  >
             <StatusBar
                 animated={true}
-                backgroundColor="#61dafb"
+                style="black" 
+                backgroundColor="#FFFFFF"
             />
             <ScrollView>
                 <Image source={require('../assets/bags.png')} style={styles.image} />  
@@ -43,7 +45,10 @@ export default function Success() {
 const styles = StyleSheet.create({
     container: {
         width: ScreenWidth,
-
+        height : height + StatusBar.currentHeight,
+        flex : 1,
+        justifyContent : "center",
+        alignItems : 'center',
     },    
     text: {
         color: 'black',
@@ -63,8 +68,11 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     image:{
-        marginTop:50,
+        marginTop : 30,
         width:ScreenWidth,
         resizeMode:'contain'
+    },
+    buttonContain: {
+        paddingBottom : 10
     }
 });
