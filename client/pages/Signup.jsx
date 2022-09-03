@@ -8,14 +8,14 @@ import { Dimensions, Alert } from 'react-native';
 import Loader from './Loader';
 
 const ScreenWidth = Dimensions.get("window").width;
-
+const ScreenHeight = Dimensions.get("window").height;
 export default function Signup() {
   let navigate = useNavigate();
   const [name, setName] = useState();
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
   const [confirmPass, setConfirmPass] = useState();
-
+  const [load, setLoad] = useState(false);
   const dispatch = useDispatch();
 
   function isValidEmail(email) {
@@ -55,6 +55,7 @@ export default function Signup() {
   }
 
   const onRegister = () => {
+    setLoad(true)
     let user = {
       name: name,
       password: password.trim(),
@@ -63,21 +64,25 @@ export default function Signup() {
     };
 
     if (!validacion()) {
+      setLoad(false)
       return false
     }
 
     dispatch(register(user))
       .then((response) => {
-        if (response.status == "success") {
+        if (response.status === "success") {
+          setLoad(false)
           Alert.alert("Success", response.message);
-          navigate("/home?cate=dog");
+          return navigate("/home?cate=dog");
         }
-        if (response.status == "error") {
-          Alert.alert("Error", response.message);
+        if (response.status === "error") {
+          setLoad(false)
+          return Alert.alert("Error", response.message);
         }
       })
       .catch((error) => {
-        navigate("/signup");
+        setLoad(false)
+        return navigate("/signup");
       });
   };
 
@@ -91,11 +96,13 @@ export default function Signup() {
     return <Loader />;
   }
   return (
-    <View>
+    <View style={{zIndex : 20}}>
       <StatusBar
         animated={true}
-        backgroundColor="#61dafb"
+        style="black" 
+        backgroundColor="#FFFFFF"
       />
+      {load && <Loader load={styles.loader} />}
       <ScrollView>
         <View style={styles.container}>
           <View>
@@ -217,4 +224,12 @@ const styles = StyleSheet.create({
     width: 40,
     height: 18,
   },
+  loader : {
+      position : 'absolute',
+      backgroundColor : 'rgba(10,10,10,0.3)',
+      width : ScreenWidth,
+      height : ScreenHeight + StatusBar.currentHeight,
+      flex:1,
+      zIndex: 100
+  }
 })

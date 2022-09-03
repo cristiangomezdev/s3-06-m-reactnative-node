@@ -69,10 +69,11 @@ const onSubmit = () => {
     return <Loader />;
   }
   return (
-    <View>
+    <View style={styles.contain}>
       <StatusBar
         animated={true}
-        backgroundColor="#61dafb"
+        style="black" 
+        backgroundColor="#FFFFFF"
       />
       <ScrollView>
         <View style={styles.container}>
@@ -129,6 +130,9 @@ const onSubmit = () => {
 }
 
 const styles = StyleSheet.create({
+  contain : {
+    flex : 1
+  },
   container: {
     width: "100%",
     backgroundColor: "#F9F9F9",

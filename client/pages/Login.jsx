@@ -104,7 +104,8 @@ export default function Login() {
             <View style={styles.container}>
                 <StatusBar
                     animated={true}
-                    backgroundColor="#61dafb"
+                    style="black" 
+                    backgroundColor="#FFFFFF"
                 />
                 {load && <Loader load={styles.loader} />}
                 
@@ -217,7 +218,7 @@ const styles = StyleSheet.create({
         position : 'absolute',
         backgroundColor : 'rgba(10,10,10,0.3)',
         width : ScreenWidth,
-        height : ScreenHeight+StatusBar.currentHeight,
+        height : ScreenHeight + StatusBar.currentHeight,
         flex:1,
         zIndex: 100
     }
