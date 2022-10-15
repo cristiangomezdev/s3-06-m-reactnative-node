@@ -6,8 +6,8 @@
 
 ## _Deployment_
 
-- [Android] - [Descargar Apk de la aplicación para Android](https://expo.dev/artifacts/eas/7cB7P6awBEmkFCXypzmbaf.apk) 
-- [IOS] - [Descargar Simulacion de la aplicación para IOS](https://expo.dev/artifacts/eas/vWoZF554Wn2bqg7KgjRKSD.tar.gz) 
+- [Android] - [Descargar Apk de la aplicación para Android](https://github.com/cristiangomezdev/s3-06-m-reactnative-node/releases/tag/apk) 
+- [IOS] - [Descargar Simulacion de la aplicación para IOS](https://github.com/cristiangomezdev/s3-06-m-reactnative-node/releases/tag/apk) 
 - [API] - [Api deployada en Heroku](https://api-s306.herokuapp.com/)
 
 
